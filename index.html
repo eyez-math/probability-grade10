@@ -58,6 +58,27 @@
     .combined-cert-question th,.combined-cert-question td{padding:7px 4px;border-bottom:1px solid #e2e8f0;vertical-align:top;word-break:break-word}
     .combined-cert-question .cert-answer{direction:ltr;unicode-bidi:isolate;text-align:center}
     .nav-select{min-width:220px;max-width:340px}
+
+    .count-visual{padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;min-height:290px}
+    .count-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;direction:ltr}
+    .candy-dot,.ball-dot{width:34px;height:34px;border-radius:50%;border:2px solid #334155;box-shadow:0 2px 5px rgba(15,23,42,.08)}
+    .pen-icon{width:18px;height:70px;border-radius:8px 8px 4px 4px;border:2px solid #334155;position:relative}
+    .pen-icon:after{content:'';position:absolute;bottom:-10px;left:4px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:10px solid #334155}
+    .legend-row{display:flex;flex-wrap:wrap;gap:8px 14px;justify-content:center;font-size:12px;font-weight:700;color:#475569}
+    .legend-chip{display:flex;align-items:center;gap:6px}
+    .legend-swatch{width:14px;height:14px;border-radius:50%;border:1px solid #64748b}
+    .stat-grid{display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:10px;width:min(420px,100%);direction:rtl}
+    .stat-card{border:1px solid #dbe3ee;background:#f8fafc;border-radius:14px;padding:12px;text-align:center}
+    .stat-card strong{display:block;font-size:22px;color:#0f172a;direction:ltr;unicode-bidi:isolate}
+    .calendar-grid{display:grid;grid-template-columns:repeat(7,28px);gap:4px;direction:ltr;justify-content:center}
+    .calendar-cell{width:28px;height:28px;border-radius:6px;background:#e2e8f0;border:1px solid #cbd5e1}
+    .calendar-cell.fast{background:#fecaca;border-color:#f87171}.calendar-cell.holiday{background:#fde68a;border-color:#f59e0b}
+    .raffle-grid{display:grid;grid-template-columns:repeat(5,42px);gap:6px;justify-content:center;direction:ltr}
+    .raffle-ticket{width:42px;height:30px;border:1px dashed #64748b;border-radius:6px;background:#fff}
+    .raffle-ticket.prize{background:#dcfce7;border-color:#22c55e}
+    .answer-number-row{direction:ltr;display:flex;align-items:center;justify-content:flex-start;gap:8px;margin-top:14px}
+    .answer-number-row input{width:110px;height:42px;text-align:center;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:800;font-size:18px;background:#fff;color:#0f172a}
+    .answer-number-row .unit{font-size:14px;font-weight:700;color:#64748b;direction:rtl;unicode-bidi:isolate}
     @media(max-width:820px){
       .main-grid{grid-template-columns:1fr!important}.visual-col{position:static!important}.nav-row{grid-template-columns:auto 1fr auto!important;gap:8px}.nav-select{min-width:0;width:100%}
     }
@@ -220,6 +241,95 @@ const questions = [
       {id:'c',label:'ג',prompt:'מה ההסתברות ששי לא בחר ביום שישי או בשבת?',type:'fraction',event:'לא שישי ולא שבת',expected:[5,7],hint:'זהו אילו ימים אינם שישי ואינם שבת, וספרו אותם מתוך כל ימי השבוע.',explanation:'חמישה ימים אינם שישי ואינם שבת. לכן P(לא שישי ולא שבת) = 5/7.'}
     ]
   }
+,
+  {
+    id:'q6_candies',
+    title:'סוכריות בקופסה',
+    category:'שכיחות יחסית והסתברות',
+    story:'בקופסה יש 7 סוכריות צהובות, 3 סוכריות אדומות ו־5 סוכריות ירוקות. רחל מוציאה באקראי סוכרייה אחת מהקופסה.',
+    visual:'candies15',
+    sampleSpace:'15 סוכריות',
+    subs:[
+      {id:'a',label:'א',prompt:'מה גודל המדגם?',type:'number',expected:15,unit:'תוצאות',hint:'גודל המדגם הוא מספר כל הפריטים שמהם יכולה להיבחר התוצאה.',explanation:'יש בקופסה 7 + 3 + 5 = 15 סוכריות, ולכן גודל המדגם הוא 15.'},
+      {id:'b',label:'ב',prompt:'כתבו את השכיחות היחסית של סוכריות אדומות מכלל הסוכריות.',type:'fraction',event:'סוכרייה אדומה',expected:[3,15],hint:'בשכיחות יחסית המונה הוא מספר הפריטים מן הסוג המבוקש והמכנה הוא מספר כל הפריטים.',explanation:'יש 3 סוכריות אדומות מתוך 15 סוכריות, ולכן השכיחות היחסית היא 3/15 = 1/5.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שהסוכרייה שרחל הוציאה אדומה? כתבו כשבר מצומצם.',type:'fraction',event:'סוכרייה אדומה',expected:[1,5],hint:'מצאו את היחס בין מספר התוצאות הרצויות לבין מספר כל התוצאות, ואז צמצמו את השבר.',explanation:'יש 3 סוכריות אדומות מתוך 15. לכן P(אדומה) = 3/15 = 1/5.'},
+      {id:'d',label:'ד',prompt:'מהו הסיכוי באחוזים להוציא סוכרייה אדומה?',type:'percent',expected:20,tolerance:0.01,hint:'המירו את ההסתברות שמצאתם לאחוזים.',explanation:'1/5 = 0.2 = 20%.'},
+      {id:'e',label:'ה',prompt:'מה ההסתברות שרחל הוציאה סוכרייה ירוקה?',type:'fraction',event:'סוכרייה ירוקה',expected:[1,3],hint:'ספרו כמה סוכריות ירוקות יש והשוו למספר הסוכריות הכולל. אפשר לצמצם.',explanation:'יש 5 סוכריות ירוקות מתוך 15, ולכן P(ירוקה) = 5/15 = 1/3.'},
+      {id:'f',label:'ו',prompt:'מהו הסיכוי באחוזים להוציא סוכרייה ירוקה?',type:'percent',expected:33.33,tolerance:0.05,hint:'המירו את ההסתברות של סוכרייה ירוקה לאחוזים.',explanation:'1/3 ≈ 0.3333, כלומר כ־33.33%.'},
+      {id:'g',label:'ז',prompt:'מה הסיכוי שרחל הוציאה סוכרייה שאינה אדומה?',type:'fraction',event:'סוכרייה שאינה אדומה',expected:[4,5],hint:'אפשר לספור את כל הסוכריות שאינן אדומות, או להשתמש באירוע המשלים.',explanation:'יש 12 סוכריות שאינן אדומות מתוך 15, ולכן P(אינה אדומה) = 12/15 = 4/5 = 80%.'}
+    ]
+  },
+  {
+    id:'q7_pens',
+    title:'עטים בקלמר של משה',
+    category:'שכיחות יחסית, אחוזים והסתברות',
+    story:'בקלמר של משה יש 2 עטים שחורים, 5 עטים כחולים ו־3 עטים אדומים. משה מוציא באקראי עט אחד.',
+    visual:'pens10',
+    sampleSpace:'10 עטים',
+    subs:[
+      {id:'a',label:'א',prompt:'מה השכיחות היחסית של העטים השחורים?',type:'fraction',event:'עט שחור',expected:[2,10],hint:'השכיחות היחסית משווה בין מספר העטים השחורים לבין מספר כל העטים.',explanation:'יש 2 עטים שחורים מתוך 10, ולכן השכיחות היחסית היא 2/10 = 1/5.'},
+      {id:'b',label:'ב',prompt:'מה הסיכוי שהעט שהוציא משה הוא שחור? כתבו באחוזים.',type:'percent',expected:20,tolerance:0.01,hint:'המירו את ההסתברות של עט שחור לאחוזים.',explanation:'2/10 = 0.2 = 20%.'},
+      {id:'c',label:'ג',prompt:'מהי ההסתברות שהעט שהוציא משה הוא כחול? כתבו גם בשבר עשרוני.',type:'fraction_decimal',event:'עט כחול',expectedFraction:[1,2],expectedDecimal:0.5,tolerance:0.001,hint:'מצאו תחילה את ההסתברות כשבר, צמצמו אם אפשר, ואז כתבו את אותו ערך בשבר עשרוני.',explanation:'יש 5 עטים כחולים מתוך 10, ולכן P(כחול) = 5/10 = 1/2 = 0.5.'},
+      {id:'d',label:'ד',prompt:'מה הסיכוי שהעט שהוציא משה אינו אדום?',type:'fraction',event:'עט שאינו אדום',expected:[7,10],hint:'ספרו את העטים שאינם אדומים, או השתמשו באירוע המשלים לעט אדום.',explanation:'יש 7 עטים שאינם אדומים מתוך 10, ולכן P(אינו אדום) = 7/10 = 0.7 = 70%.'}
+    ]
+  },
+  {
+    id:'q8_grants',
+    title:'הגרלת מענקים במפעל',
+    category:'הסתברות מתוך קבוצה',
+    story:'במפעל עובדים 30 בני אדם. בהגרלה: 3 עובדים יקבלו מענק של 3,000 שקלים, 5 עובדים יקבלו מענק של 1,000 שקלים, ו־10 עובדים יקבלו מענק של 500 שקלים. יצחק עובד במפעל.',
+    visual:'grants30',
+    sampleSpace:'30 עובדים',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שיצחק יזכה במענק של 3,000 שקלים?',type:'fraction',event:'מענק 3,000 ₪',expected:[3,30],hint:'במונה כתבו כמה עובדים מקבלים את המענק המבוקש, ובמכנה את מספר העובדים הכולל.',explanation:'3 מתוך 30 עובדים מקבלים 3,000 ₪, ולכן P = 3/30 = 1/10 = 0.1.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שיזכה במענק של 1,000 שקלים או של 500 שקלים?',type:'fraction',event:'מענק 1,000 ₪ או 500 ₪',expected:[15,30],hint:'חברו את מספר העובדים בשתי קבוצות הזכייה המתאימות, ואז השוו לכלל העובדים.',explanation:'5 + 10 = 15 עובדים מקבלים אחד משני המענקים, ולכן P = 15/30 = 1/2 = 0.5.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי שיצחק לא יזכה במענק הגדול של 3,000 שקלים?',type:'fraction',event:'לא מענק 3,000 ₪',expected:[27,30],hint:'זהו אירוע משלים לזכייה במענק הגדול.',explanation:'27 מתוך 30 אינם זוכים במענק של 3,000 ₪, ולכן P = 27/30 = 9/10 = 90%.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שלא יזכה בשום מענק?',type:'fraction',event:'לא זוכה בשום מענק',expected:[12,30],hint:'מצאו תחילה כמה עובדים זוכים במענק כלשהו, ואז מצאו כמה נשארים ללא מענק.',explanation:'בסך הכול 18 עובדים זוכים במענק, ולכן 12 אינם זוכים. P = 12/30 = 2/5 = 0.4.'}
+    ]
+  },
+  {
+    id:'q9_days',
+    title:'ימי צום וימי חג בשנה',
+    category:'הסתברות ואחוזים',
+    story:'בשנה יש 365 ימים. בדת היהודית יש 6 ימי צום ו־31 ימי חג (כולל חול המועד). בשנה מסוימת נולדו בישראל אותו מספר ילדים בכל אחד מימי השנה. בוחרים באקראי ילד שנולד באותה השנה.',
+    visual:'calendar365',
+    sampleSpace:'365 ימים',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שהוא נולד ביום צום, ומה הסיכוי באחוזים?',type:'fraction_percent',event:'נולד ביום צום',expectedFraction:[6,365],expectedPercent:1.643,tolerance:0.01,hint:'כתבו את מספר ימי הצום מתוך כל ימי השנה, ואז המירו את היחס לאחוזים.',explanation:'P(יום צום) = 6/365 ≈ 0.01643, כלומר כ־1.643%.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שהוא נולד ביום חג, ומה הסיכוי באחוזים?',type:'fraction_percent',event:'נולד ביום חג',expectedFraction:[31,365],expectedPercent:8.493,tolerance:0.01,hint:'כתבו את מספר ימי החג מתוך כל ימי השנה, ואז המירו את היחס לאחוזים.',explanation:'P(יום חג) = 31/365 ≈ 0.08493, כלומר כ־8.493%.'}
+    ]
+  },
+  {
+    id:'q10_raffle150',
+    title:'הגרלת פורים בבית הספר',
+    category:'הסתברות בפרסים',
+    story:'בהגרלה שנערכה בבית הספר בפורים חולקו 150 כרטיסי הגרלה: כרטיס אחד לזכייה ברכיבה משפחתית על סוסים, 3 כרטיסים לזכייה במנוי שנתי לבריכה, 10 כרטיסים לזכייה בשעוני ספורט ו־15 כרטיסים לזכייה בגרבי ספורט. יואב קיבל כרטיס הגרלה.',
+    visual:'raffle150',
+    sampleSpace:'150 כרטיסים',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שיואב זכה בטיול סוסים משפחתי?',type:'fraction',event:'טיול סוסים משפחתי',expected:[1,150],hint:'במונה כתבו כמה כרטיסים מעניקים את הפרס המבוקש, ובמכנה את מספר הכרטיסים הכולל.',explanation:'יש כרטיס אחד מתוך 150 לפרס זה, ולכן P = 1/150.'},
+      {id:'b',label:'ב',prompt:'מה הסיכוי שהוא זכה בגרבי ספורט?',type:'fraction',event:'גרבי ספורט',expected:[15,150],hint:'השוו בין מספר הכרטיסים של הפרס המבוקש לבין מספר כל הכרטיסים.',explanation:'יש 15 כרטיסים מתוך 150, ולכן P = 15/150 = 1/10.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי שיואב יזכה במכונית שברולט אדומה?',type:'fraction',event:'מכונית שברולט אדומה',expected:[0,150],hint:'בדקו אם הפרס הזה מופיע בכלל ברשימת הפרסים.',explanation:'אין כרטיס שמעניק מכונית, ולכן P = 0/150 = 0.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שהוא יזכה בפרס כלשהו?',type:'fraction',event:'פרס כלשהו',expected:[29,150],hint:'חברו את כל מספרי הכרטיסים שמעניקים פרס, והשוו למספר הכרטיסים הכולל.',explanation:'1 + 3 + 10 + 15 = 29 כרטיסים זוכים, ולכן P = 29/150.'},
+      {id:'e',label:'ה',prompt:'מה הסיכוי שלא יזכה בשום פרס?',type:'fraction',event:'לא זוכה בשום פרס',expected:[121,150],hint:'זהו האירוע המשלים לזכייה בפרס כלשהו.',explanation:'150 − 29 = 121 כרטיסים אינם זוכים, ולכן P = 121/150.'}
+    ]
+  },
+  {
+    id:'q11_balls',
+    title:'כדורים בשק',
+    category:'מרחב מדגם ואירועים משלימים',
+    story:'בשק כדורים יש 7 כדורים כתומים, 3 כדורים לבנים וכדור אחד צהוב. יוני מוציא מהשק באקראי כדור אחד.',
+    visual:'balls11',
+    sampleSpace:'11 כדורים',
+    subs:[
+      {id:'a',label:'א',prompt:'מה גודל מרחב המדגם? כמה אפשרויות יש בתוך השק?',type:'number',expected:11,unit:'כדורים',hint:'חברו את מספר כל הכדורים שבשק.',explanation:'7 + 3 + 1 = 11, ולכן גודל מרחב המדגם הוא 11.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שיוני יוציא כדור כתום?',type:'fraction',event:'כדור כתום',expected:[7,11],hint:'השוו בין מספר הכדורים הכתומים לבין מספר כל הכדורים.',explanation:'יש 7 כדורים כתומים מתוך 11, ולכן P(כתום) = 7/11.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שיוני יוציא כדור שאינו כתום?',type:'fraction',event:'כדור שאינו כתום',expected:[4,11],hint:'אפשר לספור את כל הכדורים שאינם כתומים, או להשתמש באירוע המשלים.',explanation:'יש 4 כדורים שאינם כתומים, ולכן P(לא כתום) = 4/11.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שיוני יוציא כדור שאינו לבן?',type:'fraction',event:'כדור שאינו לבן',expected:[8,11],hint:'ספרו את כל הכדורים שאינם לבנים, או השתמשו באירוע המשלים.',explanation:'יש 8 כדורים שאינם לבנים, ולכן P(לא לבן) = 8/11.'},
+      {id:'e',label:'ה',prompt:'מה ההסתברות שיוני יוציא כדור לבן או כדור צהוב?',type:'fraction',event:'כדור לבן או צהוב',expected:[4,11],hint:'חברו את מספר הכדורים בשתי הקבוצות המתאימות.',explanation:'יש 3 כדורים לבנים וכדור צהוב אחד, כלומר 4 מתוך 11. לכן P = 4/11.'}
+    ]
+  }
+
 
 ];
 
@@ -253,6 +363,19 @@ function renderVisual(q){
   }else if(q.visual==='weekdays7'){
     const days=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
     a.innerHTML=`<div class="py-4"><div class="text-center font-extrabold text-slate-800">7 פתקים – יום אחד בכל פתק</div><div class="weekday-grid">${days.map(d=>`<div class="weekday-card">${d}</div>`).join('')}</div></div>`;
+  }else if(q.visual==='candies15'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">15 סוכריות</div><div class="count-row">${Array.from({length:7},()=>'<span class="candy-dot" style="background:#fde047"></span>').join('')}${Array.from({length:3},()=>'<span class="candy-dot" style="background:#ef4444"></span>').join('')}${Array.from({length:5},()=>'<span class="candy-dot" style="background:#22c55e"></span>').join('')}</div><div class="legend-row"><span>7 צהובות</span><span>3 אדומות</span><span>5 ירוקות</span></div></div>`;
+  }else if(q.visual==='pens10'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">10 עטים</div><div class="count-row">${Array.from({length:2},()=>'<span class="pen-icon" style="background:#111827"></span>').join('')}${Array.from({length:5},()=>'<span class="pen-icon" style="background:#3b82f6"></span>').join('')}${Array.from({length:3},()=>'<span class="pen-icon" style="background:#ef4444"></span>').join('')}</div><div class="legend-row"><span>2 שחורים</span><span>5 כחולים</span><span>3 אדומים</span></div></div>`;
+  }else if(q.visual==='grants30'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">30 עובדים בהגרלה</div><div class="stat-grid"><div class="stat-card"><strong>3</strong>מענק 3,000 ₪</div><div class="stat-card"><strong>5</strong>מענק 1,000 ₪</div><div class="stat-card"><strong>10</strong>מענק 500 ₪</div><div class="stat-card"><strong>12</strong>ללא מענק</div></div></div>`;
+  }else if(q.visual==='calendar365'){
+    const cells=Array.from({length:42},(_,i)=>`<span class="calendar-cell ${i<6?'fast':i<37?'holiday':''}"></span>`).join('');
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">365 ימים בשנה</div><div class="calendar-grid">${cells}</div><div class="legend-row"><span class="legend-chip"><i class="legend-swatch" style="background:#fecaca"></i>6 ימי צום</span><span class="legend-chip"><i class="legend-swatch" style="background:#fde68a"></i>31 ימי חג</span></div><div class="text-xs text-slate-500">התרשים סמלי; החישוב נעשה מתוך 365 ימי השנה.</div></div>`;
+  }else if(q.visual==='raffle150'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">150 כרטיסי הגרלה</div><div class="stat-grid"><div class="stat-card"><strong>1</strong>טיול סוסים</div><div class="stat-card"><strong>3</strong>מנוי לבריכה</div><div class="stat-card"><strong>10</strong>שעוני ספורט</div><div class="stat-card"><strong>15</strong>גרבי ספורט</div></div><div class="text-xs text-slate-500">יתר הכרטיסים אינם זוכים בפרס.</div></div>`;
+  }else if(q.visual==='balls11'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">11 כדורים בשק</div><div class="count-row">${Array.from({length:7},()=>'<span class="ball-dot" style="background:#f97316"></span>').join('')}${Array.from({length:3},()=>'<span class="ball-dot" style="background:#ffffff"></span>').join('')}<span class="ball-dot" style="background:#fde047"></span></div><div class="legend-row"><span>7 כתומים</span><span>3 לבנים</span><span>1 צהוב</span></div></div>`;
   }
   $('sampleSpaceNote').innerHTML=`מרחב התוצאות האפשרי: <span class="math font-bold">${q.sampleSpace}</span>`;
 }
@@ -268,12 +391,20 @@ function inputFor(q,s,ans){const k=key(q,s),v=ans?.value;
     return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span></div>`;
   }
   if(s.type==='sample_space')return `<div class="mt-3"><label class="block text-xs font-semibold text-slate-500 mb-1">מרחב המדגם</label><input id="space-${k}" class="w-full border border-slate-300 rounded-xl px-3 py-2.5 font-bold" dir="ltr" placeholder="לדוגמה: 1,2,3" value="${v?.raw??''}"></div>`;
+  if(s.type==='number')return `<div class="answer-number-row"><input id="number-${k}" type="number" step="any" value="${v?.number??''}" aria-label="תשובה מספרית"><span class="unit">${s.unit||''}</span></div>`;
+  if(s.type==='percent')return `<div class="answer-number-row"><input id="percent-${k}" type="number" step="any" value="${v?.percent??''}" aria-label="אחוז"><span class="math font-extrabold">%</span></div>`;
+  if(s.type==='fraction_decimal')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="decimal-${k}" type="number" step="any" value="${v?.decimal??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="שבר עשרוני"></div>`;
+  if(s.type==='fraction_percent')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="percent-${k}" type="number" step="any" value="${v?.percent??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="אחוז"><span class="math">%</span></div>`;
   if(s.type==='fairness')return `<div class="mt-3 grid grid-cols-2 gap-2 max-w-sm"><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="yes" ${v?.choice==='yes'?'checked':''}> כן</label><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="no" ${v?.choice==='no'?'checked':''}> לא</label></div><textarea id="explain-${k}" class="mt-3 w-full min-h-24 border border-slate-300 rounded-xl p-3" placeholder="הסבירו בקצרה">${v?.explain??''}</textarea>`;
   return '';
 }
 function toggleHint(k){$('hint-'+k)?.classList.toggle('hidden');}
 function readAnswer(q,s){const k=key(q,s);
-  if(s.type==='fraction'){const num=$('num-'+k).value,den=$('den-'+k).value;if(num===''||den==='')return {filled:false};const n=Number(num),d=Number(den);return {filled:true,value:{num:n,den:d},correct:n===s.expected[0]&&d===s.expected[1],display:`${n}/${d}`};}
+  if(s.type==='fraction'){const num=$('num-'+k).value,den=$('den-'+k).value;if(num===''||den==='')return {filled:false};const n=Number(num),d=Number(den),en=s.expected[0],ed=s.expected[1];const ok=d!==0 && n*ed===en*d;return {filled:true,value:{num:n,den:d},correct:ok,display:`${n}/${d}`};}
+  if(s.type==='number'){const raw=$('number-'+k).value;if(raw==='')return {filled:false};const n=Number(raw),tol=s.tolerance??0;return {filled:true,value:{number:n},correct:Math.abs(n-s.expected)<=tol,display:`${n}${s.unit?' '+s.unit:''}`};}
+  if(s.type==='percent'){const raw=$('percent-'+k).value;if(raw==='')return {filled:false};const n=Number(raw),tol=s.tolerance??0.01;return {filled:true,value:{percent:n},correct:Math.abs(n-s.expected)<=tol,display:`${n}%`};}
+  if(s.type==='fraction_decimal'){const nr=$('num-'+k).value,dr=$('den-'+k).value,xr=$('decimal-'+k).value;if(nr===''||dr===''||xr==='')return {filled:false};const n=Number(nr),d=Number(dr),x=Number(xr),en=s.expectedFraction[0],ed=s.expectedFraction[1],tol=s.tolerance??0.001;const ok=d!==0&&n*ed===en*d&&Math.abs(x-s.expectedDecimal)<=tol;return {filled:true,value:{num:n,den:d,decimal:x},correct:ok,display:`${n}/${d} = ${x}`};}
+  if(s.type==='fraction_percent'){const nr=$('num-'+k).value,dr=$('den-'+k).value,pr=$('percent-'+k).value;if(nr===''||dr===''||pr==='')return {filled:false};const n=Number(nr),d=Number(dr),pct=Number(pr),en=s.expectedFraction[0],ed=s.expectedFraction[1],tol=s.tolerance??0.01;const ok=d!==0&&n*ed===en*d&&Math.abs(pct-s.expectedPercent)<=tol;return {filled:true,value:{num:n,den:d,percent:pct},correct:ok,display:`${n}/${d} = ${pct}%`};}
   if(s.type==='sample_space'){const raw=$('space-'+k).value.trim();if(!raw)return {filled:false};const nums=(raw.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);const uniq=[...new Set(nums)].sort((a,b)=>a-b),exp=[...s.expected].sort((a,b)=>a-b);return {filled:true,value:{raw},correct:JSON.stringify(uniq)===JSON.stringify(exp),display:`{${nums.join(', ')}}`};}
   if(s.type==='fairness'){const sel=document.querySelector(`input[name="fair-${k}"]:checked`),exp=$('explain-'+k).value.trim();if(!sel||!exp)return {filled:false};return {filled:true,value:{choice:sel.value,explain:exp},correct:sel.value===s.expected,display:`${sel.value==='yes'?'כן':'לא'} — ${exp}`};}
 }
