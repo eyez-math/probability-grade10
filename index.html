@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הסתברות כיתה י׳- 3 יחידות</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--blue:#2563eb;--blue-dark:#1d4ed8;--slate:#0f172a;--muted:#64748b;--bg:#f8fafc;--line:#dbe3ee;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fff1f2}
+    *{box-sizing:border-box}
+    body{font-family:'Rubik',sans-serif;background:var(--bg);color:var(--slate);margin:0;min-height:100vh}
+    .math{direction:ltr;unicode-bidi:isolate;display:inline-block}
+    .math-prob{direction:ltr;unicode-bidi:isolate;display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+    .prob-event{direction:rtl;unicode-bidi:isolate;display:inline-block;text-align:right}
+    .fraction{direction:ltr;unicode-bidi:isolate;display:inline-grid;grid-template-rows:auto 2px auto;align-items:center;justify-items:center;min-width:74px;vertical-align:middle;margin-inline-start:10px}
+    .fraction input{width:74px;height:42px;text-align:center;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:800;font-size:18px;background:#fff;color:#0f172a}
+    .fraction input:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.10)}
+    .frac-line{height:2px;width:74px;background:#0f172a;margin:4px 0}
+    .prob-row{direction:ltr;unicode-bidi:isolate;display:flex;align-items:center;justify-content:flex-start;gap:8px;flex-wrap:wrap;font-size:21px;font-weight:800;margin-top:14px;width:100%;text-align:left}
+    .card{background:#fff;border:1px solid #e2e8f0;border-radius:24px;box-shadow:0 3px 12px rgba(15,23,42,.05)}
+    .question-card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:18px;transition:.2s}
+    .question-card.correct{border-color:#6ee7b7;background:#f0fdf4}
+    .question-card.wrong{border-color:#fda4af;background:#fff7f7}
+    .badge{font-size:12px;font-weight:800;padding:4px 9px;border-radius:999px;white-space:nowrap}
+    .spinner-wrap{display:flex;align-items:center;justify-content:center;min-height:280px}
+    .face-grid{display:grid;grid-template-columns:repeat(4,58px);gap:10px;justify-content:center;direction:ltr;padding:18px}
+    .face{width:58px;height:58px;clip-path:polygon(50% 0%,95% 35%,78% 100%,22% 100%,5% 35%);background:#fef3c7;border:2px solid #334155;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#111827}
+    .hint{background:#fffbeb;border:1px solid #fde68a;color:#854d0e;border-radius:14px;padding:12px;margin-top:12px;font-size:13px;line-height:1.6}
+    .feedback{border-radius:14px;padding:12px;margin-top:12px;font-size:13px;line-height:1.6}
+    .feedback.ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}
+    .feedback.bad{background:#fff1f2;border:1px solid #fecdd3;color:#9f1239}
+    .locked input,.locked select,.locked textarea,.locked button.answer-control{pointer-events:none;opacity:.82}
+    .certificate-shell{width:min(390px,100%);margin:22px auto 0}
+    .certificate{width:390px;max-width:100%;background:#fff;border:2px solid #bbf7d0;border-radius:24px;padding:18px;color:#0f172a;box-shadow:0 8px 28px rgba(15,23,42,.08)}
+    .certificate table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
+    .certificate th,.certificate td{padding:8px 5px;border-bottom:1px solid #e2e8f0;vertical-align:top;word-break:break-word}
+    .certificate th{color:#475569;font-weight:800}
+    .certificate .cert-answer{direction:ltr;unicode-bidi:isolate;text-align:center}
+    .cert-meta{display:grid;grid-template-columns:1fr;gap:6px;font-size:13px;margin:12px 0}
+    .cert-score{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:16px;padding:12px;text-align:center;margin:12px 0}
+
+    .die-outcomes{display:grid;grid-template-columns:repeat(3,72px);gap:12px;justify-content:center;direction:ltr;padding:26px 12px}
+    .die-face{width:72px;height:72px;border:2px solid #334155;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;box-shadow:0 3px 8px rgba(15,23,42,.08)}
+    .ticket-grid{display:grid;grid-template-columns:repeat(3,minmax(80px,1fr));gap:10px;padding:18px;direction:rtl}
+    .ticket{min-height:66px;border:1.5px dashed #94a3b8;border-radius:12px;background:#fffdf2;display:flex;align-items:center;justify-content:center;text-align:center;padding:7px;font-size:12px;font-weight:700;color:#334155}
+    .weekday-grid{display:grid;grid-template-columns:repeat(4,minmax(66px,1fr));gap:10px;padding:18px;direction:rtl}
+    .weekday-card{border:1.5px solid #cbd5e1;border-radius:14px;background:#f8fafc;padding:14px 8px;text-align:center;font-weight:800}
+    .cert-modal{position:fixed;inset:0;background:rgba(15,23,42,.48);z-index:80;display:flex;align-items:center;justify-content:center;padding:16px}
+    .cert-modal-card{width:min(560px,100%);max-height:88vh;overflow:auto;background:white;border-radius:24px;padding:20px;box-shadow:0 20px 60px rgba(15,23,42,.25)}
+    .cert-select-item{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #e2e8f0;border-radius:14px;padding:11px 12px;margin-top:8px}
+    .combined-capture{position:fixed;left:-9999px;top:0;width:390px;background:#f8fafc;padding:12px;direction:rtl}
+    .combined-cert-question{background:#fff;border:2px solid #bbf7d0;border-radius:22px;padding:16px;margin-bottom:12px;color:#0f172a}
+    .combined-cert-question table{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}
+    .combined-cert-question th,.combined-cert-question td{padding:7px 4px;border-bottom:1px solid #e2e8f0;vertical-align:top;word-break:break-word}
+    .combined-cert-question .cert-answer{direction:ltr;unicode-bidi:isolate;text-align:center}
+    .nav-select{min-width:220px;max-width:340px}
+    @media(max-width:820px){
+      .main-grid{grid-template-columns:1fr!important}.visual-col{position:static!important}.nav-row{grid-template-columns:auto 1fr auto!important;gap:8px}.nav-select{min-width:0;width:100%}
+    }
+    @media(max-width:520px){
+      body{font-size:15px}.page-pad{padding-inline:10px!important}.top-header{padding:12px!important}.top-header h1{font-size:19px!important}.nav-row{grid-template-columns:1fr 1fr!important}.nav-select-wrap{grid-column:1/-1;grid-row:1}.nav-prev{grid-column:1}.nav-next{grid-column:2}.question-card{padding:14px}.prob-row{font-size:18px;gap:6px;justify-content:flex-start;text-align:left}.math-prob{max-width:calc(100% - 78px);white-space:normal}.fraction{min-width:64px;margin-inline-start:6px}.fraction input,.frac-line{width:64px}.face-grid{grid-template-columns:repeat(4,50px);gap:8px}.face{width:50px;height:50px}.die-outcomes{grid-template-columns:repeat(3,58px)}.die-face{width:58px;height:58px}.ticket-grid{grid-template-columns:repeat(2,1fr);padding:10px}.weekday-grid{grid-template-columns:repeat(2,1fr);padding:10px}.certificate{width:360px;padding:14px}.certificate table{font-size:11px}}
+  </style>
+</head>
+<body>
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 top-header flex items-center justify-between gap-3">
+      <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight">הסתברות כיתה י׳- 3 יחידות</h1>
+      <div class="flex items-center gap-2"><div id="headerStatus" class="text-xs sm:text-sm text-slate-500 font-semibold">מוכנים להתחיל</div><button id="certificatesBtn" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-extrabold px-3 py-2 rounded-xl">אישורים (0)</button></div>
+    </div>
+    <div id="navBar" class="hidden bg-slate-100 border-t border-slate-200 px-3 sm:px-6 py-2.5">
+      <div class="max-w-7xl mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-3 nav-row">
+        <button id="prevBtn" class="nav-prev px-3 py-2 rounded-xl bg-white border border-slate-300 font-bold text-sm disabled:opacity-40">→ שאלה קודמת</button>
+        <div class="nav-select-wrap flex justify-center">
+          <select id="questionSelect" class="nav-select w-full bg-white border border-slate-300 rounded-xl px-3 py-2 font-bold text-sm"></select>
+        </div>
+        <button id="nextBtn" class="nav-next px-3 py-2 rounded-xl bg-white border border-slate-300 font-bold text-sm disabled:opacity-40">שאלה הבאה ←</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 page-pad">
+    <section id="studentGate" class="card max-w-2xl mx-auto p-5 sm:p-7">
+      <h2 class="text-xl font-extrabold mb-2">פרטי תלמיד</h2>
+      <p class="text-sm text-slate-500 mb-5">הפרטים יופיעו באישור הביצוע של כל שאלה.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="sm:col-span-2"><label class="block text-sm font-bold mb-1">שם מלא</label><input id="studentName" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" placeholder="שם מלא" /></div>
+        <div><label class="block text-sm font-bold mb-1">כיתה</label><select id="className" class="w-full border border-slate-300 rounded-xl px-3 py-2.5"></select></div>
+        <div><label class="block text-sm font-bold mb-1">שם המורה</label><input id="teacherName" class="w-full border border-slate-300 rounded-xl px-3 py-2.5" placeholder="הקלידו שם מורה" /></div>
+      </div>
+      <div id="gateError" class="hidden mt-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-sm"></div>
+      <button id="startBtn" class="mt-5 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-sm">התחלה</button>
+    </section>
+
+    <section id="appArea" class="hidden">
+      <div class="card p-5 sm:p-6 mb-6">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-2"><span id="questionBadge" class="bg-blue-100 text-blue-800 text-xs font-extrabold px-2.5 py-1 rounded-lg"></span><span id="categoryBadge" class="bg-slate-100 text-slate-600 text-xs font-semibold px-2 py-1 rounded-lg"></span></div>
+            <h2 id="questionTitle" class="text-xl sm:text-2xl font-black"></h2>
+            <p id="questionStory" class="text-slate-600 mt-2 leading-relaxed"></p>
+          </div>
+          <button id="solutionBtn" class="px-4 py-2 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200 font-bold text-sm disabled:opacity-40" disabled>🔒 פתרון מלא</button>
+        </div>
+      </div>
+
+      <div class="main-grid grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div class="visual-col lg:col-span-5 lg:sticky lg:top-32">
+          <div class="card p-4 sm:p-5">
+            <div class="flex items-center gap-2 mb-3"><span class="w-3 h-3 rounded-full bg-blue-600"></span><h3 class="font-extrabold">המחשה</h3></div>
+            <div id="visualArea" class="rounded-2xl border border-slate-100 bg-white min-h-[300px]"></div>
+            <div id="sampleSpaceNote" class="mt-3 text-xs text-slate-500 text-center"></div>
+          </div>
+        </div>
+        <div class="lg:col-span-7 space-y-4" id="subQuestions"></div>
+      </div>
+
+      <section id="checkPanel" class="card p-5 mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div><h3 class="font-extrabold">סיימתם את כל הסעיפים?</h3><p class="text-sm text-slate-500">לאחר הבדיקה התשובות יינעלו ולא ניתן יהיה לשנות אותן.</p></div>
+        <button id="checkQuestionBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold px-6 py-3 rounded-xl shadow-sm">✓ בדיקת השאלה ונעילה</button>
+      </section>
+
+      <section id="resultPanel" class="hidden card p-5 mt-4"></section>
+
+      <section id="solutionPanel" class="hidden card p-5 sm:p-6 mt-6 border-2 border-indigo-100">
+        <div class="flex items-center justify-between mb-4"><div><h3 class="text-lg font-extrabold text-indigo-950">📘 פתרון מלא ומודרך</h3><p class="text-xs text-slate-500">הפתרון נפתח רק לאחר בדיקת כל השאלה.</p></div><button id="closeSolution" class="w-9 h-9 rounded-full bg-slate-100">✕</button></div>
+        <div id="solutionList" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      </section>
+
+      <div id="certificateShell" class="hidden"></div>
+    </section>
+  </main>
+
+  <div id="certCenterModal" class="hidden cert-modal">
+    <div class="cert-modal-card">
+      <div class="flex items-start justify-between gap-3">
+        <div><h3 class="text-xl font-black">אישורי ביצוע</h3><p class="text-sm text-slate-500 mt-1">כל השאלות שכבר נבדקו מסומנות מראש. אפשר לבחור אילו מהן לכלול בקובץ.</p></div>
+        <button id="closeCertCenter" class="w-9 h-9 rounded-full bg-slate-100 font-bold">✕</button>
+      </div>
+      <div id="certQuestionList" class="mt-4"></div>
+      <div id="certCenterEmpty" class="hidden mt-4 p-4 bg-slate-50 rounded-xl text-slate-600 text-sm">עדיין לא נבדקה אף שאלה.</div>
+      <button id="downloadSelectedCertsBtn" class="w-full mt-5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 rounded-xl">הורד אישורים נבחרים כתמונה אחת</button>
+    </div>
+  </div>
+  <div id="combinedCertificateCapture" class="combined-capture"></div>
+    </section>
+<script>
+const questions = [
+  {
+    id:'q1_spinner3',
+    title:'רולטה המחולקת ל־3 גזרות שוות',
+    category:'מרחב מדגם והסתברות בסיסית',
+    story:'נתונה רולטה המחולקת ל־3 גזרות שוות. על כל גזרה כתוב אחד המספרים 1, 2 או 3. מסובבים את הכדור ברולטה פעם אחת.',
+    visual:'spinner3',
+    sampleSpace:'{1, 2, 3}',
+    subs:[
+      {id:'a',label:'א',prompt:'פרטו את מרחב המדגם.',type:'sample_space',expected:[1,2,3],hint:'עברו על ההמחשה ורשמו את כל התוצאות האפשריות, בלי לדלג ובלי לחזור על אותה תוצאה פעמיים.',explanation:'מרחב המדגם הוא {1, 2, 3}.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שהכדור ייעצר במספר 3?',type:'fraction',event:'3',expected:[1,3],hint:'במונה כתבו כמה תוצאות מתאימות לאירוע. במכנה כתבו את מספר התוצאות הכולל במרחב המדגם.',explanation:'רק התוצאה 3 מתאימה, ולכן P(3) = 1/3.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שהכדור ייעצר במספר קטן מ־3?',type:'fraction',event:'מספר קטן מ־3',expected:[2,3],hint:'בדקו אילו תוצאות במרחב המדגם מקיימות את התנאי. ספרו אותן למונה, ואת כל התוצאות למכנה.',explanation:'המספרים 1 ו־2 קטנים מ־3. יש 2 תוצאות רצויות מתוך 3, ולכן P(מספר קטן מ־3) = 2/3.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שהכדור ייעצר במספר קטן מ־1?',type:'fraction',event:'מספר קטן מ־1',expected:[0,3],hint:'עברו על מרחב המדגם ובדקו כמה תוצאות מקיימות את התנאי. גם אם אין תוצאה מתאימה, המכנה עדיין נקבע לפי גודל מרחב המדגם.',explanation:'אין במרחב המדגם תוצאה הקטנה מ־1. לכן P(מספר קטן מ־1) = 0/3 = 0.'}
+    ]
+  },
+  {
+    id:'q2_dodecahedron12',
+    title:'תריסרון בעל 12 פאות שוות',
+    category:'הסתברות מאירועים במספרים 1–12',
+    story:'תריסרון הוא גוף משוכלל שבו 12 פאות חופפות. על הפאות כתובים המספרים מ־1 עד 12. זורקים את התריסרון פעם אחת.',
+    visual:'faces12',
+    sampleSpace:'{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}',
+    subs:[
+      {id:'a',label:'א',prompt:'פרטו את מרחב המדגם.',type:'sample_space',expected:[1,2,3,4,5,6,7,8,9,10,11,12],hint:'רשמו את כל התוצאות האפשריות שמופיעות על הפאות, בלי לדלג ובלי לחזור על תוצאה.',explanation:'מרחב המדגם הוא {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות לקבל את המספר 7?',type:'fraction',event:'7',expected:[1,12],hint:'במונה ספרו כמה פאות מקיימות את האירוע, ובמכנה כתבו את מספר הפאות הכולל.',explanation:'יש תוצאה רצויה אחת מתוך 12, ולכן P(7) = 1/12.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות לקבל מספר זוגי?',type:'fraction',event:'מספר זוגי',expected:[6,12],hint:'זהו אילו תוצאות במרחב המדגם מקיימות את התנאי. המונה הוא מספר התוצאות המתאימות והמכנה הוא מספר כל התוצאות האפשריות.',explanation:'המספרים הזוגיים הם 2, 4, 6, 8, 10, 12. יש 6 תוצאות רצויות מתוך 12, ולכן P(מספר זוגי) = 6/12 = 1/2.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות לקבל מספר שמתחלק ב־5?',type:'fraction',event:'מספר שמתחלק ב־5',expected:[2,12],hint:'בדקו אילו תוצאות במרחב המדגם מקיימות את תנאי ההתחלקות. אל תכתבו את המספרים עצמם בשבר — כתבו כמה מהם יש.',explanation:'המספרים המתאימים הם 5 ו־10. לכן P(מתחלק ב־5) = 2/12 = 1/6.'},
+      {id:'e',label:'ה',prompt:'מה ההסתברות לקבל מספר שמתחלק ב־8?',type:'fraction',event:'מספר שמתחלק ב־8',expected:[1,12],hint:'עברו על מרחב המדגם ובדקו אילו תוצאות מקיימות את תנאי ההתחלקות. המונה הוא מספר התוצאות המתאימות.',explanation:'רק המספר 8 מתאים. לכן P(מתחלק ב־8) = 1/12.'},
+      {id:'f',label:'ו',prompt:'יעל זוכה אם המספר שהתקבל מתחלק ב־2. מה ההסתברות שיעל תזכה?',type:'fraction',event:'יעל זוכה',expected:[6,12],hint:'תרגמו קודם את תנאי הזכייה לאירוע מתאים, ואז ספרו כמה תוצאות במרחב המדגם גורמות לזכייה.',explanation:'יעל זוכה בתוצאות 2, 4, 6, 8, 10, 12. לכן P(יעל זוכה) = 6/12 = 1/2.'},
+      {id:'g',label:'ז',prompt:'נועם זוכה אם המספר שהתקבל מתחלק ב־3. מה ההסתברות שנועם יזכה?',type:'fraction',event:'נועם זוכה',expected:[4,12],hint:'תרגמו קודם את תנאי הזכייה לאירוע מתאים, ואז ספרו כמה תוצאות במרחב המדגם גורמות לזכייה.',explanation:'נועם זוכה בתוצאות 3, 6, 9, 12. לכן P(נועם זוכה) = 4/12 = 1/3.'},
+      {id:'h',label:'ח',prompt:'האם המשחק הוגן? הסבירו.',type:'fairness',expected:'no',hint:'השוו בין שתי הסתברויות הזכייה שמצאתם בסעיפים הקודמים והסיקו מההשוואה.',explanation:'המשחק אינו הוגן: הסתברות הזכייה של יעל היא 1/2, ואילו של נועם היא 1/3. ליעל סיכוי גדול יותר לזכות.'}
+    ]
+  },
+  {
+    id:'q3_die_game',
+    title:'משחק בקובייה – מאור וטליה',
+    category:'הסתברות במשחק',
+    story:'מאור וטליה משחקים משחק. הם מטילים קובייה רגילה. אם המספר שהתקבל מתחלק ב־3 מאור מנצח, ואם המספר שהתקבל קטן מ־4 טליה זוכה.',
+    visual:'die6',
+    sampleSpace:'{1, 2, 3, 4, 5, 6}',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שמאור יזכה?',type:'fraction',event:'מאור זוכה',expected:[2,6],hint:'תרגמו את תנאי הזכייה של מאור לאירוע. במונה כתבו כמה תוצאות מקיימות את התנאי, ובמכנה את מספר התוצאות האפשריות.',explanation:'מאור זוכה כאשר מתקבל מספר שמתחלק ב־3: התוצאות 3 ו־6. לכן P(מאור זוכה) = 2/6 = 1/3.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שטליה תזכה?',type:'fraction',event:'טליה זוכה',expected:[3,6],hint:'תרגמו את תנאי הזכייה של טליה לאירוע וספרו כמה תוצאות במרחב המדגם מקיימות אותו.',explanation:'טליה זוכה כאשר מתקבל מספר קטן מ־4: התוצאות 1, 2 ו־3. לכן P(טליה זוכה) = 3/6 = 1/2.'},
+      {id:'c',label:'ג',prompt:'האם המשחק הוגן? הסבירו.',type:'fairness',expected:'no',hint:'השוו בין הסתברויות הזכייה שמצאתם לשני השחקנים. במשחק הוגן לשניהם צריך להיות אותו סיכוי לזכות.',explanation:'המשחק אינו הוגן: למאור הסתברות זכייה 1/3, ולטליה הסתברות זכייה 1/2. לכן הסיכויים אינם שווים.'}
+    ]
+  },
+  {
+    id:'q4_lottery12',
+    title:'הגרלה בקבוצה של 12 ילדים',
+    category:'הסתברות מתוך פתקים',
+    story:'בקבוצה שבה 12 ילדים נערכה הגרלה. כל ילד קיבל פתק אחד. בפתק אחד היה כתוב „זכית בהרבה מים”, בשני פתקים היה כתוב „זכית בארטיק”, ושאר הפתקים היו ריקים. כל ילדי הקבוצה השתתפו בהגרלה.',
+    visual:'tickets12',
+    sampleSpace:'12 פתקים שווי־סיכוי',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שתזכה בהרבה מים?',type:'fraction',event:'זכייה בהרבה מים',expected:[1,12],hint:'במונה כתבו כמה פתקים גורמים לאירוע המבוקש. במכנה כתבו את מספר הפתקים הכולל.',explanation:'יש פתק אחד של זכייה בהרבה מים מתוך 12 פתקים. לכן P(זכייה בהרבה מים) = 1/12.'},
+      {id:'b',label:'ב',prompt:'מה הסיכוי שתזכה בארטיק?',type:'fraction',event:'זכייה בארטיק',expected:[2,12],hint:'ספרו כמה פתקים מתאימים לאירוע המבוקש והשוו למספר כל הפתקים.',explanation:'יש שני פתקים שעליהם כתוב „זכית בארטיק” מתוך 12. לכן P(זכייה בארטיק) = 2/12 = 1/6.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי שלא תזכה בשום דבר?',type:'fraction',event:'לא זוכה בדבר',expected:[9,12],hint:'חשבו כמה פתקים אינם מעניקים אף פרס. המכנה נשאר מספר כל הפתקים בהגרלה.',explanation:'מתוך 12 פתקים, 3 מעניקים פרס. לכן 9 פתקים ריקים, ו־P(לא זוכה בדבר) = 9/12 = 3/4.'}
+    ]
+  },
+  {
+    id:'q5_weekdays',
+    title:'בחירת יום בשבוע מתוך פתקים',
+    category:'הסתברות ומרחב מדגם מילולי',
+    story:'רותי לקחה שבעה פתקים וכתבה על כל פתק שם של יום אחר בשבוע. היא ערבבה את הפתקים ונתנה לשי לבחור באקראי פתק אחד.',
+    visual:'weekdays7',
+    sampleSpace:'{ראשון, שני, שלישי, רביעי, חמישי, שישי, שבת}',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שבפתק ששי בחר כתוב „יום שני”?',type:'fraction',event:'כתוב יום שני',expected:[1,7],hint:'בדקו כמה פתקים במרחב המדגם מתאימים בדיוק לאירוע המבוקש.',explanation:'יש פתק אחד שעליו כתוב יום שני מתוך 7 פתקים. לכן P(יום שני) = 1/7.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות ששי בחר בפתק שכתוב בו יום ששמו מתחיל באות ש?',type:'fraction',event:'שם היום מתחיל באות ש',expected:[4,7],hint:'עברו על שמות ימי השבוע וספרו כמה מהם מתחילים באות ש. המכנה הוא מספר כל ימי השבוע.',explanation:'הימים שני, שלישי, שישי ושבת מתחילים באות ש. לכן יש 4 תוצאות מתאימות מתוך 7, ו־P(שם היום מתחיל באות ש) = 4/7.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות ששי לא בחר ביום שישי או בשבת?',type:'fraction',event:'לא שישי ולא שבת',expected:[5,7],hint:'זהו אילו ימים אינם שישי ואינם שבת, וספרו אותם מתוך כל ימי השבוע.',explanation:'חמישה ימים אינם שישי ואינם שבת. לכן P(לא שישי ולא שבת) = 5/7.'}
+    ]
+  }
+
+];
+
+const state={student:{name:'',className:'',teacher:''},index:0,answers:{},locked:{},scores:{}};
+const $=id=>document.getElementById(id);
+
+function initClasses(){const s=$('className');s.innerHTML='<option value="">בחרו כיתה</option>'+Array.from({length:11},(_,i)=>`<option value="י׳${i+1}">י׳${i+1}</option>`).join('');}
+function startApp(){
+  const name=$('studentName').value.trim(), cls=$('className').value, teacher=$('teacherName').value.trim();
+  if(!name||!cls||!teacher){$('gateError').textContent='יש למלא שם מלא, כיתה ושם מורה.';$('gateError').classList.remove('hidden');return;}
+  state.student={name,className:cls,teacher};$('studentGate').classList.add('hidden');$('appArea').classList.remove('hidden');$('navBar').classList.remove('hidden');$('certificatesBtn').classList.remove('hidden');buildNav();updateCertificatesButton();loadQuestion(0);
+}
+function buildNav(){const s=$('questionSelect');s.innerHTML=questions.map((q,i)=>`<option value="${i}">שאלה ${i+1} — ${q.title}</option>`).join('');s.onchange=()=>loadQuestion(+s.value);$('prevBtn').onclick=()=>loadQuestion(state.index-1);$('nextBtn').onclick=()=>loadQuestion(state.index+1);}
+function loadQuestion(i){
+  if(i<0||i>=questions.length)return;state.index=i;const q=questions[i];$('questionSelect').value=String(i);$('prevBtn').disabled=i===0;$('nextBtn').disabled=i===questions.length-1;
+  $('questionBadge').textContent=`שאלה ${i+1} מתוך ${questions.length}`;$('categoryBadge').textContent=q.category;$('questionTitle').textContent=q.title;$('questionStory').textContent=q.story;
+  renderVisual(q);renderSubs(q);renderSolution(q);updateLockUI(q);$('solutionPanel').classList.add('hidden');$('certificateShell').classList.add('hidden');$('resultPanel').classList.add('hidden');
+  $('headerStatus').textContent=state.locked[q.id]?`שאלה ${i+1} נבדקה`:`שאלה ${i+1}`;
+}
+function renderVisual(q){
+  const a=$('visualArea');
+  if(q.visual==='spinner3'){
+    a.innerHTML=`<div class="spinner-wrap"><svg viewBox="0 0 320 320" width="280" height="280" aria-label="רולטה עם שלוש גזרות שוות"><circle cx="160" cy="160" r="118" fill="#fff7d6" stroke="#111827" stroke-width="4"/><line x1="160" y1="160" x2="160" y2="42" stroke="#111827" stroke-width="3"/><line x1="160" y1="160" x2="262" y2="219" stroke="#111827" stroke-width="3"/><line x1="160" y1="160" x2="58" y2="219" stroke="#111827" stroke-width="3"/><text x="205" y="112" text-anchor="middle" font-size="34" font-weight="800" font-family="Rubik">1</text><text x="160" y="245" text-anchor="middle" font-size="34" font-weight="800" font-family="Rubik">2</text><text x="110" y="112" text-anchor="middle" font-size="34" font-weight="800" font-family="Rubik">3</text></svg></div>`;
+  }else if(q.visual==='faces12'){
+    a.innerHTML=`<div class="py-5"><div class="text-center font-extrabold text-slate-800 mb-2">12 פאות שוות</div><div class="face-grid">${Array.from({length:12},(_,i)=>`<div class="face">${i+1}</div>`).join('')}</div><div class="text-center text-xs text-slate-500 px-4">כל אחת מ־12 הפאות בעלת אותה הסתברות להתקבל.</div></div>`;
+  }else if(q.visual==='die6'){
+    a.innerHTML=`<div class="py-5"><div class="text-center font-extrabold text-slate-800">קובייה רגילה – שש תוצאות שוות־סיכוי</div><div class="die-outcomes">${[1,2,3,4,5,6].map(n=>`<div class="die-face">${n}</div>`).join('')}</div></div>`;
+  }else if(q.visual==='tickets12'){
+    const tickets=[{t:'זכית בהרבה מים'},{t:'זכית בארטיק'},{t:'זכית בארטיק'},...Array.from({length:9},()=>({t:'פתק ריק'}))];
+    a.innerHTML=`<div class="py-4"><div class="text-center font-extrabold text-slate-800">12 פתקים שווי־סיכוי</div><div class="ticket-grid">${tickets.map((x,i)=>`<div class="ticket"><span>${i+1}. ${x.t}</span></div>`).join('')}</div></div>`;
+  }else if(q.visual==='weekdays7'){
+    const days=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+    a.innerHTML=`<div class="py-4"><div class="text-center font-extrabold text-slate-800">7 פתקים – יום אחד בכל פתק</div><div class="weekday-grid">${days.map(d=>`<div class="weekday-card">${d}</div>`).join('')}</div></div>`;
+  }
+  $('sampleSpaceNote').innerHTML=`מרחב התוצאות האפשרי: <span class="math font-bold">${q.sampleSpace}</span>`;
+}
+function key(q,s){return `${q.id}_${s.id}`;}
+function renderSubs(q){
+  const locked=!!state.locked[q.id];$('subQuestions').innerHTML=q.subs.map(s=>{
+    const k=key(q,s), ans=state.answers[k], status=locked?(ans?.correct?'correct':'wrong'):'';
+    return `<div id="card-${k}" class="question-card ${status} ${locked?'locked':''}"><div class="flex items-start justify-between gap-3"><div class="flex items-start gap-2.5"><span class="w-7 h-7 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-extrabold shrink-0">${s.label}</span><h4 class="font-extrabold leading-relaxed">${s.prompt}</h4></div>${locked?`<span class="badge ${ans?.correct?'bg-emerald-100 text-emerald-800':'bg-rose-100 text-rose-800'}">${ans?.correct?'✓ נכון':'✗ שגוי'}</span>`:''}</div>${inputFor(q,s,ans)}<button class="answer-control mt-3 text-xs font-semibold text-slate-500 hover:text-amber-700" onclick="toggleHint('${k}')">💡 כיוון חשיבה</button><div id="hint-${k}" class="hint hidden"><strong>כיוון חשיבה:</strong> ${s.hint}</div>${locked?`<div class="feedback ${ans?.correct?'ok':'bad'}">${ans?.correct?'כל הכבוד!':'התשובה אינה נכונה.'} ${s.explanation}</div>`:''}</div>`;
+  }).join('');
+}
+function inputFor(q,s,ans){const k=key(q,s),v=ans?.value;
+  if(s.type==='fraction'){
+    return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span></div>`;
+  }
+  if(s.type==='sample_space')return `<div class="mt-3"><label class="block text-xs font-semibold text-slate-500 mb-1">מרחב המדגם</label><input id="space-${k}" class="w-full border border-slate-300 rounded-xl px-3 py-2.5 font-bold" dir="ltr" placeholder="לדוגמה: 1,2,3" value="${v?.raw??''}"></div>`;
+  if(s.type==='fairness')return `<div class="mt-3 grid grid-cols-2 gap-2 max-w-sm"><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="yes" ${v?.choice==='yes'?'checked':''}> כן</label><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="no" ${v?.choice==='no'?'checked':''}> לא</label></div><textarea id="explain-${k}" class="mt-3 w-full min-h-24 border border-slate-300 rounded-xl p-3" placeholder="הסבירו בקצרה">${v?.explain??''}</textarea>`;
+  return '';
+}
+function toggleHint(k){$('hint-'+k)?.classList.toggle('hidden');}
+function readAnswer(q,s){const k=key(q,s);
+  if(s.type==='fraction'){const num=$('num-'+k).value,den=$('den-'+k).value;if(num===''||den==='')return {filled:false};const n=Number(num),d=Number(den);return {filled:true,value:{num:n,den:d},correct:n===s.expected[0]&&d===s.expected[1],display:`${n}/${d}`};}
+  if(s.type==='sample_space'){const raw=$('space-'+k).value.trim();if(!raw)return {filled:false};const nums=(raw.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);const uniq=[...new Set(nums)].sort((a,b)=>a-b),exp=[...s.expected].sort((a,b)=>a-b);return {filled:true,value:{raw},correct:JSON.stringify(uniq)===JSON.stringify(exp),display:`{${nums.join(', ')}}`};}
+  if(s.type==='fairness'){const sel=document.querySelector(`input[name="fair-${k}"]:checked`),exp=$('explain-'+k).value.trim();if(!sel||!exp)return {filled:false};return {filled:true,value:{choice:sel.value,explain:exp},correct:sel.value===s.expected,display:`${sel.value==='yes'?'כן':'לא'} — ${exp}`};}
+}
+function checkQuestion(){const q=questions[state.index];if(state.locked[q.id])return;let all=true,correct=0;const answers={};for(const s of q.subs){const r=readAnswer(q,s);if(!r.filled){all=false;continue;}answers[key(q,s)]={...r};if(r.correct)correct++;}
+  if(!all){$('resultPanel').classList.remove('hidden');$('resultPanel').innerHTML='<div class="text-rose-800 bg-rose-50 border border-rose-200 rounded-xl p-3 font-semibold">יש להשלים את כל הסעיפים לפני בדיקת השאלה.</div>';$('resultPanel').scrollIntoView({behavior:'smooth',block:'center'});return;}
+  Object.assign(state.answers,answers);state.locked[q.id]=true;const pct=Math.round(correct/q.subs.length*100);state.scores[q.id]={correct,total:q.subs.length,pct,completedAt:new Date().toISOString()};renderSubs(q);updateLockUI(q);showResult(q);updateCertificatesButton();$('headerStatus').textContent=`שאלה ${state.index+1}: ${pct}%`;
+}
+function updateLockUI(q){const locked=!!state.locked[q.id];$('checkQuestionBtn').disabled=locked;$('checkQuestionBtn').classList.toggle('opacity-50',locked);$('checkQuestionBtn').textContent=locked?'✓ השאלה נבדקה וננעלה':'✓ בדיקת השאלה ונעילה';$('solutionBtn').disabled=!locked;$('solutionBtn').textContent=locked?'📘 פתרון מלא':'🔒 פתרון מלא';}
+function showResult(q){const s=state.scores[q.id];$('resultPanel').classList.remove('hidden');$('resultPanel').innerHTML=`<div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-emerald-900 font-semibold">השאלה נבדקה וננעלה. הציון בשאלה: <span class="math font-extrabold">${s.pct}%</span> (${s.correct} מתוך ${s.total}). כעת ניתן לצפות בפתרון המלא. האישורים של כל השאלות שנבדקו מרוכזים בכפתור „אישורים” בראש המסך.</div><div class="flex flex-wrap gap-2 mt-4"><button onclick="openSolution()" class="bg-indigo-600 text-white font-bold px-4 py-2.5 rounded-xl">צפייה בפתרון המלא</button><button onclick="openCertificatesCenter()" class="bg-emerald-600 text-white font-bold px-4 py-2.5 rounded-xl">אישורים שנבדקו</button></div>`;}
+function renderSolution(q){$('solutionList').innerHTML=q.subs.map(s=>`<div class="bg-slate-50 border border-slate-100 rounded-2xl p-4"><div class="font-extrabold mb-2">${s.label}. ${s.prompt}</div><div class="text-sm text-slate-700 leading-relaxed">${s.explanation}</div></div>`).join('');}
+function openSolution(){$('solutionPanel').classList.remove('hidden');$('solutionPanel').scrollIntoView({behavior:'smooth',block:'start'});}
+function completedQuestions(){return questions.map((q,i)=>({q,i,score:state.scores[q.id]})).filter(x=>state.locked[x.q.id]&&x.score);}
+function updateCertificatesButton(){const n=completedQuestions().length;const b=$('certificatesBtn');if(!b)return;b.textContent=`אישורים (${n})`;b.disabled=n===0;b.classList.toggle('opacity-50',n===0);}
+function openCertificatesCenter(){const list=completedQuestions();$('certCenterModal').classList.remove('hidden');$('certQuestionList').innerHTML=list.map(({q,i,score})=>`<label class="cert-select-item"><span class="flex items-center gap-3"><input type="checkbox" class="cert-pick w-5 h-5" value="${q.id}" checked><span><strong>שאלה ${i+1}: ${escapeHtml(q.title)}</strong><span class="block text-xs text-slate-500 mt-1">ציון: <span class="math">${score.pct}%</span> · ${score.correct}/${score.total}</span></span></span><span class="text-emerald-700 font-black math">${score.pct}%</span></label>`).join('');$('certCenterEmpty').classList.toggle('hidden',list.length>0);$('downloadSelectedCertsBtn').disabled=list.length===0;$('downloadSelectedCertsBtn').classList.toggle('opacity-50',list.length===0);}
+function closeCertificatesCenter(){$('certCenterModal').classList.add('hidden');}
+function certificateQuestionHtml(q,index){const sc=state.scores[q.id];const rows=q.subs.map(s=>{const a=state.answers[key(q,s)];return `<tr><td class="font-extrabold">${s.label}</td><td class="cert-answer">${escapeHtml(a?.display||'')}</td><td>${a?.correct?'✓ נכון':'✗ לא נכון'}</td></tr>`}).join('');const dt=sc.completedAt?new Date(sc.completedAt):new Date();return `<section class="combined-cert-question"><div class="text-center"><div class="text-blue-700 font-extrabold text-xs">הסתברות כיתה י׳- 3 יחידות</div><div class="text-lg font-black mt-1">אישור ביצוע – שאלה ${index+1}</div><div class="text-xs text-slate-500 mt-1">${escapeHtml(q.title)}</div></div><div class="border-t border-slate-200 mt-3 pt-3 cert-meta"><div><span class="text-slate-500">תלמיד/ה:</span> <strong>${escapeHtml(state.student.name)}</strong></div><div><span class="text-slate-500">כיתה:</span> <strong>${escapeHtml(state.student.className)}</strong></div><div><span class="text-slate-500">מורה:</span> <strong>${escapeHtml(state.student.teacher)}</strong></div></div><div class="cert-score"><div class="text-xs text-slate-500">תשובות נכונות</div><div class="text-xl font-black text-emerald-700"><span class="math">${sc.correct}/${sc.total}</span></div><div class="text-sm font-extrabold mt-1">ציון: <span class="math">${sc.pct}%</span></div></div><table><thead><tr><th style="width:13%">סעיף</th><th style="width:58%">תשובת התלמיד</th><th style="width:29%">תוצאה</th></tr></thead><tbody>${rows}</tbody></table><div class="mt-3 text-[10px] text-slate-400 math">${dt.toLocaleDateString('he-IL')} ${dt.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'})}</div></section>`;}
+function buildCombinedCertificate(ids){const selected=new Set(ids);const items=questions.map((q,i)=>({q,i})).filter(x=>selected.has(x.q.id)&&state.locked[x.q.id]);$('combinedCertificateCapture').innerHTML=`<div class="text-center mb-3"><div class="font-black text-lg">אישורי ביצוע</div><div class="text-xs text-slate-500">${escapeHtml(state.student.name)} · ${escapeHtml(state.student.className)}</div></div>`+items.map(({q,i})=>certificateQuestionHtml(q,i)).join('');return items.length;}
+async function downloadSelectedCertificates(){const ids=Array.from(document.querySelectorAll('.cert-pick:checked')).map(x=>x.value);if(!ids.length){alert('בחרו לפחות שאלה אחת.');return;}buildCombinedCertificate(ids);const node=$('combinedCertificateCapture');try{const canvas=await html2canvas(node,{scale:2,backgroundColor:'#f8fafc',useCORS:true,width:390,windowWidth:390});const a=document.createElement('a');a.download=`אישורי-הסתברות-${state.student.name}.png`;a.href=canvas.toDataURL('image/png');a.click();}catch(e){console.error(e);alert('לא ניתן ליצור את התמונה כרגע. נסו שוב.');}}
+function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+
+$('startBtn').onclick=startApp;$('checkQuestionBtn').onclick=checkQuestion;$('solutionBtn').onclick=openSolution;$('closeSolution').onclick=()=>$('solutionPanel').classList.add('hidden');$('certificatesBtn').onclick=openCertificatesCenter;$('closeCertCenter').onclick=closeCertificatesCenter;$('downloadSelectedCertsBtn').onclick=downloadSelectedCertificates;$('certCenterModal').addEventListener('click',e=>{if(e.target===$('certCenterModal'))closeCertificatesCenter();});initClasses();
+</script>
+</body>
+</html>
