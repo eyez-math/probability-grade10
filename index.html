@@ -330,6 +330,131 @@ const questions = [
     ]
   }
 
+,
+  {
+    id:'q12_phone_virus',
+    title:'טלפונים במהדורה מוגבלת – סיכוי לקבל מכשיר עם וירוס',
+    category:'השוואת הסתברויות ואחוזים',
+    story:'חברת טלפונים סלולריים השיקה מהדורה מוגבלת של שני סוגי מכשירים: 1,000 יחידות מסוג Z ו־1,600 יחידות מסוג W. לאחר ההפצה התברר כי ל־45 מכשירים מסוג Z ול־60 מכשירים מסוג W הוחדר וירוס. נינה רוצה לקנות טלפון ומבקשת לצמצם את הסיכוי לקבל מכשיר עם וירוס.',
+    visual:'phonesVirus',
+    sampleSpace:'כל מכשירי אותו הדגם שווי־סיכוי לבחירה',
+    subs:[
+      {id:'a',label:'א',prompt:'מה הסיכוי שנינה תקבל טלפון עם וירוס אם היא תקנה מכשיר מסוג Z?',type:'fraction_percent',event:'וירוס בדגם Z',expectedFraction:[45,1000],expectedPercent:4.5,tolerance:0.01,hint:'במונה כתבו את מספר המכשירים הפגומים מן הדגם, ובמכנה את מספר כל המכשירים מאותו דגם. לאחר מכן המירו לאחוזים.',explanation:'בדגם Z יש 45 מכשירים עם וירוס מתוך 1,000. לכן P = 45/1000 = 4.5%.'},
+      {id:'b',label:'ב',prompt:'מה הסיכוי שנינה תקבל טלפון עם וירוס אם היא תקנה מכשיר מסוג W?',type:'fraction_percent',event:'וירוס בדגם W',expectedFraction:[60,1600],expectedPercent:3.75,tolerance:0.01,hint:'חשבו את היחס בין מספר המכשירים עם הווירוס לבין מספר כל המכשירים מדגם W, ואז המירו לאחוזים.',explanation:'בדגם W יש 60 מכשירים עם וירוס מתוך 1,600. לכן P = 60/1600 = 3.75%.'},
+      {id:'c',label:'ג',prompt:'איזה מכשיר עדיף לנינה לקנות אם היא רוצה לצמצם את הסיכוי לקבל טלפון עם וירוס?',type:'choice',options:[{value:'Z',label:'מכשיר מסוג Z'},{value:'W',label:'מכשיר מסוג W'}],expected:'W',hint:'השוו בין שתי ההסתברויות שחישבתם. העדיפו את הדגם שבו ההסתברות למכשיר עם וירוס קטנה יותר.',explanation:'בדגם W הסיכוי הוא 3.75%, לעומת 4.5% בדגם Z. לכן עדיף לבחור במכשיר מסוג W.'}
+    ]
+  },
+  {
+    id:'q13_sports_sites',
+    title:'הגרלת פרסים בשני אתרי ספורט',
+    category:'השוואת הסתברויות',
+    story:'ירדן נרשמה כמנויה בשני אתרי אינטרנט לציוד ספורט. באתר „ראשון בספורט” יוגרלו 10 פרסים בין 200 נרשמים. באתר „ספורטיץ” יוגרלו 40 פרסים בין 500 נרשמים.',
+    visual:'sportsSites',
+    sampleSpace:'בכל אתר כל הנרשמים באותו היום שווי־סיכוי',
+    subs:[
+      {id:'a',label:'א',prompt:'מה הסיכוי שירדן תקבל פרס מאתר „ראשון בספורט”?',type:'fraction_percent',event:'פרס מראשון בספורט',expectedFraction:[10,200],expectedPercent:5,tolerance:0.01,hint:'השוו בין מספר הפרסים לבין מספר הנרשמים באותו אתר.',explanation:'יש 10 פרסים ל־200 נרשמים. לכן P = 10/200 = 5%.'},
+      {id:'b',label:'ב',prompt:'מה הסיכוי שירדן תקבל פרס מאתר „ספורטיץ”?',type:'fraction_percent',event:'פרס מספורטיץ',expectedFraction:[40,500],expectedPercent:8,tolerance:0.01,hint:'כתבו את מספר הפרסים במונה ואת מספר הנרשמים במכנה, ואז המירו לאחוזים.',explanation:'יש 40 פרסים ל־500 נרשמים. לכן P = 40/500 = 8%.'},
+      {id:'c',label:'ג',prompt:'מאיזה אתר יש לירדן סיכוי גדול יותר לקבל פרס?',type:'choice',options:[{value:'first',label:'ראשון בספורט'},{value:'sportiz',label:'ספורטיץ'}],expected:'sportiz',hint:'השוו בין שתי ההסתברויות שמצאתם, ולא רק בין מספר הפרסים.',explanation:'הסיכוי באתר ספורטיץ הוא 8%, לעומת 5% באתר ראשון בספורט. לכן בספורטיץ הסיכוי גדול יותר.'}
+    ]
+  },
+  {
+    id:'q14_school_computers',
+    title:'פרויקט מחשוב בבית הספר',
+    category:'הסתברות מותנית בהקשר מילולי',
+    story:'לכיתה י׳ סופקו 35 מחשבים: 21 רגילים והשאר עם תוכנות גרפיות. לכיתה י״א סופקו 20 מחשבים: 14 רגילים והשאר עם תוכנות גרפיות. המחשבים חולקו באקראי לתלמידים בכיתות.',
+    visual:'schoolComputers',
+    sampleSpace:'הבחירה נעשית מתוך קבוצת המחשבים המתאימה בכל סעיף',
+    subs:[
+      {id:'a',label:'א',prompt:'כמה מחשבים עם תוכנות גרפיות סופקו לכיתה י׳?',type:'number',expected:14,unit:'מחשבים',hint:'הפחיתו את מספר המחשבים הרגילים ממספר כל המחשבים שסופקו לכיתה.',explanation:'לכיתה י׳ סופקו 35 מחשבים, מהם 21 רגילים. לכן 35 − 21 = 14 מחשבים עם תוכנות גרפיות.'},
+      {id:'b',label:'ב',prompt:'כמה מחשבים עם תוכנות גרפיות סופקו לכיתה י״א?',type:'number',expected:6,unit:'מחשבים',hint:'מצאו את ההפרש בין מספר כל המחשבים לבין מספר המחשבים הרגילים בכיתה י״א.',explanation:'לכיתה י״א סופקו 20 מחשבים, מהם 14 רגילים. לכן 20 − 14 = 6 מחשבים עם תוכנות גרפיות.'},
+      {id:'d',label:'ד',prompt:'מריאן לומדת בכיתה י׳. מה הסיכוי שהיא קיבלה מחשב עם תוכנות גרפיות?',type:'fraction_percent',event:'מריאן קיבלה מחשב עם תוכנות גרפיות',expectedFraction:[14,35],expectedPercent:40,tolerance:0.01,hint:'במונה כתבו את מספר המחשבים עם התוכנות הגרפיות בכיתה י׳, ובמכנה את מספר כל המחשבים בכיתה.',explanation:'בכיתה י׳ יש 14 מחשבים עם תוכנות גרפיות מתוך 35. לכן P = 14/35 = 40%.'},
+      {id:'e',label:'ה',prompt:'איגי לומדת בכיתה י״א. מה הסיכוי שהיא קיבלה מחשב עם תוכנות גרפיות?',type:'fraction_percent',event:'איגי קיבלה מחשב עם תוכנות גרפיות',expectedFraction:[6,20],expectedPercent:30,tolerance:0.01,hint:'השתמשו במספר המחשבים עם התוכנות הגרפיות בכיתה י״א ובמספר כל המחשבים בכיתה.',explanation:'בכיתה י״א יש 6 מחשבים עם תוכנות גרפיות מתוך 20. לכן P = 6/20 = 30%.'},
+      {id:'f',label:'ו',prompt:'למי משתי התלמידות יש סיכוי טוב יותר לקבל מחשב עם תוכנות גרפיות?',type:'choice',options:[{value:'marian',label:'מריאן'},{value:'igi',label:'איגי'}],expected:'marian',hint:'השוו בין ההסתברויות שחישבתם לשתי הכיתות.',explanation:'למריאן סיכוי של 40%, ולאיגי סיכוי של 30%. לכן למריאן סיכוי טוב יותר.'},
+      {id:'g1',label:'ז',prompt:'במהלך השנה התברר שב־9 מן המחשבים הרגילים יש תקלות. יואב קיבל מחשב רגיל. מה ההסתברות שהתגלו בו תקלות?',type:'fraction_percent',event:'תקלה במחשב רגיל',expectedFraction:[9,35],expectedPercent:25.71,tolerance:0.02,hint:'חשבו תחילה כמה מחשבים רגילים יש בסך הכול בשתי הכיתות, ואז השוו אליהם את מספר המחשבים הרגילים שבהם התגלו תקלות.',explanation:'בסך הכול יש 21 + 14 = 35 מחשבים רגילים. ב־9 מהם יש תקלות. לכן P = 9/35 ≈ 25.71%.'},
+      {id:'g2',label:'ז',prompt:'ב־6 מן המחשבים עם תוכנות גרפיות יש תקלות. יניב קיבל מחשב עם תוכנות גרפיות. מה ההסתברות שהתגלו בו בעיות?',type:'fraction_percent',event:'תקלה במחשב עם תוכנות גרפיות',expectedFraction:[6,20],expectedPercent:30,tolerance:0.01,hint:'חשבו כמה מחשבים עם תוכנות גרפיות יש בסך הכול בשתי הכיתות, ואז השוו אליהם את מספר המחשבים שבהם התגלו תקלות.',explanation:'בסך הכול יש 14 + 6 = 20 מחשבים עם תוכנות גרפיות. ב־6 מהם יש תקלות. לכן P = 6/20 = 30%.'},
+      {id:'h',label:'ח',prompt:'איגי טענה שכדאי לבקש מחשב עם תוכנות גרפיות כי הסיכוי לתקלות בו קטן יותר. האם איגי צודקת? הסבירו.',type:'fairness',expected:'no',hint:'השוו בין שיעור התקלות במחשבים הרגילים לבין שיעור התקלות במחשבים עם התוכנות הגרפיות.',explanation:'איגי אינה צודקת. שיעור התקלות במחשבים הרגילים הוא כ־25.71%, ואילו במחשבים עם תוכנות גרפיות הוא 30%, ולכן הסיכוי לתקלה גדול יותר דווקא במחשבים עם תוכנות גרפיות.'}
+    ]
+  },
+  {
+    id:'q15_wallet_bills',
+    title:'תרומה בשטר אקראי מן הארנק',
+    category:'הסתברות מתוך אוסף פריטים',
+    story:'לסמדר יש בארנק 10 שטרות: 4 שטרות של 20 שקלים, 3 שטרות של 50 שקלים, 2 שטרות של 100 שקלים ושטר אחד של 200 שקלים. סמדר מוציאה באקראי שטר אחד ותורמת אותו.',
+    visual:'walletBills',
+    sampleSpace:'10 שטרות שווי־סיכוי לבחירה',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שסמדר תתרום 100 שקלים?',type:'fraction',event:'שטר של 100 ₪',expected:[2,10],hint:'במונה כתבו כמה שטרות מן הערך המבוקש נמצאים בארנק, ובמכנה את מספר כל השטרות.',explanation:'יש 2 שטרות של 100 שקלים מתוך 10. לכן P = 2/10 = 1/5 = 0.2.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שסמדר תתרום פחות מ־50 שקלים?',type:'fraction',event:'שטר קטן מ־50 ₪',expected:[4,10],hint:'זהו אילו שטרות מקיימים את התנאי „פחות מ־50”, וספרו אותם.',explanation:'רק 4 השטרות של 20 שקלים קטנים מ־50. לכן P = 4/10 = 2/5 = 0.4.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי באחוזים שסמדר תתרום יותר מ־50 שקלים?',type:'percent',expected:30,tolerance:0.01,hint:'ספרו את כל השטרות שערכם גדול מ־50, חלקו במספר כל השטרות והמירו לאחוזים.',explanation:'יש 2 שטרות של 100 ושטר אחד של 200 — 3 מתוך 10. לכן הסיכוי הוא 30%.'}
+    ]
+  },
+  {
+    id:'q16_scooters',
+    title:'בחירת קורקינט להשכרה',
+    category:'אירועים משלימים ואחוזים',
+    story:'באזור חניה של קורקינטים חשמליים חונים 20 קורקינטים. בשלושה מהם הסוללה ריקה ובחמישה אחרים יש גלגל שבור. כל שאר הקורקינטים תקינים. שירה בוחרת קורקינט אחד באקראי.',
+    visual:'scooters20',
+    sampleSpace:'20 קורקינטים שווי־סיכוי לבחירה',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שבקורקינט שבחרה הסוללה ריקה?',type:'fraction',event:'סוללה ריקה',expected:[3,20],hint:'השוו בין מספר הקורקינטים עם סוללה ריקה לבין מספר כל הקורקינטים.',explanation:'יש 3 קורקינטים עם סוללה ריקה מתוך 20. לכן P = 3/20.'},
+      {id:'b',label:'ב',prompt:'מה הסיכוי באחוזים שבקורקינט שבחרה יש גלגל שבור?',type:'percent',expected:25,tolerance:0.01,hint:'כתבו תחילה את היחס בין מספר הקורקינטים עם גלגל שבור למספר הקורקינטים הכולל, ואז המירו לאחוזים.',explanation:'יש 5 קורקינטים עם גלגל שבור מתוך 20. לכן 5/20 = 25%.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי ששירה בחרה בקורקינט תקין?',type:'fraction',event:'קורקינט תקין',expected:[12,20],hint:'מצאו כמה קורקינטים אינם בשתי קבוצות התקלה, ואז השוו למספר הכולל.',explanation:'3 + 5 = 8 קורקינטים אינם תקינים, ולכן 12 תקינים. P(תקין) = 12/20 = 3/5 = 60%.'},
+      {id:'d',label:'ד',prompt:'מה הסיכוי שהקורקינט ששירה בחרה אינו תקין?',type:'percent',expected:40,tolerance:0.01,hint:'חברו את שתי קבוצות הקורקינטים שאינם תקינים, והשוו למספר הכולל.',explanation:'יש 8 קורקינטים שאינם תקינים מתוך 20. לכן הסיכוי הוא 8/20 = 40%.'}
+    ]
+  },
+  {
+    id:'q17_lotto500k',
+    title:'הגרלת לוטו עם 500,000 כרטיסים',
+    category:'הסתברות בפרסים נדירים',
+    story:'בהגרלת לוטו נמכרו 500,000 כרטיסים. יש פרס ראשון אחד בסך 3 מיליון שקלים ושני פרסים נוספים בסך 300,000 שקלים כל אחד. ליאת קנתה כרטיס אחד.',
+    visual:'lotto500k',
+    sampleSpace:'500,000 כרטיסים שווי־סיכוי',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שליאת תזכה ב־3 מיליון שקלים?',type:'fraction',event:'הפרס הראשון',expected:[1,500000],hint:'במונה כתבו כמה כרטיסים מזכים בפרס הראשון, ובמכנה את מספר כל הכרטיסים.',explanation:'רק כרטיס אחד מזכה בפרס הראשון מתוך 500,000. לכן P = 1/500000.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שליאת תזכה בפרס כלשהו?',type:'fraction',event:'פרס כלשהו',expected:[3,500000],hint:'חברו את מספר הכרטיסים הזוכים בכל הפרסים, ואז השוו למספר הכרטיסים הכולל.',explanation:'יש כרטיס אחד לפרס הראשון ושני כרטיסים לפרסים הנוספים — 3 כרטיסים זוכים. לכן P = 3/500000.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי באחוזים שליאת לא תזכה בשום פרס?',type:'percent',expected:99.9994,tolerance:0.001,hint:'מצאו תחילה את מספר הכרטיסים שאינם זוכים, חלקו במספר כל הכרטיסים והמירו לאחוזים.',explanation:'499,997 מתוך 500,000 כרטיסים אינם זוכים. לכן הסיכוי הוא 499997/500000 = 99.9994%.'}
+    ]
+  },
+  {
+    id:'q18_spinner12colors',
+    title:'רולטה צבעונית המחולקת ל־12 גזרות',
+    category:'הסתברות בצבעים',
+    story:'בדוכן פורים יש רולטה מאוזנת המחולקת ל־12 גזרות שוות: 2 גזרות לבנות, 4 גזרות צהובות ו־6 גזרות כחולות. רן מסובב את הרולטה פעם אחת.',
+    visual:'spinner12colors',
+    sampleSpace:'12 גזרות שוות־סיכוי',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שהכדור עצר על גזרה לבנה?',type:'fraction',event:'גזרה לבנה',expected:[2,12],hint:'במונה כתבו את מספר הגזרות הלבנות ובמכנה את מספר כל הגזרות.',explanation:'יש 2 גזרות לבנות מתוך 12. לכן P = 2/12 = 1/6.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שהכדור עצר על גזרה צהובה?',type:'fraction',event:'גזרה צהובה',expected:[4,12],hint:'השוו בין מספר הגזרות הצהובות לבין מספר כל הגזרות.',explanation:'יש 4 גזרות צהובות מתוך 12. לכן P = 4/12 = 1/3.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי באחוזים שהכדור עצר על גזרה כחולה?',type:'percent',expected:50,tolerance:0.01,hint:'כתבו את היחס בין מספר הגזרות הכחולות למספר כל הגזרות, ואז המירו לאחוזים.',explanation:'יש 6 גזרות כחולות מתוך 12. לכן 6/12 = 1/2 = 50%.'},
+      {id:'d',label:'ד',prompt:'משתתף שהכדור שלו עוצר על כחול או לבן זוכה בפרס. מה הסיכוי של רן לזכות בפרס?',type:'fraction',event:'זכייה בפרס',expected:[8,12],hint:'חברו את מספר הגזרות בשני הצבעים שמזכים בפרס, ואז השוו למספר כל הגזרות.',explanation:'6 גזרות כחולות ועוד 2 לבנות נותנות 8 גזרות זוכות מתוך 12. לכן P = 8/12 = 2/3.'}
+    ]
+  },
+  {
+    id:'q19_numbered_cube',
+    title:'קובייה שעל פאותיה המספרים 2, 2, 3, 4, 4, 4',
+    category:'הסתברות בקובייה שאינה ממוספרת 1–6',
+    story:'על שש פאות של קובייה כתובים המספרים: 2, 2, 3, 4, 4, 4. מטילים את הקובייה פעם אחת.',
+    visual:'cube223444',
+    sampleSpace:'6 פאות שוות־סיכוי: {2, 2, 3, 4, 4, 4}',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות לקבל את המספר 4?',type:'fraction',event:'4',expected:[3,6],hint:'ספרו על כמה פאות מופיע המספר 4, והשוו למספר כל הפאות.',explanation:'המספר 4 מופיע על 3 מתוך 6 פאות. לכן P(4) = 3/6 = 1/2.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות לקבל את המספר 3?',type:'fraction',event:'3',expected:[1,6],hint:'ספרו את מספר הפאות שעליהן מופיע 3.',explanation:'המספר 3 מופיע על פאה אחת מתוך 6. לכן P(3) = 1/6.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי לקבל מספר קטן מ־4?',type:'fraction',event:'מספר קטן מ־4',expected:[3,6],hint:'זהו אילו פאות נושאות מספר קטן מ־4, וספרו אותן.',explanation:'הפאות המתאימות הן 2, 2 ו־3 — 3 מתוך 6. לכן P = 3/6 = 1/2.'},
+      {id:'d',label:'ד',prompt:'מה הסיכוי לקבל מספר זוגי?',type:'fraction',event:'מספר זוגי',expected:[5,6],hint:'בדקו על כמה פאות מופיע מספר זוגי.',explanation:'חמש פאות נושאות מספר זוגי: שתי פאות עם 2 ושלוש פאות עם 4. לכן P = 5/6.'}
+    ]
+  },
+  {
+    id:'q20_design_cube',
+    title:'כתיבת מספרים על פאות קובייה',
+    category:'בניית מרחב מדגם לפי הסתברות נתונה',
+    story:'כתבו מספר על כל אחת משש פאות הקובייה כך שהסיכוי לקבל את המספר 5 יהיה 1/2.',
+    visual:'blankCubeNet',
+    sampleSpace:'6 פאות שוות־סיכוי',
+    subs:[
+      {id:'a',label:'א',prompt:'כתבו מספר בכל אחת משש הפאות כך שההסתברות לקבל 5 תהיה 1/2.',type:'cube_faces',expectedValue:5,expectedCount:3,hint:'חשבו כמה מתוך 6 פאות צריכות לשאת את המספר 5 כדי לקבל הסתברות של 1/2. את שאר הפאות אפשר למלא במספרים אחרים.',explanation:'כדי שההסתברות לקבל 5 תהיה 1/2, המספר 5 צריך להופיע על 3 מתוך 6 הפאות. שלוש הפאות האחרות יכולות לקבל מספרים אחרים.'}
+    ]
+  }
+
 
 ];
 
@@ -376,6 +501,28 @@ function renderVisual(q){
     a.innerHTML=`<div class="count-visual"><div class="font-extrabold">150 כרטיסי הגרלה</div><div class="stat-grid"><div class="stat-card"><strong>1</strong>טיול סוסים</div><div class="stat-card"><strong>3</strong>מנוי לבריכה</div><div class="stat-card"><strong>10</strong>שעוני ספורט</div><div class="stat-card"><strong>15</strong>גרבי ספורט</div></div><div class="text-xs text-slate-500">יתר הכרטיסים אינם זוכים בפרס.</div></div>`;
   }else if(q.visual==='balls11'){
     a.innerHTML=`<div class="count-visual"><div class="font-extrabold">11 כדורים בשק</div><div class="count-row">${Array.from({length:7},()=>'<span class="ball-dot" style="background:#f97316"></span>').join('')}${Array.from({length:3},()=>'<span class="ball-dot" style="background:#ffffff"></span>').join('')}<span class="ball-dot" style="background:#fde047"></span></div><div class="legend-row"><span>7 כתומים</span><span>3 לבנים</span><span>1 צהוב</span></div></div>`;
+
+  }else if(q.visual==='phonesVirus'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">מהדורה מוגבלת – שני דגמים</div><div class="stat-grid"><div class="stat-card"><strong>1,000</strong>דגם Z<br><span class="text-xs">45 עם וירוס</span></div><div class="stat-card"><strong>1,600</strong>דגם W<br><span class="text-xs">60 עם וירוס</span></div></div></div>`;
+  }else if(q.visual==='sportsSites'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">שתי הגרלות נפרדות</div><div class="stat-grid"><div class="stat-card"><strong>10</strong>פרסים / 200 נרשמים<br><span class="text-xs">ראשון בספורט</span></div><div class="stat-card"><strong>40</strong>פרסים / 500 נרשמים<br><span class="text-xs">ספורטיץ</span></div></div></div>`;
+  }else if(q.visual==='schoolComputers'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">מחשבים בשתי כיתות</div><div class="stat-grid"><div class="stat-card"><strong>35</strong>כיתה י׳<br><span class="text-xs">21 רגילים</span></div><div class="stat-card"><strong>20</strong>כיתה י״א<br><span class="text-xs">14 רגילים</span></div></div></div>`;
+  }else if(q.visual==='walletBills'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">10 שטרות בארנק</div><div class="stat-grid"><div class="stat-card"><strong>4</strong>× 20 ₪</div><div class="stat-card"><strong>3</strong>× 50 ₪</div><div class="stat-card"><strong>2</strong>× 100 ₪</div><div class="stat-card"><strong>1</strong>× 200 ₪</div></div></div>`;
+  }else if(q.visual==='scooters20'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">20 קורקינטים</div><div class="stat-grid"><div class="stat-card"><strong>3</strong>סוללה ריקה</div><div class="stat-card"><strong>5</strong>גלגל שבור</div><div class="stat-card"><strong>12</strong>תקינים</div></div></div>`;
+  }else if(q.visual==='lotto500k'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">500,000 כרטיסי לוטו</div><div class="stat-grid"><div class="stat-card"><strong>1</strong>פרס ראשון</div><div class="stat-card"><strong>2</strong>פרסים נוספים</div></div><div class="text-xs text-slate-500">בסך הכול 3 כרטיסים זוכים בפרס כלשהו.</div></div>`;
+  }else if(q.visual==='spinner12colors'){
+    const colors=[...Array(2).fill('#ffffff'),...Array(4).fill('#fde047'),...Array(6).fill('#2563eb')];
+    const cx=160,cy=160,r=118;let paths='';
+    colors.forEach((c,i)=>{const a1=(-90+i*30)*Math.PI/180,a2=(-90+(i+1)*30)*Math.PI/180;const x1=cx+r*Math.cos(a1),y1=cy+r*Math.sin(a1),x2=cx+r*Math.cos(a2),y2=cy+r*Math.sin(a2);paths+=`<path d="M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2} Z" fill="${c}" stroke="#111827" stroke-width="2"/>`;});
+    a.innerHTML=`<div class="spinner-wrap"><svg viewBox="0 0 320 320" width="280" height="280" aria-label="רולטה עם 12 גזרות צבעוניות">${paths}<circle cx="160" cy="160" r="118" fill="none" stroke="#111827" stroke-width="4"/></svg><div class="legend-row"><span>2 לבנות</span><span>4 צהובות</span><span>6 כחולות</span></div></div>`;
+  }else if(q.visual==='cube223444'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">שש פאות שוות־סיכוי</div><div class="die-outcomes">${[2,2,3,4,4,4].map(n=>`<div class="die-face">${n}</div>`).join('')}</div></div>`;
+  }else if(q.visual==='blankCubeNet'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">פריסת קובייה – 6 פאות</div><div style="display:grid;grid-template-columns:repeat(4,58px);grid-template-rows:repeat(3,58px);justify-content:center;gap:2px;margin:18px auto"><div style="grid-column:1;grid-row:2" class="die-face"></div><div style="grid-column:2;grid-row:1" class="die-face"></div><div style="grid-column:2;grid-row:2" class="die-face"></div><div style="grid-column:3;grid-row:2" class="die-face"></div><div style="grid-column:4;grid-row:2" class="die-face"></div><div style="grid-column:4;grid-row:3" class="die-face"></div></div><div class="text-xs text-slate-500">כתבו את המספרים בשדות התשובה.</div></div>`;
   }
   $('sampleSpaceNote').innerHTML=`מרחב התוצאות האפשרי: <span class="math font-bold">${q.sampleSpace}</span>`;
 }
@@ -395,6 +542,9 @@ function inputFor(q,s,ans){const k=key(q,s),v=ans?.value;
   if(s.type==='percent')return `<div class="answer-number-row"><input id="percent-${k}" type="number" step="any" value="${v?.percent??''}" aria-label="אחוז"><span class="math font-extrabold">%</span></div>`;
   if(s.type==='fraction_decimal')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="decimal-${k}" type="number" step="any" value="${v?.decimal??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="שבר עשרוני"></div>`;
   if(s.type==='fraction_percent')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="percent-${k}" type="number" step="any" value="${v?.percent??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="אחוז"><span class="math">%</span></div>`;
+
+  if(s.type==='choice')return `<div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-xl">${s.options.map(o=>`<label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="choice-${k}" value="${o.value}" ${v?.choice===o.value?'checked':''}> ${o.label}</label>`).join('')}</div>`;
+  if(s.type==='cube_faces')return `<div class="mt-4"><div class="text-xs font-semibold text-slate-500 mb-2">שש פאות הקובייה</div><div class="grid grid-cols-3 sm:grid-cols-6 gap-2" dir="ltr">${Array.from({length:6},(_,i)=>`<input id="face-${k}-${i}" type="number" step="1" value="${v?.faces?.[i]??''}" class="h-12 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="פאה ${i+1}">`).join('')}</div></div>`;
   if(s.type==='fairness')return `<div class="mt-3 grid grid-cols-2 gap-2 max-w-sm"><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="yes" ${v?.choice==='yes'?'checked':''}> כן</label><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="no" ${v?.choice==='no'?'checked':''}> לא</label></div><textarea id="explain-${k}" class="mt-3 w-full min-h-24 border border-slate-300 rounded-xl p-3" placeholder="הסבירו בקצרה">${v?.explain??''}</textarea>`;
   return '';
 }
@@ -406,6 +556,9 @@ function readAnswer(q,s){const k=key(q,s);
   if(s.type==='fraction_decimal'){const nr=$('num-'+k).value,dr=$('den-'+k).value,xr=$('decimal-'+k).value;if(nr===''||dr===''||xr==='')return {filled:false};const n=Number(nr),d=Number(dr),x=Number(xr),en=s.expectedFraction[0],ed=s.expectedFraction[1],tol=s.tolerance??0.001;const ok=d!==0&&n*ed===en*d&&Math.abs(x-s.expectedDecimal)<=tol;return {filled:true,value:{num:n,den:d,decimal:x},correct:ok,display:`${n}/${d} = ${x}`};}
   if(s.type==='fraction_percent'){const nr=$('num-'+k).value,dr=$('den-'+k).value,pr=$('percent-'+k).value;if(nr===''||dr===''||pr==='')return {filled:false};const n=Number(nr),d=Number(dr),pct=Number(pr),en=s.expectedFraction[0],ed=s.expectedFraction[1],tol=s.tolerance??0.01;const ok=d!==0&&n*ed===en*d&&Math.abs(pct-s.expectedPercent)<=tol;return {filled:true,value:{num:n,den:d,percent:pct},correct:ok,display:`${n}/${d} = ${pct}%`};}
   if(s.type==='sample_space'){const raw=$('space-'+k).value.trim();if(!raw)return {filled:false};const nums=(raw.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);const uniq=[...new Set(nums)].sort((a,b)=>a-b),exp=[...s.expected].sort((a,b)=>a-b);return {filled:true,value:{raw},correct:JSON.stringify(uniq)===JSON.stringify(exp),display:`{${nums.join(', ')}}`};}
+
+  if(s.type==='choice'){const sel=document.querySelector(`input[name="choice-${k}"]:checked`);if(!sel)return {filled:false};return {filled:true,value:{choice:sel.value},correct:sel.value===s.expected,display:sel.closest('label')?.innerText.trim()||sel.value};}
+  if(s.type==='cube_faces'){const faces=Array.from({length:6},(_,i)=>$('face-'+k+'-'+i).value);if(faces.some(x=>x===''))return {filled:false};const nums=faces.map(Number);const count=nums.filter(x=>x===s.expectedValue).length;return {filled:true,value:{faces:nums},correct:count===s.expectedCount,display:nums.join(', ')};}
   if(s.type==='fairness'){const sel=document.querySelector(`input[name="fair-${k}"]:checked`),exp=$('explain-'+k).value.trim();if(!sel||!exp)return {filled:false};return {filled:true,value:{choice:sel.value,explain:exp},correct:sel.value===s.expected,display:`${sel.value==='yes'?'כן':'לא'} — ${exp}`};}
 }
 function checkQuestion(){const q=questions[state.index];if(state.locked[q.id])return;let all=true,correct=0;const answers={};for(const s of q.subs){const r=readAnswer(q,s);if(!r.filled){all=false;continue;}answers[key(q,s)]={...r};if(r.correct)correct++;}
