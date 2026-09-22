@@ -89,6 +89,8 @@
     .edu-chart{width:100%;height:auto;display:block;max-width:680px;margin:0 auto}
     .pie-edu-chart{max-width:520px}
     @media(max-width:640px){.chart-visual{padding:4px 0}.edu-chart{min-height:280px}.pie-edu-chart{min-height:320px}}
+
+.helper-table-wrap{overflow:auto;max-width:100%;padding:4px 0}.helper-table{border-collapse:collapse;margin:10px auto;direction:ltr;background:white}.helper-table th,.helper-table td{border:1px solid #94a3b8;min-width:58px;height:46px;text-align:center;padding:3px;font-size:12px}.helper-table th{background:#f1f5f9;font-weight:800;color:#334155}.helper-table input{width:100%;height:36px;border:1px solid #cbd5e1;border-radius:8px;text-align:center;font-weight:700;font-size:12px;direction:ltr}.helper-table .auto-cell{font-weight:800;color:#172033;background:#fff;cursor:pointer;user-select:none;transition:background .15s ease,box-shadow .15s ease,color .15s ease}.helper-table .auto-cell:hover{background:#eff6ff}.helper-table .auto-cell.selected{background:#fde68a!important;color:#111827;box-shadow:inset 0 0 0 2px #f59e0b}.helper-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:8px 0 4px}.helper-toolbar select{border:1px solid #cbd5e1;border-radius:10px;background:white;padding:8px 10px;font-weight:700;font-family:inherit}.helper-note{font-size:12px;color:#64748b;text-align:center;margin-top:6px}.helper-selected-count{font-size:12px;font-weight:800;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:999px;padding:6px 10px}.helper-clear-btn{border:1px solid #f59e0b;background:#fff7ed;color:#9a3412;border-radius:10px;padding:8px 12px;font-weight:800;font-family:inherit;cursor:pointer}.helper-clear-btn:hover{background:#ffedd5}.helper-title{font-weight:900;color:#172033;text-align:center;margin-bottom:6px}@media(max-width:640px){.helper-table th,.helper-table td{min-width:46px;height:42px;font-size:11px}.helper-table input{height:32px;font-size:11px}.helper-toolbar{justify-content:flex-start}}
 </style>
 </head>
 <body>
@@ -721,11 +723,134 @@ const questions = [
       {id:'d',label:'ד',prompt:'לקוחות שבוחרים בקרטינג או בסנפלינג צריכים ביטוח מורחב. מה ההסתברות שלקוח שנבחר באקראי צריך ביטוח שכזה?',type:'number',expected:0.4,tolerance:0.001,unit:'',hint:'חברו את אחוז הבוחרים בקרטינג ובסנפלינג והמירו לשבר עשרוני.',explanation:'13% + 27% = 40%, ולכן ההסתברות היא 0.4.'}
     ]
   }
+  ,{
+    id:'q39_two_coins_picture_number',
+    title:'שני מטבעות – תמונה ומספר',
+    category:'מרחב מדגם דו־שלבי',
+    story:'מטילים שני מטבעות. לכל מטבע צד אחד עם תמונה וצד אחד עם מספר. היעזרו בטבלת העזר כדי לארגן את ארבע התוצאות האפשריות.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'מטבע א׳',colLabel:'מטבע ב׳',rows:['תמונה','מספר'],cols:['תמונה','מספר'],placeholder:'כתבו תוצאה'},
+    sampleSpace:'4 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות ששני המטבעות ייפלו על אותו צד?',type:'fraction',event:'אותו צד',expected:[2,4],hint:'בטבלת העזר סמנו אילו תוצאות מציגות אותו סוג צד בשני המטבעות.',explanation:'התוצאות המתאימות הן (תמונה, תמונה) ו-(מספר, מספר). לכן P = 2/4 = 1/2.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות ששני המטבעות ייפלו על צדדים שונים?',type:'fraction',event:'צדדים שונים',expected:[2,4],hint:'חפשו בטבלה את התוצאות שבהן צד אחד הוא תמונה והצד האחר הוא מספר.',explanation:'יש שתי תוצאות מתאימות מתוך 4. לכן P = 2/4 = 1/2.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שלפחות אחד מהמטבעות ייפול על תמונה?',type:'fraction',event:'לפחות תמונה אחת',expected:[3,4],hint:'„לפחות אחד” כולל גם מצב שבו רק מטבע אחד מראה תמונה וגם מצב שבו שניהם מראים תמונה.',explanation:'שלוש מתוך ארבע התוצאות כוללות לפחות תמונה אחת. לכן P = 3/4.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שבדיוק אחד מהמטבעות ייפול על תמונה?',type:'fraction',event:'בדיוק תמונה אחת',expected:[2,4],hint:'„בדיוק אחד” אינו כולל מצב שבו שני המטבעות מראים תמונה.',explanation:'יש שתי תוצאות שבהן בדיוק מטבע אחד מראה תמונה. לכן P = 2/4 = 1/2.'}
+    ]
+  },
+  {
+    id:'q40_coin_letters_shai',
+    title:'מטבע עם האותיות ש ו־י',
+    category:'מרחב מדגם דו־שלבי',
+    story:'שי כתב את שתי אותיות שמו – ש, י – בשני צדדיו של מטבע, כך שעל כל צד כתובה אות אחת. שי מטיל את המטבע פעמיים. היעזרו בטבלת העזר כדי לארגן את מרחב המדגם.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'הטלה ראשונה',colLabel:'הטלה שנייה',rows:['ש','י'],cols:['ש','י'],placeholder:'כתבו זוג אותיות'},
+    sampleSpace:'4 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שהמטבע ייפול על אותיות שמו של שי בסדר הנכון?',type:'fraction',event:'ש ואז י',expected:[1,4],hint:'הסדר חשוב: בדקו איזו תוצאה אחת מייצגת תחילה ש ואחר כך י.',explanation:'רק התוצאה (ש, י) מתאימה. לכן P = 1/4.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שהמטבע ייפול על אותיות שמו של שי בדיוק בסדר ההפוך?',type:'fraction',event:'י ואז ש',expected:[1,4],hint:'חפשו את התוצאה שבה האותיות מופיעות בסדר ההפוך לשם שי.',explanation:'רק התוצאה (י, ש) מתאימה. לכן P = 1/4.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שהמטבע ייפול על אותה אות פעמיים?',type:'fraction',event:'אותה אות פעמיים',expected:[2,4],hint:'חפשו את התוצאות שנמצאות על האלכסון של הטבלה.',explanation:'התוצאות (ש, ש) ו-(י, י) מתאימות. לכן P = 2/4 = 1/2.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שהמטבע ייפול על שתי אותיות שונות זו מזו?',type:'fraction',event:'שתי אותיות שונות',expected:[2,4],hint:'חפשו את התוצאות שאינן על האלכסון של הטבלה.',explanation:'התוצאות (ש, י) ו-(י, ש) מתאימות. לכן P = 2/4 = 1/2.'}
+    ]
+  },
+  {
+    id:'q41_two_spinners_letters',
+    title:'שני סביבונים עם אותיות',
+    category:'טבלה דו־ממדית ומרחב מדגם',
+    story:'שלו וענווה משחקים. בכל תור מסובב השחקן את הסביבון פעמיים. על הסביבון האותיות ב, ג, ה, פ. היעזרו בטבלה כדי לארגן את כל התוצאות המסודרות.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'סיבוב א׳',colLabel:'סיבוב ב׳',rows:['ב','ג','ה','פ'],cols:['ב','ג','ה','פ'],placeholder:'זוג אותיות'},
+    sampleSpace:'16 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מלאו את הטבלה באפשרויות שיכולות להתקבל. מהו גודל מרחב המדגם?',type:'number',unit:'תוצאות',expected:16,tolerance:0,hint:'מספר התוצאות הכולל מתקבל ממספר האפשרויות בסיבוב הראשון כפול מספר האפשרויות בסיבוב השני.',explanation:'יש 4 אפשרויות בכל סיבוב, ולכן 4 × 4 = 16 תוצאות.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות לקבל שתי אותיות זהות?',type:'fraction',event:'שתי אותיות זהות',expected:[4,16],hint:'בתוצאות המתאימות האות בסיבוב הראשון זהה לאות בסיבוב השני.',explanation:'יש 4 תוצאות זהות: ב-ב, ג-ג, ה-ה, פ-פ. לכן P = 4/16 = 1/4.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות לקבל בפעם הראשונה את האות ה?',type:'fraction',event:'בפעם הראשונה ה',expected:[4,16],hint:'קבעו את האות בסיבוב הראשון ל-ה ובדקו כמה אפשרויות נשארות לסיבוב השני.',explanation:'אם הסיבוב הראשון הוא ה, הסיבוב השני יכול להיות כל אחת מארבע האותיות. לכן P = 4/16 = 1/4.'},
+      {id:'d',label:'ד',prompt:'ענווה מנצחת אם בשני הסיבובים הסביבון נופל על ג. שלו מנצח אם באחד הסיבובים נופל פ ובסיבוב האחר ב. האם לשני השחקנים יש סיכוי זהה לנצח?',type:'fairness',expected:'no',hint:'ספרו בנפרד כמה תוצאות מסודרות מזכות כל שחקן.',explanation:'לענווה תוצאה זוכה אחת: (ג, ג), ולכן 1/16. לשלו שתי תוצאות: (פ, ב) ו-(ב, פ), ולכן 2/16. הסיכויים אינם שווים.'}
+    ]
+  },
+  {
+    id:'q42_two_spinners_1to4_sum',
+    title:'שני סביבונים עם המספרים 1–4',
+    category:'סכום שתי תוצאות',
+    story:'ארבעה מספרים שונים רשומים על ארבע פאות של סביבון: 1, 2, 3, 4. מסובבים שני סביבונים כאלה בו־זמנית ובודקים את סכום המספרים הרשומים על שני הסביבונים.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'סביבון א׳',colLabel:'סביבון ב׳',rows:[1,2,3,4],cols:[1,2,3,4],placeholder:'כתבו סכום'},
+    sampleSpace:'16 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'אילו מספרים יכולים להתקבל כסכום?',type:'sample_space',expected:[2,3,4,5,6,7,8],hint:'חשבו את הסכום הקטן ביותר ואת הגדול ביותר, ובדקו אילו סכומים מתקבלים ביניהם.',explanation:'הסכומים האפשריים הם 2, 3, 4, 5, 6, 7, 8.'},
+      {id:'b',label:'ב',prompt:'מה הסיכוי לקבל סכום השווה ל־7?',type:'fraction',event:'סכום 7',expected:[2,16],hint:'חפשו בטבלה את כל הזוגות שסכומם 7.',explanation:'התוצאות הן (3,4) ו-(4,3). לכן P = 2/16 = 1/8.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי לקבל סכום השווה ל־4?',type:'fraction',event:'סכום 4',expected:[3,16],hint:'חפשו בטבלה את כל הזוגות שסכומם 4.',explanation:'התוצאות הן (1,3), (2,2), (3,1). לכן P = 3/16.'},
+      {id:'d',label:'ד',prompt:'רותם מנחשת מה יהיה סכום המספרים שיתקבלו. מהו סכום המספרים שהסיכוי לקבל אותו הוא הגבוה ביותר?',type:'number',unit:'',expected:5,tolerance:0,hint:'ספרו בטבלה כמה פעמים מופיע כל סכום.',explanation:'הסכום 5 מתקבל בארבע דרכים, יותר מכל סכום אחר.'},
+      {id:'e',label:'ה',prompt:'מהו הסיכוי לקבל את הסכום בעל ההסתברות הגבוהה ביותר?',type:'fraction',event:'הסכום השכיח ביותר',expected:[4,16],hint:'לאחר שמצאתם את הסכום שמופיע הכי הרבה פעמים, חלקו את מספר הופעותיו במספר כל התוצאות.',explanation:'הסכום 5 מתקבל ב-4 מתוך 16 תוצאות. לכן P = 4/16 = 1/4.'}
+    ]
+  },
+  {
+    id:'q43_two_dice_events',
+    title:'שתי קוביות – סכומים ואירועים',
+    category:'טבלה דו־ממדית אוטומטית',
+    story:'זורקים שתי קוביות משחק רגילות. מעל טבלת העזר אפשר לבחור אם להציג בכל תא זוג סדור, סכום או מכפלה. הטבלה תתמלא אוטומטית.',
+    visual:'diceHelper',
+    visualData:{modes:['pair','sum','product'],defaultMode:'pair'},
+    sampleSpace:'36 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מהי ההסתברות שסכום המספרים שיראו שתי הקוביות יהיה 9?',type:'fraction',event:'סכום 9',expected:[4,36],hint:'עברו לתצוגת „סכום” וספרו כמה תאים מכילים 9.',explanation:'הסכום 9 מתקבל ב-4 תוצאות. לכן P = 4/36 = 1/9.'},
+      {id:'b',label:'ב',prompt:'מהי ההסתברות שסכום המספרים שיראו שתי הקוביות יהיה 6?',type:'fraction',event:'סכום 6',expected:[5,36],hint:'בתצוגת „סכום” ספרו כמה תאים מכילים 6.',explanation:'הסכום 6 מתקבל ב-5 תוצאות. לכן P = 5/36.'},
+      {id:'c',label:'ג',prompt:'מהי ההסתברות ששתי הקוביות יראו אותו מספר?',type:'fraction',event:'אותו מספר',expected:[6,36],hint:'בתצוגת הזוגות המסודרים חפשו את האלכסון שבו שני המספרים שווים.',explanation:'יש 6 תוצאות כפולות: (1,1) עד (6,6). לכן P = 6/36 = 1/6.'},
+      {id:'d',label:'ד',prompt:'מהי ההסתברות שהסכום שיראו שתי הקוביות יהיה גדול מ־10?',type:'fraction',event:'סכום גדול מ־10',expected:[3,36],hint:'בתצוגת „סכום” מצאו את כל התאים שבהם מופיעים 11 או 12.',explanation:'יש 3 תוצאות מתאימות: (5,6), (6,5), (6,6). לכן P = 3/36 = 1/12.'},
+      {id:'e',label:'ה',prompt:'מהי ההסתברות שבדיוק קובייה אחת תראה 4?',type:'fraction',event:'בדיוק קובייה אחת מראה 4',expected:[10,36],hint:'ספרו תוצאות שבהן אחד המספרים הוא 4, אך הוציאו את (4,4).',explanation:'יש 5 אפשרויות כאשר קובייה א׳ היא 4 ועוד 5 כאשר קובייה ב׳ היא 4. לכן P = 10/36 = 5/18.'},
+      {id:'f',label:'ו',prompt:'מהי ההסתברות שלכל הפחות קובייה אחת תראה 4?',type:'fraction',event:'לפחות קובייה אחת מראה 4',expected:[11,36],hint:'כאן גם (4,4) נכללת. אפשר לספור ישירות או להשתמש באירוע המשלים.',explanation:'יש 11 תוצאות שבהן לפחות אחת הקוביות מראה 4. לכן P = 11/36.'}
+    ]
+  },
+  {
+    id:'q44_two_dice_sum_focus',
+    title:'שתי קוביות – חקר סכומים',
+    category:'טבלה דו־ממדית אוטומטית',
+    story:'זורקים שתי קוביות משחק רגילות בעת ובעונה אחת. בכל הטלה בודקים את סכום המספרים בשתי הקוביות. בחרו בתצוגת „סכום” בטבלת העזר כדי לחקור את כל האפשרויות.',
+    visual:'diceHelper',
+    visualData:{modes:['pair','sum','product'],defaultMode:'sum'},
+    sampleSpace:'36 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'אילו מספרים יכולים להתקבל כסכום?',type:'sample_space',expected:[2,3,4,5,6,7,8,9,10,11,12],hint:'בדקו בטבלה את הסכום הקטן ביותר, את הגדול ביותר ואת כל הערכים שביניהם.',explanation:'הסכומים האפשריים הם 2 עד 12.'},
+      {id:'b',label:'ב',prompt:'כתבו את כל האפשרויות לקבלת הסכום 8.',type:'ordered_pairs',expected:[[2,6],[3,5],[4,4],[5,3],[6,2]],hint:'בתצוגת „סכום” אתרו את כל התאים שבהם מופיע 8, ואז כתבו את הזוגות הסדורים המתאימים.',explanation:'האפשרויות הן (2,6), (3,5), (4,4), (5,3), (6,2).'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי לקבל את הסכום 3? פרטו את האפשרויות.',type:'fraction',event:'סכום 3',expected:[2,36],hint:'אתרו את כל התאים שבהם סכום הקוביות הוא 3.',explanation:'האפשרויות הן (1,2) ו-(2,1). לכן P = 2/36 = 1/18.'},
+      {id:'d',label:'ד',prompt:'שני זורקת שתי קוביות ומנחשת מה יהיה סכומן. מהו סכום המספרים שהסיכוי לקבלתו הוא הגבוה ביותר, ומהו הסיכוי הזה?',type:'number_fraction',numberUnit:'הסכום',expectedNumber:7,numberTolerance:0,event:'לקבל את הסכום השכיח ביותר',expectedFraction:[6,36],hint:'ספרו בתצוגת „סכום” כמה פעמים מופיע כל סכום.',explanation:'הסכום 7 מופיע ב-6 תוצאות, יותר מכל סכום אחר. לכן הסיכוי הוא 6/36 = 1/6.'}
+    ]
+  },
+  {
+    id:'q45_two_dice_even',
+    title:'שתי קוביות – מספרים זוגיים',
+    category:'טבלה דו־ממדית אוטומטית',
+    story:'מטילים שתי קוביות משחק שעליהן כתובים המספרים 1, 2, 3, 4, 5, 6. היעזרו בטבלה הדו־ממדית; אפשר להציג בה זוגות סדורים, סכומים או מכפלות.',
+    visual:'diceHelper',
+    visualData:{modes:['pair','sum','product'],defaultMode:'pair'},
+    sampleSpace:'36 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות ששתי הקוביות יראו את אותו המספר?',type:'fraction',event:'אותו מספר',expected:[6,36],hint:'חפשו את תאי האלכסון שבהם שני המספרים שווים.',explanation:'יש 6 תוצאות שבהן המספרים שווים. לכן P = 6/36 = 1/6.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות ששתי הקוביות יראו מספר זוגי?',type:'fraction',event:'שתי הקוביות זוגיות',expected:[9,36],hint:'בכל קובייה יש שלוש תוצאות זוגיות. ספרו את כל הצירופים של זוגי עם זוגי.',explanation:'יש 3 × 3 = 9 תוצאות מתאימות מתוך 36. לכן P = 9/36 = 1/4.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שלפחות על אחת הקוביות יופיע מספר זוגי?',type:'fraction',event:'לפחות מספר זוגי אחד',expected:[27,36],hint:'אפשר לחשב בעזרת האירוע המשלים: ששתי הקוביות אי־זוגיות.',explanation:'רק 9 תוצאות הן אי־זוגי עם אי־זוגי, ולכן 36 − 9 = 27 מתאימות. P = 27/36 = 3/4.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שעל אחת הקוביות יופיע מספר זוגי ועל האחרת מספר אי־זוגי?',type:'fraction',event:'אחת זוגית ואחת אי־זוגית',expected:[18,36],hint:'יש שני סדרים אפשריים: זוגי–אי־זוגי או אי־זוגי–זוגי.',explanation:'בכל סדר יש 3 × 3 = 9 תוצאות. יחד 18 מתוך 36. לכן P = 18/36 = 1/2.'}
+    ]
+  },
+  {
+    id:'q46_two_dice_sums',
+    title:'שתי קוביות – הסתברויות של סכומים',
+    category:'טבלה דו־ממדית אוטומטית',
+    story:'מטילים שתי קוביות משחק רגילות ומחשבים את סכום המספרים שהתקבלו. בחרו בתצוגת „סכום” בטבלת העזר.',
+    visual:'diceHelper',
+    visualData:{modes:['pair','sum','product'],defaultMode:'sum'},
+    sampleSpace:'36 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שסכום המספרים יהיה 1?',type:'fraction',event:'סכום 1',expected:[0,36],hint:'בדקו מהו הסכום הקטן ביותר שאפשר לקבל בשתי קוביות רגילות.',explanation:'הסכום הקטן ביותר הוא 2, לכן סכום 1 אינו אפשרי. P = 0.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שסכום המספרים יהיה 7?',type:'fraction',event:'סכום 7',expected:[6,36],hint:'בתצוגת „סכום” ספרו את כל התאים שבהם מופיע 7.',explanation:'יש 6 תוצאות שסכומן 7. לכן P = 6/36 = 1/6.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שסכום המספרים יהיה לפחות 9?',type:'fraction',event:'סכום לפחות 9',expected:[10,36],hint:'„לפחות 9” כולל את הסכומים 9, 10, 11 ו־12.',explanation:'מספר התוצאות הוא 4 + 3 + 2 + 1 = 10. לכן P = 10/36 = 5/18.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שסכום המספרים יתחלק ב־3?',type:'fraction',event:'הסכום מתחלק ב־3',expected:[12,36],hint:'בתצוגת „סכום” חפשו את הסכומים שהם כפולות של 3.',explanation:'הסכומים האפשריים שמתחלקים ב־3 הם 3, 6, 9, 12. מספר התוצאות המתאימות הוא 2 + 5 + 4 + 1 = 12. לכן P = 12/36 = 1/3.'}
+    ]
+  }
 
 
 ];
 
-const state={student:{name:'',className:'',teacher:''},index:0,answers:{},locked:{},scores:{}};
+const state={student:{name:'',className:'',teacher:''},index:0,answers:{},locked:{},scores:{},helperTables:{},helperModes:{},helperSelections:{}};
 const $=id=>document.getElementById(id);
 
 function initClasses(){const s=$('className');s.innerHTML='<option value="">בחרו כיתה</option>'+Array.from({length:11},(_,i)=>`<option value="י׳${i+1}">י׳${i+1}</option>`).join('');}
@@ -818,9 +943,45 @@ function svgPieChart(data){
   return svg+'</svg>';
 }
 
+
+function helperModeLabel(mode){return ({pair:'זוג סדור',sum:'סכום',product:'מכפלה',diff:'הפרש מוחלט',quotient:'מנה'})[mode]||mode;}
+function diceCellValue(a,b,mode){
+  if(mode==='sum')return a+b;
+  if(mode==='product')return a*b;
+  if(mode==='diff')return Math.abs(a-b);
+  if(mode==='quotient')return `${a}/${b}`;
+  return `(${a},${b})`;
+}
+function diceSelectionKey(a,b){return `${a}_${b}`;}
+function selectedDiceCells(qid){return state.helperSelections[qid]||new Set();}
+function updateDiceSelectionCount(qid){const el=document.getElementById(`dice-count-${qid}`);if(el)el.textContent=`סומנו ${selectedDiceCells(qid).size} מתוך 36`;}
+function toggleDiceCell(qid,a,b,td){if(!state.helperSelections[qid])state.helperSelections[qid]=new Set();const s=state.helperSelections[qid],k=diceSelectionKey(a,b);if(s.has(k)){s.delete(k);td.classList.remove('selected');}else{s.add(k);td.classList.add('selected');}updateDiceSelectionCount(qid);}
+function clearDiceSelection(qid){state.helperSelections[qid]=new Set();document.querySelectorAll('#visualArea .auto-cell.selected').forEach(td=>td.classList.remove('selected'));updateDiceSelectionCount(qid);}
+function renderDiceHelper(q){
+  const d=q.visualData||{}, modes=d.modes||['pair','sum','product'], selected=state.helperModes[q.id]||d.defaultMode||modes[0];state.helperModes[q.id]=selected;
+  if(!state.helperSelections[q.id])state.helperSelections[q.id]=new Set();
+  const opts=modes.map(m=>`<option value="${m}" ${m===selected?'selected':''}>${helperModeLabel(m)}</option>`).join('');
+  const nums=[1,2,3,4,5,6];
+  let table='<div class="helper-table-wrap"><table class="helper-table"><thead><tr><th>קובייה א׳ ↓ / קובייה ב׳ →</th>'+nums.map(n=>`<th>${n}</th>`).join('')+'</tr></thead><tbody>';
+  nums.forEach(a=>{table+=`<tr><th>${a}</th>`+nums.map(b=>{const sel=state.helperSelections[q.id].has(diceSelectionKey(a,b))?' selected':'';return `<td class="auto-cell${sel}" data-a="${a}" data-b="${b}" onclick="toggleDiceCell('${q.id}',${a},${b},this)">${diceCellValue(a,b,selected)}</td>`}).join('')+'</tr>';});
+  table+='</tbody></table></div>';
+  return `<div class="py-3"><div class="helper-title">טבלת עזר – שתי קוביות</div><div class="helper-toolbar"><label for="dice-mode-${q.id}">מה להציג בכל תא?</label><select id="dice-mode-${q.id}" onchange="changeDiceHelperMode('${q.id}',this.value)">${opts}</select><button type="button" class="helper-clear-btn" onclick="clearDiceSelection('${q.id}')">ניקוי סימונים</button><span id="dice-count-${q.id}" class="helper-selected-count">סומנו ${state.helperSelections[q.id].size} מתוך 36</span></div>${table}<div class="helper-note">לחצו על תא כדי לסמן אותו. לחיצה נוספת מבטלת את הסימון. הסימון הוא כלי עזר בלבד ואינו משפיע על הציון.</div></div>`;
+}
+function changeDiceHelperMode(qid,mode){state.helperModes[qid]=mode;const q=questions.find(x=>x.id===qid);if(!q)return;document.querySelectorAll('#visualArea .auto-cell').forEach(td=>{td.textContent=diceCellValue(Number(td.dataset.a),Number(td.dataset.b),mode);});}
+function saveManualHelperCell(qid,r,c,val){if(!state.helperTables[qid])state.helperTables[qid]={};state.helperTables[qid][`${r}_${c}`]=val;}
+function renderManualGrid(q){
+  const d=q.visualData||{}, rows=d.rows||[],cols=d.cols||[],saved=state.helperTables[q.id]||{};
+  let table=`<div class="helper-table-wrap"><table class="helper-table"><thead><tr><th>${escapeHtml(d.rowLabel||'א׳')} ↓ / ${escapeHtml(d.colLabel||'ב׳')} →</th>${cols.map(c=>`<th>${escapeHtml(c)}</th>`).join('')}</tr></thead><tbody>`;
+  rows.forEach((r,ri)=>{table+=`<tr><th>${escapeHtml(r)}</th>`;cols.forEach((c,ci)=>{const v=saved[`${ri}_${ci}`]||'';table+=`<td><input value="${escapeHtml(v)}" placeholder="${escapeHtml(d.placeholder||'')}" oninput="saveManualHelperCell('${q.id}',${ri},${ci},this.value)"></td>`;});table+='</tr>';});
+  table+='</tbody></table></div>';
+  return `<div class="py-3"><div class="helper-title">טבלת עזר – מלאו בעצמכם</div>${table}<div class="helper-note">הטבלה אינה נבדקת. היא נועדה לעזור לארגן את מרחב המדגם.</div></div>`;
+}
+
 function renderVisual(q){
   const a=$('visualArea');
-  if(q.visual==='spinner3'){
+  if(q.visual==='diceHelper'){a.innerHTML=renderDiceHelper(q);
+  }else if(q.visual==='manualGrid'){a.innerHTML=renderManualGrid(q);
+  }else if(q.visual==='spinner3'){
     a.innerHTML=`<div class="spinner-wrap"><svg viewBox="0 0 320 320" width="280" height="280" aria-label="רולטה עם שלוש גזרות שוות"><circle cx="160" cy="160" r="118" fill="#fff7d6" stroke="#111827" stroke-width="4"/><line x1="160" y1="160" x2="160" y2="42" stroke="#111827" stroke-width="3"/><line x1="160" y1="160" x2="262" y2="219" stroke="#111827" stroke-width="3"/><line x1="160" y1="160" x2="58" y2="219" stroke="#111827" stroke-width="3"/><text x="205" y="112" text-anchor="middle" font-size="34" font-weight="800" font-family="Rubik">1</text><text x="160" y="245" text-anchor="middle" font-size="34" font-weight="800" font-family="Rubik">2</text><text x="110" y="112" text-anchor="middle" font-size="34" font-weight="800" font-family="Rubik">3</text></svg></div>`;
   }else if(q.visual==='faces12'){
     a.innerHTML=`<div class="py-5"><div class="text-center font-extrabold text-slate-800 mb-2">12 פאות שוות</div><div class="face-grid">${Array.from({length:12},(_,i)=>`<div class="face">${i+1}</div>`).join('')}</div><div class="text-center text-xs text-slate-500 px-4">כל אחת מ־12 הפאות בעלת אותה הסתברות להתקבל.</div></div>`;
@@ -907,6 +1068,7 @@ function inputFor(q,s,ans){const k=key(q,s),v=ans?.value;
   }
   if(s.type==='sample_space')return `<div class="mt-3"><label class="block text-xs font-semibold text-slate-500 mb-1">מרחב המדגם</label><input id="space-${k}" class="w-full border border-slate-300 rounded-xl px-3 py-2.5 font-bold" dir="ltr" placeholder="לדוגמה: 1,2,3" value="${v?.raw??''}"></div>`;
   if(s.type==='text_set')return `<div class="mt-3"><label class="block text-xs font-semibold text-slate-500 mb-1">כתבו את כל האפשרויות, מופרדות בפסיקים</label><input id="textset-${k}" class="w-full border border-slate-300 rounded-xl px-3 py-2.5 font-bold" placeholder="לדוגמה: אפשרות א, אפשרות ב" value="${v?.raw??''}"></div>`;
+  if(s.type==='ordered_pairs')return `<div class="mt-3"><label class="block text-xs font-semibold text-slate-500 mb-1">כתבו זוגות סדורים, מופרדים בנקודה־פסיק</label><textarea id="pairs-${k}" class="w-full min-h-20 border border-slate-300 rounded-xl px-3 py-2.5 font-bold" dir="ltr" placeholder="לדוגמה: (1,2); (2,1)">${v?.raw??''}</textarea></div>`;
   if(s.type==='number')return `<div class="answer-number-row"><input id="number-${k}" type="number" step="any" value="${v?.number??''}" aria-label="תשובה מספרית"><span class="unit">${s.unit||''}</span></div>`;
   if(s.type==='percent')return `<div class="answer-number-row"><input id="percent-${k}" type="number" step="any" value="${v?.percent??''}" aria-label="אחוז"><span class="math font-extrabold">%</span></div>`;
   if(s.type==='fraction_decimal')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="decimal-${k}" type="number" step="any" value="${v?.decimal??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="שבר עשרוני"></div>`;
@@ -928,6 +1090,7 @@ function readAnswer(q,s){const k=key(q,s);
   if(s.type==='fraction_percent'){const nr=$('num-'+k).value,dr=$('den-'+k).value,pr=$('percent-'+k).value;if(nr===''||dr===''||pr==='')return {filled:false};const n=Number(nr),d=Number(dr),pct=Number(pr),en=s.expectedFraction[0],ed=s.expectedFraction[1],tol=s.tolerance??0.01;const ok=d!==0&&n*ed===en*d&&Math.abs(pct-s.expectedPercent)<=tol;return {filled:true,value:{num:n,den:d,percent:pct},correct:ok,display:`${n}/${d} = ${pct}%`};}
   if(s.type==='sample_space'){const raw=$('space-'+k).value.trim();if(!raw)return {filled:false};const nums=(raw.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);const uniq=[...new Set(nums)].sort((a,b)=>a-b),exp=[...s.expected].sort((a,b)=>a-b);return {filled:true,value:{raw},correct:JSON.stringify(uniq)===JSON.stringify(exp),display:`{${nums.join(', ')}}`};}
   if(s.type==='text_set'){const raw=$('textset-'+k).value.trim();if(!raw)return {filled:false};const norm=t=>String(t).toLowerCase().replace(/[.׳"'״]/g,'').replace(/\s+/g,' ').trim();const parts=raw.split(/[,;\n]+/).map(norm).filter(Boolean);const uniq=[...new Set(parts)].sort();const exp=[...new Set(s.expected.map(norm))].sort();const ok=exp.every(e=>uniq.some(u=>u===e||u.includes(e)||e.includes(u)))&&uniq.length>=exp.length;return {filled:true,value:{raw},correct:ok,display:raw};}
+  if(s.type==='ordered_pairs'){const raw=$('pairs-'+k).value.trim();if(!raw)return {filled:false};const pairs=[];const re=/\(?\s*(-?\d+)\s*[,;+]\s*(-?\d+)\s*\)?/g;let m;while((m=re.exec(raw))!==null)pairs.push([Number(m[1]),Number(m[2])]);const canon=a=>a.map(p=>`${p[0]},${p[1]}`).sort();const got=canon(pairs),exp=canon(s.expected);const ok=got.length===exp.length&&got.every((v,i)=>v===exp[i]);return {filled:true,value:{raw},correct:ok,display:pairs.map(p=>`(${p[0]},${p[1]})`).join('; ')};}
 
   if(s.type==='number_fraction'){const nr=$('nf-number-'+k).value,fr=$('nf-num-'+k).value,dr=$('nf-den-'+k).value;if(nr===''||fr===''||dr==='')return {filled:false};const number=Number(nr),n=Number(fr),d=Number(dr),en=s.expectedFraction[0],ed=s.expectedFraction[1];const okNum=Math.abs(number-s.expectedNumber)<=(s.numberTolerance??0);const okFrac=d!==0&&n*ed===en*d;return {filled:true,value:{number,num:n,den:d},correct:okNum&&okFrac,display:`${s.numberUnit||'כמות'}: ${number} | ${n}/${d}`};}
   if(s.type==='choice'){const sel=document.querySelector(`input[name="choice-${k}"]:checked`);if(!sel)return {filled:false};return {filled:true,value:{choice:sel.value},correct:sel.value===s.expected,display:sel.closest('label')?.innerText.trim()||sel.value};}
