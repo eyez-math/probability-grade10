@@ -79,6 +79,12 @@
     .answer-number-row{direction:ltr;display:flex;align-items:center;justify-content:flex-start;gap:8px;margin-top:14px}
     .answer-number-row input{width:110px;height:42px;text-align:center;border:1.5px solid #cbd5e1;border-radius:10px;font-weight:800;font-size:18px;background:#fff;color:#0f172a}
     .answer-number-row .unit{font-size:14px;font-weight:700;color:#64748b;direction:rtl;unicode-bidi:isolate}
+    .number-fraction-wrap{display:flex;align-items:center;justify-content:flex-start;gap:24px;margin-top:12px;direction:rtl}
+    .number-fraction-wrap .number-block{flex:0 0 230px}
+    .number-fraction-wrap .prob-block{flex:1;min-width:0}
+    .number-fraction-wrap .prob-row{margin-top:0;flex-wrap:nowrap;white-space:nowrap}
+    .number-fraction-wrap .math-prob{white-space:nowrap;max-width:none}
+
     @media(max-width:820px){
       .main-grid{grid-template-columns:1fr!important}.visual-col{position:static!important}.nav-row{grid-template-columns:auto 1fr auto!important;gap:8px}.nav-select{min-width:0;width:100%}
     }
@@ -88,9 +94,17 @@
     .chart-visual{padding:8px 8px 2px;overflow:hidden}
     .edu-chart{width:100%;height:auto;display:block;max-width:680px;margin:0 auto}
     .pie-edu-chart{max-width:520px}
-    @media(max-width:640px){.chart-visual{padding:4px 0}.edu-chart{min-height:280px}.pie-edu-chart{min-height:320px}}
+    @media(max-width:640px){
+      .number-fraction-wrap{flex-direction:column;align-items:stretch;gap:12px}
+      .number-fraction-wrap .number-block{flex:auto}
+      .number-fraction-wrap .prob-row{flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}
+.chart-visual{padding:4px 0}.edu-chart{min-height:280px}.pie-edu-chart{min-height:320px}}
 
-.helper-table-wrap{overflow:auto;max-width:100%;padding:4px 0}.helper-table{border-collapse:collapse;margin:10px auto;direction:ltr;background:white}.helper-table th,.helper-table td{border:1px solid #94a3b8;min-width:58px;height:46px;text-align:center;padding:3px;font-size:12px}.helper-table th{background:#f1f5f9;font-weight:800;color:#334155}.helper-table input{width:100%;height:36px;border:1px solid #cbd5e1;border-radius:8px;text-align:center;font-weight:700;font-size:12px;direction:ltr}.helper-table .auto-cell{font-weight:800;color:#172033;background:#fff;cursor:pointer;user-select:none;transition:background .15s ease,box-shadow .15s ease,color .15s ease}.helper-table .auto-cell:hover{background:#eff6ff}.helper-table .auto-cell.selected{background:#fde68a!important;color:#111827;box-shadow:inset 0 0 0 2px #f59e0b}.helper-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:8px 0 4px}.helper-toolbar select{border:1px solid #cbd5e1;border-radius:10px;background:white;padding:8px 10px;font-weight:700;font-family:inherit}.helper-note{font-size:12px;color:#64748b;text-align:center;margin-top:6px}.helper-selected-count{font-size:12px;font-weight:800;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:999px;padding:6px 10px}.helper-clear-btn{border:1px solid #f59e0b;background:#fff7ed;color:#9a3412;border-radius:10px;padding:8px 12px;font-weight:800;font-family:inherit;cursor:pointer}.helper-clear-btn:hover{background:#ffedd5}.helper-title{font-weight:900;color:#172033;text-align:center;margin-bottom:6px}@media(max-width:640px){.helper-table th,.helper-table td{min-width:46px;height:42px;font-size:11px}.helper-table input{height:32px;font-size:11px}.helper-toolbar{justify-content:flex-start}}
+.helper-table-wrap{overflow:auto;max-width:100%;padding:4px 0}.helper-table{border-collapse:collapse;margin:10px auto;direction:ltr;background:white}.helper-table th,.helper-table td{border:1px solid #94a3b8;min-width:58px;height:46px;text-align:center;padding:3px;font-size:12px}.helper-table th{background:#f1f5f9;font-weight:800;color:#334155}.helper-table input{width:100%;height:36px;border:1px solid #cbd5e1;border-radius:8px;text-align:center;font-weight:700;font-size:12px;direction:ltr}.helper-table .auto-cell{font-weight:800;color:#172033;background:#fff;cursor:pointer;user-select:none;transition:background .15s ease,box-shadow .15s ease,color .15s ease}.helper-table .auto-cell:hover{background:#eff6ff}.helper-table .auto-cell.selected{background:#fde68a!important;color:#111827;box-shadow:inset 0 0 0 2px #f59e0b}.helper-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:8px 0 4px}.helper-toolbar select{border:1px solid #cbd5e1;border-radius:10px;background:white;padding:8px 10px;font-weight:700;font-family:inherit}.helper-note{font-size:12px;color:#64748b;text-align:center;margin-top:6px}.helper-selected-count{font-size:12px;font-weight:800;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:999px;padding:6px 10px}.helper-clear-btn{border:1px solid #f59e0b;background:#fff7ed;color:#9a3412;border-radius:10px;padding:8px 12px;font-weight:800;font-family:inherit;cursor:pointer}.helper-clear-btn:hover{background:#ffedd5}.helper-title{font-weight:900;color:#172033;text-align:center;margin-bottom:6px}@media(max-width:640px){
+      .number-fraction-wrap{flex-direction:column;align-items:stretch;gap:12px}
+      .number-fraction-wrap .number-block{flex:auto}
+      .number-fraction-wrap .prob-row{flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}
+.helper-table th,.helper-table td{min-width:46px;height:42px;font-size:11px}.helper-table input{height:32px;font-size:11px}.helper-toolbar{justify-content:flex-start}}
 </style>
 </head>
 <body>
@@ -923,6 +937,209 @@ const questions = [
     ]
   }
 
+  ,
+  {
+    id:'q52_spinner_envelope_sum_game',
+    title:'שעון מספרים ופתק מן המעטפה',
+    category:'מרחב מדגם דו־שלבי וסכום מספרים',
+    story:'שון מסובב שעון מספרים המחולק ל־4 גזרות שוות ועליהן המספרים 4, 1, ‎−2, ‎−5. לאחר מכן יעל מוציאה באקראי פתק אחד מתוך ארבעה פתקים שעליהם כתובים 5, ‎−3, ‎−1, ‎−4. בכל סיבוב מחשבים את סכום שני המספרים: סכום חיובי מזכה את יעל, סכום שלילי מזכה את שון, וסכום 0 אינו מזכה אף אחד.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'פתק',colLabel:'שעון',rows:[5,-3,-1,-4],cols:[4,1,-2,-5],placeholder:'סכום'},
+    sampleSpace:'16 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שהמחוג ייעצר על המספר 1?',type:'fraction',event:'המחוג נעצר על 1',expected:[1,4],hint:'בשעון יש ארבע גזרות שוות. ספרו כמה מהן מתאימות לאירוע.',explanation:'יש גזרה אחת מתאימה מתוך 4, לכן P = 1/4.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שהפתק שיוצא יהיה מספר שלילי?',type:'fraction',event:'הפתק שלילי',expected:[3,4],hint:'עברו על ארבעת הפתקים וספרו כמה מהם נושאים מספר שלילי.',explanation:'שלושה מתוך ארבעת הפתקים הם שליליים, לכן P = 3/4.'},
+      {id:'c1',label:'ג(1)',prompt:'השלימו את טבלת הסכומים של כל האפשרויות.',type:'helper_complete',rule:'sum',hint:'בכל תא חברו את מספר השעון למספר שעל הפתק.',explanation:'בכל אחד מ־16 התאים צריך להופיע סכום שני המספרים המתאימים לשורה ולעמודה.'},
+      {id:'c2',label:'ג(2)',prompt:'מה הסיכוי של כל אחד מהשחקנים לנצח?',type:'two_fractions',fields:[{key:'yael',label:'יעל',event:'הסכום חיובי',expected:[5,16]},{key:'shon',label:'שון',event:'הסכום שלילי',expected:[8,16]}],hint:'סמנו בטבלה בנפרד תוצאות חיוביות ותוצאות שליליות וספרו כל קבוצה.',explanation:'ליעל 5 תוצאות חיוביות מתוך 16, ולשון 8 תוצאות שליליות מתוך 16.'},
+      {id:'c2b',label:'ג(2) המשך',prompt:'למי יש סיכוי גבוה יותר לנצח?',type:'radio',options:[{value:'yael',label:'יעל'},{value:'shon',label:'שון'},{value:'same',label:'הסיכוי שווה'}],expected:'shon',hint:'השוו בין שתי ההסתברויות שמצאתם.',explanation:'לשון 8/16 לעומת 5/16 ליעל, ולכן לשון סיכוי גבוה יותר לנצח.'},
+      {id:'c3',label:'ג(3)',prompt:'מה הסיכוי שאף אחד מהשחקנים לא ינצח?',type:'fraction',event:'אף אחד לא מנצח',expected:[3,16],hint:'אף אחד אינו מנצח כאשר סכום המספרים הוא 0. חפשו תאים כאלה בטבלה.',explanation:'יש 3 תוצאות שבהן הסכום 0, לכן P = 3/16.'}
+    ]
+  },
+  {
+    id:'q53_coin_spinner_product',
+    title:'מטבע וסביבון – מכפלת המספרים',
+    category:'מרחב מדגם דו־שלבי ומכפלה',
+    story:'דוד זורק מטבע שעל צד אחד כתוב 3 ועל הצד השני 1, ואחר כך מסובב סביבון שעל פאותיו המספרים 1, 2, 3, 4. בודקים את מכפלת שני המספרים.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'מטבע',colLabel:'סביבון',rows:[3,1],cols:[1,2,3,4],placeholder:'מכפלה'},
+    sampleSpace:'8 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'השלימו את הטבלה וכתבו בכל תא את המכפלה המתאימה.',type:'helper_complete',rule:'product',hint:'בכל תא הכפילו את מספר המטבע במספר הסביבון.',explanation:'הטבלה מכילה 8 מכפלות, אחת לכל שילוב אפשרי של מטבע וסביבון.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שהמכפלה תהיה גדולה מ־3?',type:'fraction',event:'המכפלה גדולה מ־3',expected:[4,8],hint:'עברו על הטבלה וספרו תאים שהערך בהם גדול מ־3.',explanation:'יש 4 תוצאות מתאימות מתוך 8, לכן P = 4/8 = 1/2.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שהמכפלה תהיה קטנה מ־3?',type:'fraction',event:'המכפלה קטנה מ־3',expected:[2,8],hint:'ספרו בטבלה את המכפלות הקטנות מ־3.',explanation:'יש 2 תוצאות מתאימות מתוך 8, לכן P = 2/8 = 1/4.'},
+      {id:'d',label:'ד',prompt:'דוד החליט שאם המכפלה תהיה בדיוק 3 הוא ילך לישון. מה ההסתברות שדוד ילך לישון?',type:'fraction',event:'המכפלה שווה 3',expected:[2,8],hint:'חפשו בטבלה את כל התאים שבהם המכפלה היא בדיוק 3.',explanation:'המכפלה 3 מתקבלת בשתי תוצאות מתוך 8, לכן P = 2/8 = 1/4.'}
+    ]
+  },
+  {
+    id:'q54_coin_die_sum_game',
+    title:'מטבע וקובייה – משחק בין ירדן לגלבוע',
+    category:'סכום מספרים ומשחק הוגן',
+    story:'ירדן וגלבוע זורקים מטבע שעל צד אחד כתוב ‎−5 ועל הצד השני 3, ואחר כך זורקים קובייה רגילה עם המספרים 1–6. מחשבים את סכום המספרים. אם הסכום שלילי ירדן מנקה את הבית; אם הסכום חיובי גלבוע מנקה; ואם הסכום 0 הם מנקים יחד.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'מטבע',colLabel:'קובייה',rows:[-5,3],cols:[1,2,3,4,5,6],placeholder:'סכום'},
+    sampleSpace:'12 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מלאו בטבלה את כל הסכומים האפשריים.',type:'helper_complete',rule:'sum',hint:'חברו את מספר המטבע למספר שעל הקובייה בכל תא.',explanation:'בטבלה יש 12 סכומים — אחד לכל שילוב של צד המטבע ותוצאת הקובייה.'},
+      {id:'b',label:'ב',prompt:'מה הסיכוי של כל אחד מן האחים לנקות את הבית?',type:'two_fractions',fields:[{key:'yarden',label:'ירדן',event:'סכום שלילי',expected:[4,12]},{key:'gilboa',label:'גלבוע',event:'סכום חיובי',expected:[7,12]}],hint:'סכום שלילי מזכה את ירדן, וסכום חיובי מזכה את גלבוע. ספרו כל קבוצה בנפרד.',explanation:'לירדן 4 תוצאות שליליות מתוך 12, ולגלבוע 7 תוצאות חיוביות מתוך 12.'},
+      {id:'c',label:'ג',prompt:'האם המשחק הוגן?',type:'fairness',expected:'no',hint:'השוו בין הסיכוי של ירדן לסיכוי של גלבוע.',explanation:'לא. לירדן הסתברות 4/12 ולגלבוע 7/12, ולכן הסיכויים אינם שווים.'},
+      {id:'d',label:'ד',prompt:'איזה שינוי בכלל יכול ליצור משחק הוגן?',type:'radio',options:[{value:'fair_rule',label:'ירדן מנצח אם הסכום קטן או שווה ל־1; גלבוע מנצח אם הסכום 4 ומעלה'},{value:'negative_zero',label:'ירדן מנצח אם הסכום שלילי או 0; גלבוע אם הסכום חיובי'},{value:'same',label:'להשאיר את הכללים ללא שינוי'}],expected:'fair_rule',hint:'חפשו חלוקה של 12 התוצאות לשתי קבוצות שוות של 6.',explanation:'הסכומים ‎−4, ‎−3, ‎−2, ‎−1, 0, 1 נותנים 6 תוצאות, והסכומים 4, 5, 6, 7, 8, 9 נותנים 6 תוצאות. כך לכל אחד הסתברות 1/2.'}
+    ]
+  },
+  {
+    id:'q55_two_stage_street_game',
+    title:'משחק הרחוב של ג׳וזף',
+    category:'משחק דו־שלבי וסכום זכיות',
+    story:'בשלב הראשון בוחרים באקראי אחד משלושה סירים: מתחתיהם 10 שקלים, 5 שקלים ו־0. בשלב השני בוחרים באקראי אחת מארבע מכסות: מתחתיהן 10 שקלים, 5 שקלים, 0 ו־0. בסוף המשחק מקבלים את סכום הכסף שנחשף בשני השלבים.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'שלב ראשון',colLabel:'שלב שני',rows:[10,5,0],cols:[10,5,0,0],placeholder:'סכום'},
+    sampleSpace:'12 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מלאו את הטבלה המתארת את כל אפשרויות הזכייה במשחק.',type:'helper_complete',rule:'sum',hint:'בכל תא חברו את הסכום מן השלב הראשון לסכום מן השלב השני.',explanation:'בטבלה 12 תוצאות שוות־סיכוי, אחת לכל בחירה של סיר ושל מכסה.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות לזכות ב־15 שקלים?',type:'fraction',event:'זכייה של 15 שקלים',expected:[2,12],hint:'חפשו בטבלה את כל התאים שסכומם 15.',explanation:'15 מתקבל בשתי דרכים: 10+5 ו־5+10. לכן P = 2/12 = 1/6.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות לזכות ב־0 שקלים?',type:'fraction',event:'זכייה של 0 שקלים',expected:[2,12],hint:'בדקו אילו שילובים נותנים סכום 0.',explanation:'צריך לקבל 0 בשלב הראשון ואחד משני האפסים בשלב השני. יש 2 תוצאות מתוך 12, לכן P = 2/12 = 1/6.'},
+      {id:'d',label:'ד',prompt:'מהו הסכום שההסתברות לזכות בו היא הגבוהה ביותר, ומהי ההסתברות לזכות בסכום זה?',type:'number_fraction',numberUnit:'שקלים',expectedNumber:10,numberTolerance:0,event:'זכייה בסכום השכיח ביותר',expectedFraction:[4,12],hint:'ספרו כמה פעמים מופיע כל סכום בטבלה.',explanation:'10 שקלים מתקבלים ב־4 מתוך 12 תוצאות, יותר מכל סכום אחר. לכן P = 4/12 = 1/3.'},
+      {id:'e1',label:'ה(1)',prompt:'כדי להשתתף צריך לשלם מראש 10 שקלים. מה ההסתברות לסיים את המשחק ברווח?',type:'fraction',event:'סיום ברווח',expected:[3,12],hint:'רווח מתקבל כאשר סכום הזכייה גדול מ־10.',explanation:'זכייה של 15 או 20 שקלים יוצרת רווח. יש 3 תוצאות כאלה מתוך 12, לכן P = 3/12 = 1/4.'},
+      {id:'e2',label:'ה(2)',prompt:'מה ההסתברות לסיים את המשחק בהפסד?',type:'fraction',event:'סיום בהפסד',expected:[5,12],hint:'הפסד מתקבל כאשר סכום הזכייה קטן מ־10.',explanation:'זכייה של 0 או 5 שקלים יוצרת הפסד. יש 5 תוצאות כאלה מתוך 12, לכן P = 5/12.'},
+      {id:'e3',label:'ה(3)',prompt:'מה ההסתברות לסיים את המשחק בסכום 0, כלומר ללא רווח וללא הפסד?',type:'fraction',event:'איזון אחרי דמי ההשתתפות',expected:[4,12],hint:'איזון מתקבל כאשר הזכייה בדיוק שווה לדמי ההשתתפות.',explanation:'זכייה של 10 שקלים מתקבלת ב־4 מתוך 12 תוצאות, לכן P = 4/12 = 1/3.'}
+    ]
+  },
+  {
+    id:'q56_drawer_box_product_game',
+    title:'שלוש תיבות וארבע קופסאות – מכפלת מספרים',
+    category:'משחק דו־שלבי ומכפלה',
+    story:'במשחק בוחרים באקראי אחת משלוש תיבות המסומנות 1, 3, ‎−1, ואחר כך בוחרים באקראי אחת מארבע קופסאות שעליהן המספרים 50, ‎−50, 150, 0. מחשבים את מכפלת שני המספרים. מכפלה חיובית היא סכום שמקבלים, מכפלה שלילית היא סכום שמשלמים, ו־0 מסיים את המשחק ללא תשלום נוסף.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'תיבה',colLabel:'קופסה',rows:[1,3,-1],cols:[50,-50,150,0],placeholder:'מכפלה'},
+    sampleSpace:'12 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'השלימו את הטבלה המתארת את כל המכפלות האפשריות.',type:'helper_complete',rule:'product',hint:'בכל תא הכפילו את מספר התיבה במספר הקופסה.',explanation:'בטבלה 12 מכפלות, אחת לכל שילוב אפשרי של תיבה וקופסה.'},
+      {id:'b',label:'ב',prompt:'רוני משתתפת במשחק. מה ההסתברות שרוני תרוויח 150 שקלים?',type:'fraction',event:'רווח של 150 שקלים',expected:[2,12],hint:'חפשו בטבלה את כל התאים שבהם המכפלה שווה 150.',explanation:'המכפלה 150 מתקבלת בשתי תוצאות מתוך 12, לכן P = 2/12 = 1/6.'},
+      {id:'c',label:'ג',prompt:'מה הסיכוי שרוני תצא ברווח בסיום המשחק?',type:'fraction',event:'רווח בסיום המשחק',expected:[5,12],hint:'ספרו את כל התוצאות שבהן המכפלה חיובית.',explanation:'יש 5 מכפלות חיוביות מתוך 12, לכן P = 5/12.'},
+      {id:'d',label:'ד',prompt:'מה הסיכוי שרוני תצא בהפסד בסיום המשחק?',type:'fraction',event:'הפסד בסיום המשחק',expected:[4,12],hint:'ספרו את כל התוצאות שבהן המכפלה שלילית.',explanation:'יש 4 מכפלות שליליות מתוך 12, לכן P = 4/12 = 1/3.'},
+      {id:'e',label:'ה',prompt:'המפעיל משנה את הכללים: כל משתתף משלם מראש 50 שקלים. מה ההסתברות לצאת ברווח לאחר תשלום דמי ההשתתפות?',type:'fraction',event:'רווח לאחר תשלום 50 שקלים',expected:[3,12],hint:'כדי להישאר ברווח לאחר התשלום, סכום הזכייה צריך להיות גדול מ־50.',explanation:'רווח נקי מתקבל רק בזכייה של 150 או 450 שקלים. יש 3 תוצאות כאלה מתוך 12, לכן P = 3/12 = 1/4.'}
+    ]
+  }
+
+  ,
+  {
+    id:'q57_two_candies_with_replacement',
+    title:'שתי הוצאות סוכרייה עם החזרה',
+    category:'שני שלבים עם החזרה',
+    story:'בצנצנת יש 8 סוכריות: 3 צהובות ו־5 כחולות. יורם מוציא באקראי סוכרייה אחת, בודק את צבעה, מחזיר אותה לצנצנת ואז מוציא באקראי סוכרייה נוספת.',
+    visual:'manualGrid',
+    visualData:{
+      rowLabel:'הוצאה ראשונה',colLabel:'הוצאה שנייה',
+      rows:['צהובה','כחולה'],cols:['צהובה','כחולה'],placeholder:'הסתברות',
+      expectedGrid:[[9/64,15/64],[15/64,25/64]]
+    },
+    sampleSpace:'שתי הוצאות עם החזרה',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות להוציא סוכרייה צהובה בפעם הראשונה?',type:'fraction',event:'צהובה בפעם הראשונה',expected:[3,8],hint:'בהוצאה הראשונה מסתכלים רק על הרכב הצנצנת.',explanation:'יש 3 סוכריות צהובות מתוך 8, לכן P = 3/8.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות להוציא סוכרייה כחולה בפעם הראשונה?',type:'fraction',event:'כחולה בפעם הראשונה',expected:[5,8],hint:'בהוצאה הראשונה מסתכלים רק על הרכב הצנצנת.',explanation:'יש 5 סוכריות כחולות מתוך 8, לכן P = 5/8.'},
+      {id:'c',label:'ג',prompt:'מלאו את טבלת ההסתברויות לשתי ההוצאות.',type:'helper_complete',rule:'probability_grid',hint:'מכיוון שהסוכרייה מוחזרת, ההסתברויות בהוצאה השנייה נשארות 3/8 לצהובה ו־5/8 לכחולה. בכל תא כופלים.',explanation:'לדוגמה: P(צהובה ואז כחולה) = 3/8 · 5/8 = 15/64.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שבפעם הראשונה תצא סוכרייה כחולה ובפעם השנייה סוכרייה צהובה?',type:'fraction',event:'כחולה ואז צהובה',expected:[15,64],hint:'כפלו את ההסתברות לכחולה בהוצאה הראשונה בהסתברות לצהובה בהוצאה השנייה.',explanation:'P = 5/8 · 3/8 = 15/64.'},
+      {id:'e',label:'ה',prompt:'מה ההסתברות להוציא סוכרייה צהובה בשתי ההוצאות?',type:'fraction',event:'צהובה בשתי ההוצאות',expected:[9,64],hint:'הסוכרייה מוחזרת, ולכן שתי ההוצאות בלתי תלויות.',explanation:'P = 3/8 · 3/8 = 9/64.'}
+    ]
+  },
+  {
+    id:'q58_two_days_children',
+    title:'בחירת תורן בשני ימים',
+    category:'שני ניסויים בלתי תלויים',
+    story:'בגן יש 12 בנות ו־18 בנים. ביום הראשון הגיעה גננת מחליפה ובחרה באקראי ילד אחד שיהיה תורן גן. למחרת הגיעה מדריכה ובחרה באקראי אחד הילדים להיות תורן חוג.',
+    visual:'manualGrid',
+    visualData:{
+      rowLabel:'יום ראשון',colLabel:'יום שני',
+      rows:['בן','בת'],cols:['בן','בת'],placeholder:'הסתברות',
+      expectedGrid:[[9/25,6/25],[6/25,4/25]]
+    },
+    sampleSpace:'30 ילדים בכל בחירה',
+    subs:[
+      {id:'a',label:'א',prompt:'מלאו את טבלת ההסתברויות לשתי הבחירות.',type:'helper_complete',rule:'probability_grid',hint:'בכל יום ההסתברות לבחור בן היא 18/30 וההסתברות לבחור בת היא 12/30. בכל תא כופלים את שתי ההסתברויות.',explanation:'הטבלה מתקבלת ממכפלת ההסתברויות של היום הראשון ושל היום השני.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שבשני הימים נבחר בן?',type:'fraction',event:'בן בשני הימים',expected:[9,25],hint:'כפלו P(בן) ביום הראשון ב־P(בן) ביום השני.',explanation:'P = 18/30 · 18/30 = 324/900 = 9/25.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שבשני הימים נבחרה בת?',type:'fraction',event:'בת בשני הימים',expected:[4,25],hint:'כפלו P(בת) ביום הראשון ב־P(בת) ביום השני.',explanation:'P = 12/30 · 12/30 = 144/900 = 4/25.'}
+    ]
+  },
+  {
+    id:'q59_two_marbles_with_replacement',
+    title:'שתי הוצאות גולה עם החזרה',
+    category:'שני שלבים עם החזרה',
+    story:'בגיגית יש 15 גולות: 9 ירוקות, 4 כחולות ו־2 ורודות. נדב מוציא באקראי גולה אחת, מחזיר אותה לגיגית ואז מוציא גולה נוספת.',
+    visual:'manualGrid',
+    visualData:{
+      rowLabel:'הוצאה ראשונה',colLabel:'הוצאה שנייה',
+      rows:['ירוקה','כחולה','ורודה'],cols:['ירוקה','כחולה','ורודה'],placeholder:'הסתברות',
+      expectedGrid:[
+        [81/225,36/225,18/225],
+        [36/225,16/225,8/225],
+        [18/225,8/225,4/225]
+      ]
+    },
+    sampleSpace:'225 זוגות משוקללים שווי הסתברות בסיסית',
+    subs:[
+      {id:'a',label:'א',prompt:'מלאו את טבלת ההסתברויות בהתאם לנתונים.',type:'helper_complete',rule:'probability_grid',hint:'מכיוון שהגולה מוחזרת, בכל הוצאה ההסתברויות נשארות 9/15, 4/15, 2/15.',explanation:'כל תא הוא מכפלה של הסתברות הצבע בהוצאה הראשונה ובהוצאה השנייה.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שנדב הוציא בפעם הראשונה גולה ירוקה ובפעם השנייה גולה ורודה?',type:'fraction',event:'ירוקה ואז ורודה',expected:[18,225],hint:'כפלו 9/15 ב־2/15.',explanation:'P = 9/15 · 2/15 = 18/225 = 2/25.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שנדב הוציא בפעם הראשונה גולה ורודה ובפעם השנייה גולה ירוקה?',type:'fraction',event:'ורודה ואז ירוקה',expected:[18,225],hint:'כפלו 2/15 ב־9/15.',explanation:'P = 2/15 · 9/15 = 18/225 = 2/25.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שבאחת הפעמים נדב הוציא גולה ורודה ובפעם האחרת גולה כחולה, בלי קשר לסדר?',type:'fraction',event:'ורודה וכחולה בכל סדר',expected:[16,225],hint:'יש שני סדרים אפשריים: ורודה–כחולה או כחולה–ורודה.',explanation:'P = 2·(2/15·4/15) = 16/225.'},
+      {id:'e',label:'ה',prompt:'מה ההסתברות שנדב הוציא גולה כחולה בשתי הפעמים?',type:'fraction',event:'כחולה בשתי הפעמים',expected:[16,225],hint:'כפלו 4/15 בעצמו.',explanation:'P = 4/15 · 4/15 = 16/225.'},
+      {id:'f',label:'ו',prompt:'מה ההסתברות שנדב הוציא גולה ורודה בשתי הפעמים?',type:'fraction',event:'ורודה בשתי הפעמים',expected:[4,225],hint:'כפלו 2/15 בעצמו.',explanation:'P = 2/15 · 2/15 = 4/225.'},
+      {id:'g',label:'ז',prompt:'מה ההסתברות שנדב הוציא בשתי הפעמים גולה מאותו צבע?',type:'fraction',event:'אותו צבע בשתי הפעמים',expected:[101,225],hint:'חברו את ההסתברויות: ירוקה–ירוקה, כחולה–כחולה, ורודה–ורודה.',explanation:'P = (81+16+4)/225 = 101/225.'},
+      {id:'h',label:'ח',prompt:'מה ההסתברות שהגולה השנייה היא באותו צבע כמו הראשונה?',type:'fraction',event:'הצבע השני זהה לראשון',expected:[101,225],hint:'זהו אותו אירוע של קבלת אותו צבע בשתי ההוצאות.',explanation:'גם כאן P = 101/225.'}
+    ]
+  },
+  {
+    id:'q60_two_ball_pool_draws',
+    title:'שתי הוצאות כדור מבריכת כדורים',
+    category:'שני שלבים עם החזרה',
+    story:'בבריכת כדורים יש 12 כדורים: 5 אדומים, 3 לבנים ו־4 צהובים. הצוללן מוציא באקראי כדור אחד, הכדור נופל חזרה לבריכה, ואז הוא מוציא כדור נוסף.',
+    visual:'manualGrid',
+    visualData:{
+      rowLabel:'הוצאה ראשונה',colLabel:'הוצאה שנייה',
+      rows:['אדום','לבן','צהוב'],cols:['אדום','לבן','צהוב'],placeholder:'הסתברות',
+      expectedGrid:[
+        [25/144,15/144,20/144],
+        [15/144,9/144,12/144],
+        [20/144,12/144,16/144]
+      ]
+    },
+    sampleSpace:'144 זוגות משוקללים שווי הסתברות בסיסית',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שהכדור הראשון יהיה אדום? צהוב? לבן?',type:'three_fractions',fields:[{key:'r',label:'אדום',event:'כדור ראשון אדום',expected:[5,12]},{key:'y',label:'צהוב',event:'כדור ראשון צהוב',expected:[4,12]},{key:'w',label:'לבן',event:'כדור ראשון לבן',expected:[3,12]}],hint:'בהוצאה הראשונה מחלקים את מספר הכדורים מכל צבע ב־12.',explanation:'אדום: 5/12, צהוב: 4/12 = 1/3, לבן: 3/12 = 1/4.'},
+      {id:'b',label:'ב',prompt:'מלאו את טבלת ההסתברויות המתאימה לנתונים.',type:'helper_complete',rule:'probability_grid',hint:'הכדור מוחזר לבריכה, ולכן ההרכב בהוצאה השנייה אינו משתנה.',explanation:'כל תא הוא מכפלה של הסתברות הצבע הראשון בהסתברות הצבע השני.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שבפעם הראשונה יצא כדור צהוב ובפעם השנייה כדור אדום?',type:'fraction',event:'צהוב ואז אדום',expected:[20,144],hint:'כפלו 4/12 ב־5/12.',explanation:'P = 4/12 · 5/12 = 20/144 = 5/36.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שבאחת הפעמים יצא כדור לבן ובפעם האחרת כדור אדום, בלי קשר לסדר?',type:'fraction',event:'לבן ואדום בכל סדר',expected:[30,144],hint:'יש שני סדרים: לבן–אדום ואדום–לבן.',explanation:'P = 2·(3/12·5/12) = 30/144 = 5/24.'},
+      {id:'e',label:'ה',prompt:'מה ההסתברות שבשתי הפעמים יצא כדור אדום?',type:'fraction',event:'אדום בשתי הפעמים',expected:[25,144],hint:'כפלו 5/12 בעצמו.',explanation:'P = 25/144.'},
+      {id:'f',label:'ו',prompt:'מה ההסתברות שבשתי הפעמים יצא כדור באותו צבע?',type:'fraction',event:'אותו צבע בשתי הפעמים',expected:[50,144],hint:'חברו אדום–אדום, לבן–לבן וצהוב–צהוב.',explanation:'P = (25+9+16)/144 = 50/144 = 25/72.'},
+      {id:'g',label:'ז',prompt:'אם שני הכדורים באותו צבע הצוללן מזמין את חברו לארוחה, ואם הם בצבעים שונים החבר מזמין את הצוללן. למי יש סיכוי גבוה יותר לשלם על הארוחה?',type:'radio',options:[{value:'diver',label:'לצוללן'},{value:'friend',label:'לחבר'},{value:'same',label:'סיכוי שווה'}],expected:'friend',hint:'השוו בין P(אותו צבע) לבין האירוע המשלים P(צבעים שונים).',explanation:'P(אותו צבע)=25/72 ולכן P(צבעים שונים)=47/72. לחבר יש סיכוי גבוה יותר לשלם.'}
+    ]
+  },
+  {
+    id:'q61_two_banknotes_with_replacement',
+    title:'שתי הוצאות שטר מן הכובע',
+    category:'שני שלבים עם החזרה',
+    story:'בכובע יש 10 שטרות: 5 שטרות של 20 שקלים, 3 שטרות של 50 שקלים ו־2 שטרות של 200 שקלים. יוני מערבב, מוציא באקראי שטר אחד, מחזיר אותו לכובע, מערבב שוב ומוציא שטר נוסף.',
+    visual:'manualGrid',
+    visualData:{
+      rowLabel:'שטר ראשון',colLabel:'שטר שני',
+      rows:['20','50','200'],cols:['20','50','200'],placeholder:'הסתברות',
+      expectedGrid:[
+        [25/100,15/100,10/100],
+        [15/100,9/100,6/100],
+        [10/100,6/100,4/100]
+      ]
+    },
+    sampleSpace:'100 זוגות משוקללים שווי הסתברות בסיסית',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שיוני הוציא שטר של 20 שקלים בפעם הראשונה?',type:'fraction',event:'20 ₪ בפעם הראשונה',expected:[5,10],hint:'בהוצאה הראשונה יש 5 שטרות של 20 מתוך 10.',explanation:'P = 5/10 = 1/2.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שהשטר שיוני הוציא בפעם הראשונה שוויו יותר מ־20 שקלים?',type:'fraction',event:'שווי גדול מ־20 ₪',expected:[5,10],hint:'שטר גדול מ־20 יכול להיות 50 או 200.',explanation:'יש 3+2=5 שטרות מתאימים מתוך 10, לכן P = 1/2.'},
+      {id:'c',label:'ג',prompt:'מלאו את טבלת ההסתברויות לשתי ההוצאות.',type:'helper_complete',rule:'probability_grid',hint:'השטר מוחזר לכובע, ולכן ההתפלגות בהוצאה השנייה זהה לראשונה.',explanation:'כל תא הוא מכפלה של הסתברות השטר הראשון בהסתברות השטר השני.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות שבפעם הראשונה יוני הוציא 20 שקלים ובפעם השנייה 200 שקלים?',type:'fraction',event:'20 ואז 200',expected:[10,100],hint:'כפלו 5/10 ב־2/10.',explanation:'P = 10/100 = 1/10.'},
+      {id:'e',label:'ה',prompt:'מה ההסתברות שבשתי הפעמים יוני הוציא שטר באותו השווי?',type:'fraction',event:'אותו שווי בשתי הפעמים',expected:[38,100],hint:'חברו 20–20, 50–50 ו־200–200.',explanation:'P = (25+9+4)/100 = 38/100 = 19/50.'},
+      {id:'f',label:'ו',prompt:'מה ההסתברות שסכום שני השטרות שיוני הוציא הוא 250 שקלים?',type:'fraction',event:'סכום 250 ₪',expected:[12,100],hint:'250 מתקבל רק מהשילובים 50+200 או 200+50.',explanation:'P = (3·2 + 2·3)/100 = 12/100 = 3/25.'},
+      {id:'g',label:'ז',prompt:'מה ההסתברות שסכום שני השטרות שיוני הוציא הוא לפחות 100 שקלים?',type:'fraction',event:'סכום לפחות 100 ₪',expected:[45,100],hint:'עברו על תשעת שילובי סוגי השטרות וסמנו אילו סכומים הם 100 ומעלה.',explanation:'מספר התוצאות המשוקללות המתאימות הוא 45 מתוך 100, לכן P = 45/100 = 9/20.'},
+      {id:'h',label:'ח',prompt:'מה ההסתברות שסכום שני השטרות שיוני הוציא הוא לכל היותר 70 שקלים?',type:'fraction',event:'סכום לכל היותר 70 ₪',expected:[55,100],hint:'לכל היותר 70 כולל 20+20, 20+50 ו־50+20.',explanation:'25+15+15=55 מתוך 100, לכן P = 55/100 = 11/20.'}
+    ]
+  }
+
 
 ];
 
@@ -1050,7 +1267,7 @@ function renderManualGrid(q){
   let table=`<div class="helper-table-wrap"><table class="helper-table"><thead><tr><th>${escapeHtml(d.rowLabel||'א׳')} ↓ / ${escapeHtml(d.colLabel||'ב׳')} →</th>${cols.map(c=>`<th>${escapeHtml(c)}</th>`).join('')}</tr></thead><tbody>`;
   rows.forEach((r,ri)=>{table+=`<tr><th>${escapeHtml(r)}</th>`;cols.forEach((c,ci)=>{const v=saved[`${ri}_${ci}`]||'';table+=`<td><input value="${escapeHtml(v)}" placeholder="${escapeHtml(d.placeholder||'')}" oninput="saveManualHelperCell('${q.id}',${ri},${ci},this.value)"></td>`;});table+='</tr>';});
   table+='</tbody></table></div>';
-  return `<div class="py-3"><div class="helper-title">טבלת עזר – מלאו בעצמכם</div>${table}<div class="helper-note">הטבלה אינה נבדקת. היא נועדה לעזור לארגן את מרחב המדגם.</div></div>`;
+  return `<div class="py-3"><div class="helper-title">טבלת עזר – מלאו בעצמכם</div>${table}<div class="helper-note">${q.subs?.some(s=>s.type==='helper_complete')?'הטבלה היא חלק מהשאלה ותיבדק בעת בדיקת השאלה. אפשר לכתוב שבר כמו 9/25 או ערך עשרוני שווה.':'הטבלה אינה נבדקת. היא נועדה לעזור לארגן את מרחב המדגם.'}</div></div>`;
 }
 
 function renderVisual(q){
@@ -1150,16 +1367,32 @@ function inputFor(q,s,ans){const k=key(q,s),v=ans?.value;
   if(s.type==='fraction_decimal')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="decimal-${k}" type="number" step="any" value="${v?.decimal??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="שבר עשרוני"></div>`;
   if(s.type==='fraction_percent')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="percent-${k}" type="number" step="any" value="${v?.percent??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="אחוז"><span class="math">%</span></div>`;
 
-  if(s.type==='number_fraction'){const vnum=v?.number??'';return `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3 items-end"><div class="bg-slate-50 border border-slate-200 rounded-xl p-3"><label class="block text-xs font-semibold text-slate-600 mb-1">${s.numberUnit||'כמות'}</label><div class="answer-number-row"><input id="nf-number-${k}" type="number" step="any" value="${vnum}"></div></div><div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="nf-num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="nf-den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span></div></div>`;}
+  if(s.type==='number_fraction'){const vnum=v?.number??'';return `<div class="number-fraction-wrap"><div class="number-block bg-slate-50 border border-slate-200 rounded-xl p-3"><label class="block text-xs font-semibold text-slate-600 mb-1">${s.numberUnit||'כמות'}</label><div class="answer-number-row"><input id="nf-number-${k}" type="number" step="any" value="${vnum}"></div></div><div class="prob-block"><div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="nf-num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="nf-den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span></div></div></div>`;}
   if(s.type==='choice')return `<div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-xl">${s.options.map(o=>`<label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="choice-${k}" value="${o.value}" ${v?.choice===o.value?'checked':''}> ${o.label}</label>`).join('')}</div>`;
   if(s.type==='cube_faces')return `<div class="mt-4"><div class="text-xs font-semibold text-slate-500 mb-2">שש פאות הקובייה</div><div class="grid grid-cols-3 sm:grid-cols-6 gap-2" dir="ltr">${Array.from({length:6},(_,i)=>`<input id="face-${k}-${i}" type="number" step="1" value="${v?.faces?.[i]??''}" class="h-12 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="פאה ${i+1}">`).join('')}</div></div>`;
   if(s.type==='two_numbers'){const vals=v?.values||{};return `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">${s.fields.map(f=>`<div class="bg-slate-50 border border-slate-200 rounded-xl p-3"><label class="block text-xs font-semibold text-slate-600 mb-1">${f.label}</label><div class="answer-number-row"><input id="pair-${k}-${f.key}" type="number" step="any" value="${vals[f.key]??''}"><span class="unit">${f.unit||''}</span></div></div>`).join('')}</div>`;}
   if(s.type==='helper_complete')return `<label class="mt-3 inline-flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2.5 cursor-pointer bg-white"><input id="helperdone-${k}" type="checkbox" ${v?.done?'checked':''}> <span class="font-semibold text-sm">סיימתי למלא את טבלת העזר</span></label>`;
-  if(s.type==='two_fractions'||s.type==='two_fractions_fairness'){const vals=v?.fields||{};return `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">${s.fields.map(f=>`<div class="bg-slate-50 border border-slate-200 rounded-xl p-3"><div class="font-extrabold text-sm mb-2">${f.label}</div><div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${f.event}</bdi>) =</span><span class="fraction"><input id="tf-num-${k}-${f.key}" type="number" step="1" value="${vals[f.key]?.num??''}"><span class="frac-line"></span><input id="tf-den-${k}-${f.key}" type="number" step="1" value="${vals[f.key]?.den??''}"></span></div></div>`).join('')}</div>${s.type==='two_fractions_fairness'?`<div class="mt-3 grid grid-cols-2 gap-2 max-w-sm"><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="tffair-${k}" value="yes" ${v?.fair==='yes'?'checked':''}> כן</label><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="tffair-${k}" value="no" ${v?.fair==='no'?'checked':''}> לא</label></div>`:''}`;}
+  if(s.type==='two_fractions'||s.type==='two_fractions_fairness'||s.type==='three_fractions'){const vals=v?.fields||{};const cols=s.type==='three_fractions'?'sm:grid-cols-3':'sm:grid-cols-2';return `<div class="grid grid-cols-1 ${cols} gap-3 mt-3">${s.fields.map(f=>`<div class="bg-slate-50 border border-slate-200 rounded-xl p-3"><div class="font-extrabold text-sm mb-2">${f.label}</div><div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${f.event}</bdi>) =</span><span class="fraction"><input id="tf-num-${k}-${f.key}" type="number" step="1" value="${vals[f.key]?.num??''}"><span class="frac-line"></span><input id="tf-den-${k}-${f.key}" type="number" step="1" value="${vals[f.key]?.den??''}"></span></div></div>`).join('')}</div>${s.type==='two_fractions_fairness'?`<div class="mt-3 grid grid-cols-2 gap-2 max-w-sm"><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="tffair-${k}" value="yes" ${v?.fair==='yes'?'checked':''}> כן</label><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="tffair-${k}" value="no" ${v?.fair==='no'?'checked':''}> לא</label></div>`:''}`;}
   if(s.type==='fairness')return `<div class="mt-3 grid grid-cols-2 gap-2 max-w-sm"><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="yes" ${v?.choice==='yes'?'checked':''}> כן</label><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="no" ${v?.choice==='no'?'checked':''}> לא</label></div><textarea id="explain-${k}" class="mt-3 w-full min-h-24 border border-slate-300 rounded-xl p-3" placeholder="הסבירו בקצרה">${v?.explain??''}</textarea>`;
   return '';
 }
 function toggleHint(k){$('hint-'+k)?.classList.toggle('hidden');}
+
+function parseProbabilityCell(raw){
+  raw=String(raw??'').trim().replace(/\s+/g,'').replace('%','');
+  if(!raw)return NaN;
+  if(raw.includes('/')){
+    const parts=raw.split('/');
+    if(parts.length!==2)return NaN;
+    const a=Number(parts[0]),b=Number(parts[1]);
+    if(!Number.isFinite(a)||!Number.isFinite(b)||b===0)return NaN;
+    return a/b;
+  }
+  const n=Number(raw);
+  if(!Number.isFinite(n))return NaN;
+  return String(raw).includes('%')?n/100:n;
+}
+
 function readAnswer(q,s){const k=key(q,s);
   if(s.type==='fraction'){const num=$('num-'+k).value,den=$('den-'+k).value;if(num===''||den==='')return {filled:false};const n=Number(num),d=Number(den),en=s.expected[0],ed=s.expected[1];const ok=d!==0 && n*ed===en*d;return {filled:true,value:{num:n,den:d},correct:ok,display:`${n}/${d}`};}
   if(s.type==='number'){const raw=$('number-'+k).value;if(raw==='')return {filled:false};const n=Number(raw),tol=s.tolerance??0;return {filled:true,value:{number:n},correct:Math.abs(n-s.expected)<=tol,display:`${n}${s.unit?' '+s.unit:''}`};}
@@ -1180,13 +1413,20 @@ function readAnswer(q,s){const k=key(q,s);
     for(let ri=0;ri<rows.length;ri++)for(let ci=0;ci<cols.length;ci++){
       const raw=String(saved[`${ri}_${ci}`]??'').trim();if(!raw){complete=false;correct=false;continue;}
       if(s.rule==='absdiff'){if(Number(raw)!==Math.abs(Number(rows[ri])-Number(cols[ci])))correct=false;}
+      if(s.rule==='sum'){if(Number(raw)!==(Number(rows[ri])+Number(cols[ci])))correct=false;}
+      if(s.rule==='product'){if(Number(raw)!==(Number(rows[ri])*Number(cols[ci])))correct=false;}
+      if(s.rule==='probability_grid'){
+        const expected=d.expectedGrid?.[ri]?.[ci];
+        const got=parseProbabilityCell(raw);
+        if(!Number.isFinite(got)||!Number.isFinite(expected)||Math.abs(got-expected)>0.0005)correct=false;
+      }
       if(s.rule==='ordered_pair'){
         const nums=(raw.match(/-?\d+/g)||[]).map(Number);if(nums.length<2||nums[0]!==Number(rows[ri])||nums[1]!==Number(cols[ci]))correct=false;
       }
     }
     return {filled:true,value:{done:true},correct:complete&&correct,display:complete&&correct?'טבלת העזר מולאה':'טבלת העזר מולאה אך יש בה טעויות'};
   }
-  if(s.type==='two_fractions'||s.type==='two_fractions_fairness'){
+  if(s.type==='two_fractions'||s.type==='two_fractions_fairness'||s.type==='three_fractions'){
     const fields={};let filled=true,correct=true;for(const f of s.fields){const nr=$(`tf-num-${k}-${f.key}`)?.value,dr=$(`tf-den-${k}-${f.key}`)?.value;if(nr===''||dr===''){filled=false;continue;}const n=Number(nr),d=Number(dr),en=f.expected[0],ed=f.expected[1];fields[f.key]={num:n,den:d};if(d===0||n*ed!==en*d)correct=false;}
     let fair=null;if(s.type==='two_fractions_fairness'){const sel=document.querySelector(`input[name="tffair-${k}"]:checked`);if(!sel)filled=false;else{fair=sel.value;if(fair!==s.expectedFair)correct=false;}}
     if(!filled)return {filled:false};return {filled:true,value:{fields,fair},correct,display:s.fields.map(f=>`${f.label}: ${fields[f.key].num}/${fields[f.key].den}`).join(' | ')+(s.type==='two_fractions_fairness'?` | הוגן: ${fair==='yes'?'כן':'לא'}`:'')};
