@@ -454,6 +454,50 @@ const questions = [
       {id:'a',label:'א',prompt:'כתבו מספר בכל אחת משש הפאות כך שההסתברות לקבל 5 תהיה 1/2.',type:'cube_faces',expectedValue:5,expectedCount:3,hint:'חשבו כמה מתוך 6 פאות צריכות לשאת את המספר 5 כדי לקבל הסתברות של 1/2. את שאר הפאות אפשר למלא במספרים אחרים.',explanation:'כדי שההסתברות לקבל 5 תהיה 1/2, המספר 5 צריך להופיע על 3 מתוך 6 הפאות. שלוש הפאות האחרות יכולות לקבל מספרים אחרים.'}
     ]
   }
+,
+  {
+    id:'q21_city_race_schools',
+    title:'נבחרות ריצה בשלושה בתי ספר',
+    category:'הסתברות מותנית מתוך קבוצות',
+    story:'בעיר מסוימת יש שלושה בתי ספר שיש בהם נבחרות ריצה. חלק מהתלמידים בנבחרות הריצה נולדו בישראל וחלקם בחו״ל. בבית הספר „הזורעים” יש 4 תלמידים שנולדו בישראל ו־4 שנולדו בחו״ל. בבית הספר „עמיעד” יש 6 תלמידים שנולדו בישראל ו־2 שנולדו בחו״ל. בבית הספר „כולנו” יש 10 תלמידים שנולדו בארץ ו־6 שנולדו בחו״ל.',
+    visual:'raceSchools',
+    sampleSpace:'שלוש נבחרות בתי הספר וההרכבים שלהן',
+    subs:[
+      {id:'b',label:'ב',prompt:'אם בוחרים תלמיד מנבחרת בית הספר „הזורעים”, מה ההסתברות שהוא נולד בחו״ל?',type:'fraction',event:'יליד חו״ל מבית הספר הזורעים',expected:[4,8],hint:'התייחסו רק לנבחרת „הזורעים”. במונה ספרו את התלמידים המתאימים לאירוע, ובמכנה את כל תלמידי הנבחרת.',explanation:'בנבחרת „הזורעים” יש 4 תלמידים שנולדו בחו״ל מתוך 8 תלמידים. לכן P = 4/8 = 1/2 = 0.5.'},
+      {id:'c',label:'ג',prompt:'אם בוחרים תלמיד מנבחרת בית הספר „עמיעד”, מה ההסתברות שהוא נולד בארץ?',type:'fraction',event:'יליד הארץ מבית הספר עמיעד',expected:[6,8],hint:'התייחסו רק לנבחרת „עמיעד”. ספרו כמה תלמידים מתאימים לאירוע מתוך כל תלמידי הנבחרת.',explanation:'בנבחרת „עמיעד” יש 6 תלמידים שנולדו בארץ מתוך 8. לכן P = 6/8 = 3/4 = 0.75.'},
+      {id:'d',label:'ד',prompt:'אם בוחרים תלמיד מנבחרת בית הספר „כולנו”, מה ההסתברות שהוא נולד בחו״ל?',type:'fraction',event:'יליד חו״ל מבית הספר כולנו',expected:[6,16],hint:'התייחסו רק לנבחרת „כולנו” וחלקו את מספר התלמידים שנולדו בחו״ל בגודל הנבחרת.',explanation:'בנבחרת „כולנו” יש 6 תלמידים שנולדו בחו״ל מתוך 16. לכן P = 6/16 = 3/8.'},
+      {id:'e',label:'ה',prompt:'כמה תלמידים מכל נבחרות בתי הספר בעיר נולדו בישראל, וכמה נולדו בחו״ל?',type:'two_numbers',fields:[{key:'israel',label:'נולדו בישראל',expected:20,unit:'תלמידים'},{key:'abroad',label:'נולדו בחו״ל',expected:12,unit:'תלמידים'}],hint:'חברו בנפרד את מספר ילידי הארץ בשלושת בתי הספר ואת מספר ילידי חו״ל בשלושת בתי הספר.',explanation:'נולדו בישראל: 4 + 6 + 10 = 20 תלמידים. נולדו בחו״ל: 4 + 2 + 6 = 12 תלמידים.'},
+      {id:'f',label:'ו',prompt:'באליפות הריצה העירונית שניים מהזוכים במדליות זהב היו ילידי הארץ ושניים היו ילידי חו״ל. לטקס הוזמן באקראי תלמיד יליד הארץ. מה הסיכוי שהתלמיד שהוזמן זכה במדליית זהב?',type:'fraction_percent',event:'יליד הארץ שזכה במדליית זהב',expectedFraction:[2,20],expectedPercent:10,tolerance:0.01,hint:'הקבוצה שממנה בוחרים היא כל ילידי הארץ בנבחרות. השוו את מספר זוכי מדליית הזהב ילידי הארץ לגודל הקבוצה הזאת.',explanation:'יש 2 זוכי מדליית זהב ילידי הארץ מתוך 20 ילידי הארץ. לכן P = 2/20 = 1/10 = 10%.'},
+      {id:'g',label:'ז',prompt:'מה הסיכוי שהתלמיד יליד חו״ל שהוזמן לטקס זכה במדליית זהב?',type:'fraction_percent',event:'יליד חו״ל שזכה במדליית זהב',expectedFraction:[2,12],expectedPercent:16.67,tolerance:0.02,hint:'הקבוצה שממנה בוחרים היא כל ילידי חו״ל בנבחרות. השוו את מספר זוכי מדליית הזהב ילידי חו״ל לגודל הקבוצה הזאת.',explanation:'יש 2 זוכי מדליית זהב ילידי חו״ל מתוך 12 ילידי חו״ל. לכן P = 2/12 = 1/6 ≈ 16.67%.'},
+      {id:'h',label:'ח',prompt:'מנהל הטקס רוצה להפנות כתב אל אחד משני התלמידים שהוזמנו, כך שהסיכוי שהתלמיד יהיה זוכה מדליית זהב יהיה גבוה ככל האפשר. למי כדאי להפנות את הכתב?',type:'choice',options:[{value:'israel',label:'לתלמיד יליד הארץ'},{value:'abroad',label:'לתלמיד יליד חו״ל'}],expected:'abroad',hint:'השוו בין שתי ההסתברויות שחישבתם בסעיפים הקודמים ובחרו את הגדולה יותר.',explanation:'ליליד הארץ סיכוי של 10% להיות זוכה מדליית זהב, וליליד חו״ל סיכוי של כ־16.67%. לכן כדאי להפנות את הכתב לתלמיד יליד חו״ל.'}
+    ]
+  },
+  {
+    id:'q22_vaccination',
+    title:'חיסון נגד שפעת בשכבת י׳',
+    category:'הסתברות והשוואת שיעורים',
+    story:'בעקבות התפרצות מחלת השפעת בבית הספר „רקפות” הוחלט להציע לתלמידי שכבת י׳ להתחסן. בכיתה י׳1 חוסנו 20 תלמידים ו־5 סירבו להתחסן. בכיתה י׳2 חוסנו 18 תלמידים ו־18 סירבו להתחסן. בכיתה י׳3 חוסנו 28 תלמידים ו־12 סירבו להתחסן.',
+    visual:'vaccinationClasses',
+    sampleSpace:'כל תלמידי שכבת י׳ בשלוש הכיתות',
+    subs:[
+      {id:'a',label:'א',prompt:'בוחרים באקראי תלמיד משכבת י׳. מה ההסתברות שהתלמיד חוסן?',type:'fraction_percent',event:'תלמיד שחוסן',expectedFraction:[66,101],expectedPercent:65.35,tolerance:0.02,hint:'חשבו תחילה כמה תלמידים חוסנו בכל שלוש הכיתות יחד, וכמה תלמידים יש בשכבה בסך הכול.',explanation:'מספר המחוסנים הוא 20 + 18 + 28 = 66. מספר תלמידי השכבה הוא 66 + 35 = 101. לכן P = 66/101 ≈ 65.35%.'},
+      {id:'b',label:'ב',prompt:'אם בוחרים תלמיד מכיתה י׳3, מה ההסתברות שהוא סירב להתחסן?',type:'fraction_percent',event:'תלמיד מי׳3 שסירב להתחסן',expectedFraction:[12,40],expectedPercent:30,tolerance:0.01,hint:'התייחסו רק לכיתה י׳3. השוו בין מספר התלמידים שסירבו להתחסן לבין מספר כל תלמידי הכיתה.',explanation:'בכיתה י׳3 יש 28 מחוסנים ו־12 שסירבו, כלומר 40 תלמידים. לכן P = 12/40 = 3/10 = 30%.'},
+      {id:'c',label:'ג',prompt:'שלושה תלמידים שחוסנו חלו במחלה, וגם שלושה תלמידים שלא חוסנו חלו במחלה. על פי הנתונים, באיזו קבוצה הסיכוי לחלות גבוה יותר?',type:'choice',options:[{value:'vaccinated',label:'בקרב התלמידים שחוסנו'},{value:'notVaccinated',label:'בקרב התלמידים שלא חוסנו'}],expected:'notVaccinated',hint:'אל תשוו רק את מספר החולים. חשבו את שיעור החולים מתוך גודל כל אחת משתי הקבוצות.',explanation:'בקרב המחוסנים חלו 3 מתוך 66: כ־4.55%. בקרב מי שלא חוסנו חלו 3 מתוך 35: כ־8.57%. לכן הסיכוי לחלות גבוה יותר בקרב מי שלא חוסנו.'}
+    ]
+  },
+  {
+    id:'q23_engine_oil',
+    title:'שמן מנועים במרוץ מכוניות',
+    category:'הסתברות והשוואת שיעורי תקלות',
+    story:'חברה המשווקת שמן מנועים הציעה למשתתפים במרוץ מכוניות להשתמש בשמן שלה בחינם. במרוץ השתתפו רכבים משלושה סוגים: מבעלי מכוניות רנו 8 השתמשו בשמן ו־10 לא היו מעוניינים; מבעלי מכוניות סוזוקי 4 השתמשו בשמן ו־16 לא היו מעוניינים; מבעלי מכוניות לנדרובר 12 השתמשו בשמן ו־10 לא היו מעוניינים.',
+    visual:'engineOilCars',
+    sampleSpace:'כל המכוניות שהשתתפו במרוץ',
+    subs:[
+      {id:'a',label:'א',prompt:'בחרו באקראי אחת ממכוניות הסוזוקי. מה ההסתברות שהשתמשו במכונית זו בשמן של החברה?',type:'fraction_percent',event:'מכונית סוזוקי שהשתמשה בשמן',expectedFraction:[4,20],expectedPercent:20,tolerance:0.01,hint:'התייחסו רק למכוניות הסוזוקי. השוו בין מספר המכוניות שהשתמשו בשמן לבין מספר כל מכוניות הסוזוקי.',explanation:'מתוך 20 מכוניות סוזוקי, 4 השתמשו בשמן. לכן P = 4/20 = 1/5 = 20%.'},
+      {id:'b',label:'ב',prompt:'בחרו באקראי אחת מהמכוניות במרוץ. מה ההסתברות שלא השתמשו במכונית זו בשמן?',type:'fraction_percent',event:'מכונית שלא השתמשה בשמן',expectedFraction:[36,60],expectedPercent:60,tolerance:0.01,hint:'חברו את מספר המכוניות שלא השתמשו בשמן בכל שלושת הסוגים, וחלקו במספר כל המכוניות במרוץ.',explanation:'לא השתמשו בשמן: 10 + 16 + 10 = 36 מכוניות. בסך הכול השתתפו 60 מכוניות. לכן P = 36/60 = 3/5 = 60%.'},
+      {id:'c',label:'ג',prompt:'מתוך המכוניות שבהן השתמשו בשמן, ב־6 היו תקלות. גם ב־6 מכוניות שלא השתמשו בשמן היו תקלות. בעל החברה טוען שהשמן מוריד באופן ניכר את הסיכוי לתקלות. האם לפי הנתונים הטענה נכונה? הסבירו.',type:'fairness',expected:'no',hint:'השוו את שיעור התקלות בכל קבוצה: מספר המכוניות עם תקלות חלקי מספר המכוניות בקבוצה.',explanation:'הטענה אינה נכונה לפי הנתונים. בקרב המכוניות שהשתמשו בשמן היו 6 תקלות מתוך 24, כלומר 25%. בקרב המכוניות שלא השתמשו בשמן היו 6 תקלות מתוך 36, כלומר כ־16.67%. שיעור התקלות דווקא גבוה יותר בקבוצת המשתמשים בשמן.'}
+    ]
+  }
 
 
 ];
@@ -521,6 +565,12 @@ function renderVisual(q){
     a.innerHTML=`<div class="spinner-wrap"><svg viewBox="0 0 320 320" width="280" height="280" aria-label="רולטה עם 12 גזרות צבעוניות">${paths}<circle cx="160" cy="160" r="118" fill="none" stroke="#111827" stroke-width="4"/></svg><div class="legend-row"><span>2 לבנות</span><span>4 צהובות</span><span>6 כחולות</span></div></div>`;
   }else if(q.visual==='cube223444'){
     a.innerHTML=`<div class="count-visual"><div class="font-extrabold">שש פאות שוות־סיכוי</div><div class="die-outcomes">${[2,2,3,4,4,4].map(n=>`<div class="die-face">${n}</div>`).join('')}</div></div>`;
+  }else if(q.visual==='raceSchools'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">נבחרות הריצה בשלושת בתי הספר</div><div class="stat-grid"><div class="stat-card"><strong>הזורעים</strong><br><span class="text-xs">4 ילידי הארץ · 4 ילידי חו״ל</span></div><div class="stat-card"><strong>עמיעד</strong><br><span class="text-xs">6 ילידי הארץ · 2 ילידי חו״ל</span></div><div class="stat-card"><strong>כולנו</strong><br><span class="text-xs">10 ילידי הארץ · 6 ילידי חו״ל</span></div></div></div>`;
+  }else if(q.visual==='vaccinationClasses'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">חיסון בשכבת י׳</div><div class="stat-grid"><div class="stat-card"><strong>י׳1</strong><br><span class="text-xs">20 חוסנו · 5 סירבו</span></div><div class="stat-card"><strong>י׳2</strong><br><span class="text-xs">18 חוסנו · 18 סירבו</span></div><div class="stat-card"><strong>י׳3</strong><br><span class="text-xs">28 חוסנו · 12 סירבו</span></div></div></div>`;
+  }else if(q.visual==='engineOilCars'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">מכוניות במרוץ</div><div class="stat-grid"><div class="stat-card"><strong>רנו</strong><br><span class="text-xs">8 השתמשו · 10 לא השתמשו</span></div><div class="stat-card"><strong>סוזוקי</strong><br><span class="text-xs">4 השתמשו · 16 לא השתמשו</span></div><div class="stat-card"><strong>לנדרובר</strong><br><span class="text-xs">12 השתמשו · 10 לא השתמשו</span></div></div></div>`;
   }else if(q.visual==='blankCubeNet'){
     a.innerHTML=`<div class="count-visual"><div class="font-extrabold">פריסת קובייה – 6 פאות</div><div style="display:grid;grid-template-columns:repeat(4,58px);grid-template-rows:repeat(3,58px);justify-content:center;gap:2px;margin:18px auto"><div style="grid-column:1;grid-row:2" class="die-face"></div><div style="grid-column:2;grid-row:1" class="die-face"></div><div style="grid-column:2;grid-row:2" class="die-face"></div><div style="grid-column:3;grid-row:2" class="die-face"></div><div style="grid-column:4;grid-row:2" class="die-face"></div><div style="grid-column:4;grid-row:3" class="die-face"></div></div><div class="text-xs text-slate-500">כתבו את המספרים בשדות התשובה.</div></div>`;
   }
@@ -545,6 +595,7 @@ function inputFor(q,s,ans){const k=key(q,s),v=ans?.value;
 
   if(s.type==='choice')return `<div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-xl">${s.options.map(o=>`<label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="choice-${k}" value="${o.value}" ${v?.choice===o.value?'checked':''}> ${o.label}</label>`).join('')}</div>`;
   if(s.type==='cube_faces')return `<div class="mt-4"><div class="text-xs font-semibold text-slate-500 mb-2">שש פאות הקובייה</div><div class="grid grid-cols-3 sm:grid-cols-6 gap-2" dir="ltr">${Array.from({length:6},(_,i)=>`<input id="face-${k}-${i}" type="number" step="1" value="${v?.faces?.[i]??''}" class="h-12 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="פאה ${i+1}">`).join('')}</div></div>`;
+  if(s.type==='two_numbers'){const vals=v?.values||{};return `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">${s.fields.map(f=>`<div class="bg-slate-50 border border-slate-200 rounded-xl p-3"><label class="block text-xs font-semibold text-slate-600 mb-1">${f.label}</label><div class="answer-number-row"><input id="pair-${k}-${f.key}" type="number" step="any" value="${vals[f.key]??''}"><span class="unit">${f.unit||''}</span></div></div>`).join('')}</div>`;}
   if(s.type==='fairness')return `<div class="mt-3 grid grid-cols-2 gap-2 max-w-sm"><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="yes" ${v?.choice==='yes'?'checked':''}> כן</label><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="no" ${v?.choice==='no'?'checked':''}> לא</label></div><textarea id="explain-${k}" class="mt-3 w-full min-h-24 border border-slate-300 rounded-xl p-3" placeholder="הסבירו בקצרה">${v?.explain??''}</textarea>`;
   return '';
 }
@@ -559,6 +610,7 @@ function readAnswer(q,s){const k=key(q,s);
 
   if(s.type==='choice'){const sel=document.querySelector(`input[name="choice-${k}"]:checked`);if(!sel)return {filled:false};return {filled:true,value:{choice:sel.value},correct:sel.value===s.expected,display:sel.closest('label')?.innerText.trim()||sel.value};}
   if(s.type==='cube_faces'){const faces=Array.from({length:6},(_,i)=>$('face-'+k+'-'+i).value);if(faces.some(x=>x===''))return {filled:false};const nums=faces.map(Number);const count=nums.filter(x=>x===s.expectedValue).length;return {filled:true,value:{faces:nums},correct:count===s.expectedCount,display:nums.join(', ')};}
+  if(s.type==='two_numbers'){const values={};let filled=true,correct=true;for(const f of s.fields){const el=$('pair-'+k+'-'+f.key);const raw=el?.value??'';if(raw===''){filled=false;continue;}const n=Number(raw);values[f.key]=n;if(Math.abs(n-f.expected)>(f.tolerance??0))correct=false;}if(!filled)return {filled:false};return {filled:true,value:{values},correct,display:s.fields.map(f=>`${f.label}: ${values[f.key]}${f.unit?' '+f.unit:''}`).join(' | ')};}
   if(s.type==='fairness'){const sel=document.querySelector(`input[name="fair-${k}"]:checked`),exp=$('explain-'+k).value.trim();if(!sel||!exp)return {filled:false};return {filled:true,value:{choice:sel.value,explain:exp},correct:sel.value===s.expected,display:`${sel.value==='yes'?'כן':'לא'} — ${exp}`};}
 }
 function checkQuestion(){const q=questions[state.index];if(state.locked[q.id])return;let all=true,correct=0;const answers={};for(const s of q.subs){const r=readAnswer(q,s);if(!r.filled){all=false;continue;}answers[key(q,s)]={...r};if(r.correct)correct++;}
