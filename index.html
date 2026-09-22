@@ -84,7 +84,12 @@
     }
     @media(max-width:520px){
       body{font-size:15px}.page-pad{padding-inline:10px!important}.top-header{padding:12px!important}.top-header h1{font-size:19px!important}.nav-row{grid-template-columns:1fr 1fr!important}.nav-select-wrap{grid-column:1/-1;grid-row:1}.nav-prev{grid-column:1}.nav-next{grid-column:2}.question-card{padding:14px}.prob-row{font-size:18px;gap:6px;justify-content:flex-start;text-align:left}.math-prob{max-width:calc(100% - 78px);white-space:normal}.fraction{min-width:64px;margin-inline-start:6px}.fraction input,.frac-line{width:64px}.face-grid{grid-template-columns:repeat(4,50px);gap:8px}.face{width:50px;height:50px}.die-outcomes{grid-template-columns:repeat(3,58px)}.die-face{width:58px;height:58px}.ticket-grid{grid-template-columns:repeat(2,1fr);padding:10px}.weekday-grid{grid-template-columns:repeat(2,1fr);padding:10px}.certificate{width:360px;padding:14px}.certificate table{font-size:11px}}
-  </style>
+  
+    .chart-visual{padding:8px 8px 2px;overflow:hidden}
+    .edu-chart{width:100%;height:auto;display:block;max-width:680px;margin:0 auto}
+    .pie-edu-chart{max-width:520px}
+    @media(max-width:640px){.chart-visual{padding:4px 0}.edu-chart{min-height:280px}.pie-edu-chart{min-height:320px}}
+</style>
 </head>
 <body>
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
@@ -590,6 +595,132 @@ const questions = [
       {id:'d',label:'ד',prompt:'מועצת התלמידים החליטה לשנות את מספר החלונות בכרטיס כך שההסתברות לזכות בפרס תהיה בדיוק 1/4. בכרטיס החדש מסתתרים 3 ציורי פרסים. כמה חלונות גירוד יופיעו בכרטיס לאחר השינוי?',type:'number',expected:12,unit:'חלונות',hint:'חפשו מספר כולל של חלונות שעבורו 3 חלקי המספר הכולל שווה ל־1/4.',explanation:'אם 3/N = 1/4, אז N = 12. לכן בכרטיס החדש יהיו 12 חלונות גירוד.'}
     ]
   }
+,
+  {
+    id:'q31_student_council_votes',
+    title:'בחירות למועצת התלמידים',
+    category:'דיאגרמת עמודות והסתברות',
+    story:'הדיאגרמה מתארת את מספר הקולות שקיבלו המתמודדים לראשות מועצת התלמידים בבית הספר.',
+    visual:'barChart',
+    visualData:{orientation:'vertical',items:[{label:'מיכל',value:25},{label:'שירן',value:32},{label:'רויה',value:8},{label:'שרון',value:46},{label:'שופי',value:39}],axisLabel:'מספר קולות'},
+    sampleSpace:'150 תלמידים שהצביעו',
+    subs:[
+      {id:'a',label:'א',prompt:'מהו גודל מרחב המדגם בדיאגרמה זו?',type:'number',expected:150,unit:'תלמידים',hint:'חברו את מספר הקולות שקיבלו כל המתמודדים.',explanation:'מספר הקולות הכולל הוא 25 + 32 + 8 + 46 + 39 = 150, ולכן גודל מרחב המדגם הוא 150.'},
+      {id:'b',label:'ב',prompt:'כמה תלמידים הצביעו בבחירות למועצת התלמידים?',type:'number',expected:150,unit:'תלמידים',hint:'מספר המצביעים הוא סכום כל העמודות בדיאגרמה.',explanation:'בסך הכול הצביעו 150 תלמידים.'},
+      {id:'c1',label:'ג(1)',prompt:'בוחרים באקראי תלמיד אחד שהצביע בבחירות. מה ההסתברות שהוא הצביע למיכל?',type:'fraction',event:'הצביע למיכל',expected:[25,150],hint:'המונה הוא מספר הקולות שקיבלה מיכל, והמכנה הוא מספר כל המצביעים.',explanation:'מיכל קיבלה 25 קולות מתוך 150. לכן P(מיכל) = 25/150 = 1/6.'},
+      {id:'c2',label:'ג(2)',prompt:'מה ההסתברות שהתלמיד שנבחר הצביע לשרון?',type:'fraction',event:'הצביע לשרון',expected:[46,150],hint:'קראו את מספר הקולות של שרון והשוו למספר כל המצביעים.',explanation:'שרון קיבל 46 קולות מתוך 150. לכן P(שרון) = 46/150 = 23/75.'},
+      {id:'c3',label:'ג(3)',prompt:'מה ההסתברות שהתלמיד שנבחר לא הצביע לשרון?',type:'fraction',event:'לא הצביע לשרון',expected:[104,150],hint:'אפשר לחסר את מספר המצביעים לשרון ממספר המצביעים הכולל.',explanation:'150 − 46 = 104 תלמידים לא הצביעו לשרון. לכן P(לא שרון) = 104/150 = 52/75.'}
+    ]
+  },
+  {
+    id:'q32_final_exam_scores',
+    title:'ציוני מבחן סיום קורס',
+    category:'דיאגרמת עמודות והסתברות',
+    story:'בבית ספר לגלישת גלים נערך מבחן סיום קורס. הדיאגרמה מתארת את ציוני המשתתפים.',
+    visual:'barChart',
+    visualData:{orientation:'vertical',items:[{label:'50',value:4},{label:'60',value:6},{label:'70',value:8},{label:'80',value:15},{label:'90',value:5},{label:'100',value:2}],axisLabel:'מספר נבחנים',xLabel:'ציון'},
+    sampleSpace:'40 נבחנים',
+    subs:[
+      {id:'a',label:'א',prompt:'מה היה מספר הנבחנים?',type:'number',expected:40,unit:'נבחנים',hint:'חברו את מספר הנבחנים בכל אחד מן הציונים.',explanation:'4 + 6 + 8 + 15 + 5 + 2 = 40 נבחנים.'},
+      {id:'b',label:'ב',prompt:'בוחרים באקראי משתתף אחד. מה ההסתברות שהציון שלו במבחן הסיום הוא 70?',type:'fraction',event:'ציון 70',expected:[8,40],hint:'המונה הוא מספר המשתתפים שקיבלו 70, והמכנה הוא מספר הנבחנים הכולל.',explanation:'8 מתוך 40 קיבלו 70. לכן P(70) = 8/40 = 1/5.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שהציון של המשתתף נמוך מ־70?',type:'fraction',event:'ציון נמוך מ־70',expected:[10,40],hint:'חברו את מספר הנבחנים שקיבלו ציונים הנמוכים מ־70.',explanation:'ציונים נמוכים מ־70 הם 50 ו־60: 4 + 6 = 10. לכן P = 10/40 = 1/4.'},
+      {id:'d',label:'ד',prompt:'משתתפים שקיבלו במבחן הסיום את הציון 90 ומעלה זכאים להנחה בקורס למתקדמים. מה ההסתברות שהמשתתף שבחרנו באקראי זכאי להנחה?',type:'fraction',event:'זכאי להנחה',expected:[7,40],hint:'חברו את מספר הנבחנים שקיבלו 90 ואת מספר הנבחנים שקיבלו 100.',explanation:'5 קיבלו 90 ו־2 קיבלו 100, כלומר 7 מתוך 40. לכן P = 7/40.'},
+      {id:'e',label:'ה',prompt:'חשבו את ממוצע הציונים במבחן.',type:'number',expected:74.25,tolerance:0.001,unit:'נקודות',hint:'חשבו ממוצע משוקלל: הכפילו כל ציון במספר הנבחנים שקיבלו אותו, חברו וחלקו במספר הנבחנים הכולל.',explanation:'סכום הציונים המשוקלל הוא 2,970. מחלקים ב־40 ומקבלים ממוצע 74.25.'},
+      {id:'f',label:'ו',prompt:'בוחרים באקראי את אחד הנבחנים. מה ההסתברות שציונו גבוה מהממוצע?',type:'fraction',event:'ציון גבוה מהממוצע',expected:[22,40],hint:'לאחר שמצאתם את הממוצע, ספרו כמה נבחנים קיבלו ציון גבוה ממנו.',explanation:'הממוצע הוא 74.25, ולכן ציונים גבוהים ממנו הם 80, 90 ו־100. מספר הנבחנים: 15 + 5 + 2 = 22. לכן P = 22/40 = 11/20.'}
+    ]
+  },
+  {
+    id:'q33_donations_app',
+    title:'תרומות באמצעות אפליקציה',
+    category:'דיאגרמת עמודות, ממוצע והסתברות',
+    story:'איתי ומעיין מתרימים לצורך מטרה חשובה באמצעות אפליקציה באינטרנט. התורמים יכולים לתרום 20, 50, 100 או 200 שקלים. הדיאגרמה מתארת את סכומי התרומות שהתקבלו.',
+    visual:'barChart',
+    visualData:{orientation:'vertical',items:[{label:'20 ₪',value:10},{label:'50 ₪',value:16},{label:'100 ₪',value:9},{label:'200 ₪',value:5}],axisLabel:'מספר תורמים',xLabel:'סכום התרומה'},
+    sampleSpace:'40 תורמים',
+    subs:[
+      {id:'a',label:'א',prompt:'כמה תורמים תרמו?',type:'number',expected:40,unit:'תורמים',hint:'חברו את מספר התורמים בכל ארבעת סכומי התרומה.',explanation:'10 + 16 + 9 + 5 = 40 תורמים.'},
+      {id:'b',label:'ב',prompt:'איתי התקשר באקראי לאחד התורמים. מה ההסתברות שהתורם שאליו איתי התקשר תרם לכל היותר 50 שקלים?',type:'fraction',event:'תרם לכל היותר 50 ₪',expected:[26,40],hint:'„לכל היותר 50” כולל תרומות של 20 ושל 50 שקלים.',explanation:'10 תרמו 20 ₪ ו־16 תרמו 50 ₪. יחד 26 מתוך 40, ולכן P = 26/40 = 13/20.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שהתורם תרם לפחות 100 שקלים?',type:'fraction',event:'תרם לפחות 100 ₪',expected:[14,40],hint:'„לפחות 100” כולל תרומות של 100 ושל 200 שקלים.',explanation:'9 תרמו 100 ₪ ו־5 תרמו 200 ₪. יחד 14 מתוך 40, ולכן P = 14/40 = 7/20.'},
+      {id:'d1',label:'ד(1)',prompt:'מה הסכום הממוצע של תרומה?',type:'number',expected:72.5,tolerance:0.001,unit:'₪',hint:'חשבו ממוצע משוקלל: סכום התרומה כפול מספר התורמים בכל קבוצה, חלקי מספר התורמים הכולל.',explanation:'סכום התרומות הוא 2,900 ₪. מחלקים ב־40 ומקבלים 72.5 ₪.'},
+      {id:'d2',label:'ד(2)',prompt:'מה ההסתברות שהתורם תרם סכום גבוה מהסכום הממוצע של התרומה?',type:'fraction',event:'תרומה מעל הממוצע',expected:[14,40],hint:'בדקו אילו סכומי תרומה גבוהים מ־72.5 ₪ וספרו את התורמים בקבוצות אלה.',explanation:'100 ו־200 שקלים גבוהים מן הממוצע. יש 9 + 5 = 14 תורמים כאלה מתוך 40, ולכן P = 14/40 = 7/20.'}
+    ]
+  },
+  {
+    id:'q34_party_food_survey',
+    title:'סקר כיבוד למסיבה',
+    category:'דיאגרמת עמודות והסתברות',
+    story:'קבוצת חברות עושות מסיבה. הן פרסמו ברשת החברתית סקר כדי לבדוק מה הכיבוד המועדף על המשתתפות. כל חברה יכולה להצביע לסוג אחד של כיבוד.',
+    visual:'barChart',
+    visualData:{orientation:'horizontal',leftMargin:150,items:[{label:'חטיפים',value:5},{label:'המבורגר',value:2},{label:'גלידה',value:7},{label:'פיצה',value:6}],axisLabel:'מספר הצבעות'},
+    sampleSpace:'20 חברות שהצביעו',
+    subs:[
+      {id:'a',label:'א',prompt:'כמה חברות הצביעו בסקר?',type:'number',expected:20,unit:'חברות',hint:'חברו את מספר ההצבעות לכל סוגי הכיבוד.',explanation:'5 + 2 + 7 + 6 = 20 חברות הצביעו בסקר.'},
+      {id:'b',label:'ב',prompt:'בוחרים באקראי אחת מהחברות שהצביעו בסקר. מה ההסתברות שהכיבוד המועדף עליה הוא המבורגר?',type:'fraction',event:'מעדיפה המבורגר',expected:[2,20],hint:'המונה הוא מספר המצביעות להמבורגר והמכנה הוא מספר כל המצביעות.',explanation:'2 מתוך 20 הצביעו להמבורגר. לכן P = 2/20 = 1/10.'},
+      {id:'c',label:'ג',prompt:'בסופו של דבר הובאו למסיבה פיצה וחטיפים. בוחרים באקראי אחת מהחברות שהצביעו בסקר. מה הסיכוי שבמסיבה יש כיבוד שהיא הצביעה בעדו?',type:'fraction',event:'הצביעה לפיצה או לחטיפים',expected:[11,20],hint:'חברו את מספר המצביעות לפיצה ואת מספר המצביעות לחטיפים.',explanation:'6 הצביעו לפיצה ו־5 לחטיפים. יחד 11 מתוך 20, ולכן P = 11/20.'}
+    ]
+  },
+  {
+    id:'q35_music_major',
+    title:'תחומי התמחות במגמת מוזיקה',
+    category:'דיאגרמת עיגול והסתברות',
+    story:'במגמת מוזיקה בבית הספר לכל תלמיד יש תחום שבו הוא מתמחה. דיאגרמת העיגול מתארת את מספר התלמידים בכל התמחות.',
+    visual:'pieChart',
+    visualData:{items:[{label:'תופים',value:10},{label:'פסנתר',value:4},{label:'קלרינט',value:6},{label:'שירה',value:15},{label:'D.J',value:5}],valueType:'count'},
+    sampleSpace:'40 תלמידי מגמת המוזיקה',
+    subs:[
+      {id:'a',label:'א',prompt:'מהו מרחב המדגם?',type:'text_set',expected:['תופים','פסנתר','קלרינט','שירה','dj'],hint:'רשמו את כל תחומי ההתמחות שמופיעים בדיאגרמה.',explanation:'מרחב המדגם לפי תחומי ההתמחות הוא {תופים, פסנתר, קלרינט, שירה, D.J}.'},
+      {id:'b',label:'ב',prompt:'כמה תלמידים לומדים במגמת מוזיקה?',type:'number',expected:40,unit:'תלמידים',hint:'חברו את מספר התלמידים בכל תחומי ההתמחות.',explanation:'10 + 4 + 6 + 15 + 5 = 40 תלמידים.'},
+      {id:'c1',label:'ג(1)',prompt:'בוחרים באקראי תלמיד אחד. מה ההסתברות שהוא מתמחה בשירה?',type:'fraction',event:'מתמחה בשירה',expected:[15,40],hint:'המונה הוא מספר תלמידי השירה והמכנה הוא מספר כל תלמידי המגמה.',explanation:'15 מתוך 40 מתמחים בשירה. לכן P = 15/40 = 3/8.'},
+      {id:'c2',label:'ג(2)',prompt:'מה ההסתברות שהתלמיד לא מתמחה בתופים?',type:'fraction',event:'לא מתמחה בתופים',expected:[30,40],hint:'אפשר לחסר את מספר תלמידי התופים ממספר תלמידי המגמה.',explanation:'40 − 10 = 30 תלמידים אינם מתמחים בתופים. לכן P = 30/40 = 3/4.'},
+      {id:'d',label:'ד',prompt:'התלמידים המתמחים בקליטנות (D.J.) והתלמידים המתמחים בפסנתר ארגנו יחד ערב ריקודים. בוחרים באקראי אחד מתלמידי המגמה. מה ההסתברות שהוא נמנה על מארגני ערב הריקודים?',type:'fraction',event:'מארגן ערב הריקודים',expected:[9,40],hint:'חברו את מספר תלמידי D.J ואת מספר תלמידי הפסנתר.',explanation:'5 תלמידי D.J ו־4 תלמידי פסנתר, יחד 9 מתוך 40. לכן P = 9/40.'}
+    ]
+  },
+  {
+    id:'q36_apartments_rooms',
+    title:'מספר חדרים בדירות בבניין',
+    category:'דיאגרמת עיגול, ממוצע והסתברות',
+    story:'בבניין רב־קומות יש דירות של 5 חדרים, דירות של 4 חדרים, דירות של 3 חדרים ודירות של 2 חדרים. הדיאגרמה מתארת את מספר הדירות מכל סוג בבניין.',
+    visual:'pieChart',
+    visualData:{items:[{label:'5 חדרים',value:6},{label:'4 חדרים',value:5},{label:'3 חדרים',value:8},{label:'2 חדרים',value:12}],valueType:'count'},
+    sampleSpace:'{2, 3, 4, 5 חדרים}',
+    subs:[
+      {id:'a',label:'א',prompt:'מהו מרחב המדגם?',type:'sample_space',expected:[2,3,4,5],hint:'רשמו את כל מספרי החדרים האפשריים בדירה בבניין.',explanation:'מרחב המדגם הוא {2, 3, 4, 5}.'},
+      {id:'b1',label:'ב(1)',prompt:'בוחרים באקראי דייר מהבניין. מה ההסתברות שהוא גר בדירת 3 חדרים?',type:'fraction',event:'דירת 3 חדרים',expected:[8,31],hint:'המונה הוא מספר דירות 3 החדרים והמכנה הוא מספר הדירות הכולל.',explanation:'יש 8 דירות של 3 חדרים מתוך 31 דירות. לכן P = 8/31.'},
+      {id:'b2',label:'ב(2)',prompt:'מה ההסתברות שהוא גר בדירה שיש בה לכל היותר 4 חדרים?',type:'fraction',event:'לכל היותר 4 חדרים',expected:[25,31],hint:'„לכל היותר 4” כולל דירות של 2, 3 ו־4 חדרים.',explanation:'12 + 8 + 5 = 25 דירות מתאימות מתוך 31. לכן P = 25/31.'},
+      {id:'b3',label:'ב(3)',prompt:'מה ההסתברות שהוא גר בדירה שיש בה לכל הפחות 3 חדרים?',type:'fraction',event:'לפחות 3 חדרים',expected:[19,31],hint:'„לפחות 3” כולל דירות של 3, 4 ו־5 חדרים.',explanation:'8 + 5 + 6 = 19 דירות מתאימות מתוך 31. לכן P = 19/31.'},
+      {id:'c',label:'ג',prompt:'חשבו את ממוצע החדרים בדירה בבניין.',type:'number',expected:3.16,tolerance:0.01,unit:'חדרים',hint:'חשבו ממוצע משוקלל: מספר החדרים כפול מספר הדירות מכל סוג, חלקי מספר הדירות הכולל.',explanation:'(2×12 + 3×8 + 4×5 + 5×6) / 31 = 98/31 ≈ 3.16 חדרים.'},
+      {id:'d',label:'ד',prompt:'מה ההסתברות לבחור באקראי בדירה בבניין שמספר החדרים בה הוא מעל הממוצע בבניין?',type:'fraction',event:'מספר חדרים מעל הממוצע',expected:[11,31],hint:'הממוצע הוא מעט מעל 3, לכן בדקו אילו סוגי דירות נמצאים מעליו.',explanation:'דירות של 4 ו־5 חדרים נמצאות מעל הממוצע. יש 5 + 6 = 11 דירות כאלה מתוך 31. לכן P = 11/31.'}
+    ]
+  },
+  {
+    id:'q37_communication_routes',
+    title:'בחירת מסלולי תקשורת',
+    category:'דיאגרמת עיגול ואחוזים',
+    story:'חברת תקשורת מציעה ללקוחותיה לבחור אחד ממסלולי ההטבות. החברה בדקה באילו מסלולים בחרו הלקוחות, והתוצאות מוצגות בדיאגרמת העיגול.',
+    visual:'pieChart',
+    visualData:{items:[{label:'חבילת גלישה ללא הגבלה',value:17},{label:'מסלול אינטרנט מוגן',value:24},{label:'מסלול לשומרי שבת',value:20},{label:'צפייה חופשית בערוצי החברה',value:28},{label:'שיחות מוזלות לחו״ל',value:11}],valueType:'percent'},
+    sampleSpace:'100% מלקוחות החברה',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שאם נבחר לקוח אחד הוא יהיה לקוח שבחר במסלול לשומרי שבת או במסלול אינטרנט מוגן?',type:'number',expected:0.44,tolerance:0.001,unit:'',hint:'חברו את שני האחוזים המתאימים והמירו את התוצאה לשבר עשרוני.',explanation:'20% + 24% = 44%, ולכן ההסתברות היא 0.44.'},
+      {id:'b',label:'ב',prompt:'כמה אחוזים מהלקוחות בחרו במסלול שיחות מוזלות לחו״ל?',type:'percent',expected:11,tolerance:0.001,hint:'כל חלקי העיגול יחד הם 100%. מצאו את האחוז החסר.',explanation:'17% + 24% + 20% + 28% = 89%, ולכן החלק החסר הוא 11%.'},
+      {id:'c',label:'ג',prompt:'בשל התקפת סייבר נפגעו הטלפונים של כל הלקוחות שלא בחרו במסלול של אינטרנט מוגן. מה ההסתברות שהטלפון של לקוח שנבחר באקראי נפגע בהתקפת הסייבר?',type:'number',expected:0.76,tolerance:0.001,unit:'',hint:'האירוע המבוקש הוא המשלים של בחירת מסלול אינטרנט מוגן.',explanation:'24% בחרו אינטרנט מוגן, ולכן 76% לא בחרו בו. ההסתברות היא 0.76.'}
+    ]
+  },
+  {
+    id:'q38_leisure_routes',
+    title:'מסלולי בילוי של חברת נופש ופנאי',
+    category:'דיאגרמת עיגול והסתברות',
+    story:'חברת נופש ופנאי מציעה ללקוחותיה כמה מסלולי בילוי. החברה בדקה את בחירת המסלולים של לקוחותיה בשנה האחרונה.',
+    visual:'pieChart',
+    visualData:{items:[{label:'סנפלינג',value:27},{label:'קרטינג',value:13},{label:'טיולי אופניים',value:38},{label:'מסעדה',value:22}],valueType:'percent'},
+    sampleSpace:'100% מלקוחות החברה',
+    subs:[
+      {id:'a',label:'א',prompt:'מה מסלול הפעילות השכיח ביותר?',type:'choice',options:[{value:'bike',label:'טיולי אופניים'},{value:'rappelling',label:'סנפלינג'},{value:'karting',label:'קרטינג'},{value:'restaurant',label:'מסעדה'}],expected:'bike',hint:'חפשו את החלק הגדול ביותר בדיאגרמת העיגול.',explanation:'טיולי אופניים הם המסלול השכיח ביותר: 38%.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שאם נבחר באקראי לקוח אחד, הוא יהיה לקוח שבחר במסלול השכיח?',type:'number',expected:0.38,tolerance:0.001,unit:'',hint:'המירו את האחוז של המסלול השכיח לשבר עשרוני.',explanation:'38% = 0.38.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות לבחור באקראי לקוח שבחר במסעדה?',type:'number',expected:0.22,tolerance:0.001,unit:'',hint:'קראו את אחוז הלקוחות שבחרו במסעדה והמירו לשבר עשרוני.',explanation:'22% = 0.22.'},
+      {id:'d',label:'ד',prompt:'לקוחות שבוחרים בקרטינג או בסנפלינג צריכים ביטוח מורחב. מה ההסתברות שלקוח שנבחר באקראי צריך ביטוח שכזה?',type:'number',expected:0.4,tolerance:0.001,unit:'',hint:'חברו את אחוז הבוחרים בקרטינג ובסנפלינג והמירו לשבר עשרוני.',explanation:'13% + 27% = 40%, ולכן ההסתברות היא 0.4.'}
+    ]
+  }
 
 
 ];
@@ -610,6 +741,83 @@ function loadQuestion(i){
   renderVisual(q);renderSubs(q);renderSolution(q);updateLockUI(q);$('solutionPanel').classList.add('hidden');$('certificateShell').classList.add('hidden');$('resultPanel').classList.add('hidden');
   $('headerStatus').textContent=state.locked[q.id]?`שאלה ${i+1} נבדקה`:`שאלה ${i+1}`;
 }
+
+function escapeXml(s){return String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));}
+function niceMax(v){
+  if(v<=10)return 10;if(v<=20)return 20;if(v<=50)return Math.ceil(v/10)*10;if(v<=100)return Math.ceil(v/20)*20;return Math.ceil(v/50)*50;
+}
+function svgBarChart(data){
+  const items=data.items||[], horizontal=data.orientation==='horizontal';
+  if(!items.length)return '';
+  const W=620,H=360, L=70,R=28,T=28,B=68, maxVal=Math.max(...items.map(x=>Number(x.value)||0),1), yMax=niceMax(maxVal);
+  const axis='#334155', grid='#cbd5e1', bar='#3b82f6', text='#172033';
+  let svg=`<svg class="edu-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="דיאגרמת עמודות">`;
+  if(!horizontal){
+    const pw=W-L-R, ph=H-T-B, step=items.length?pw/items.length:pw;
+    const tickCount=5, tickStep=yMax/tickCount;
+    for(let i=0;i<=tickCount;i++){
+      const v=i*tickStep, y=T+ph-(v/yMax)*ph;
+      svg+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="${grid}" stroke-width="1"/>`;
+      svg+=`<text x="${L-10}" y="${y+4}" text-anchor="end" font-size="12" fill="${text}" font-family="Rubik">${Number.isInteger(v)?v:v.toFixed(1)}</text>`;
+    }
+    svg+=`<line x1="${L}" y1="${T}" x2="${L}" y2="${H-B}" stroke="${axis}" stroke-width="2"/>`;
+    svg+=`<line x1="${L}" y1="${H-B}" x2="${W-R}" y2="${H-B}" stroke="${axis}" stroke-width="2"/>`;
+    const bw=Math.min(52,step*.55);
+    items.forEach((it,i)=>{
+      const cx=L+step*(i+.5), bh=(it.value/yMax)*ph, y=H-B-bh;
+      svg+=`<rect x="${cx-bw/2}" y="${y}" width="${bw}" height="${bh}" rx="4" fill="${bar}"/>`;
+      svg+=`<text x="${cx}" y="${y-8}" text-anchor="middle" font-size="13" font-weight="800" fill="${text}" font-family="Rubik">${escapeXml(it.value)}</text>`;
+      svg+=`<text x="${cx}" y="${H-B+24}" text-anchor="middle" font-size="12" font-weight="700" fill="${text}" font-family="Rubik" direction="rtl">${escapeXml(it.label)}</text>`;
+    });
+    if(data.axisLabel)svg+=`<text x="18" y="${T+ph/2}" text-anchor="middle" transform="rotate(-90 18 ${T+ph/2})" font-size="13" font-weight="700" fill="${axis}" font-family="Rubik" direction="rtl">${escapeXml(data.axisLabel)}</text>`;
+    if(data.xLabel)svg+=`<text x="${L+pw/2}" y="${H-12}" text-anchor="middle" font-size="13" font-weight="700" fill="${axis}" font-family="Rubik" direction="rtl">${escapeXml(data.xLabel)}</text>`;
+  }else{
+    const hL=data.leftMargin||L, pw=W-hL-R, ph=H-T-B, step=ph/items.length, xMax=niceMax(maxVal), tickCount=5, tickStep=xMax/tickCount;
+    for(let i=0;i<=tickCount;i++){
+      const v=i*tickStep, x=hL+(v/xMax)*pw;
+      svg+=`<line x1="${x}" y1="${T}" x2="${x}" y2="${H-B}" stroke="${grid}" stroke-width="1"/>`;
+      svg+=`<text x="${x}" y="${H-B+22}" text-anchor="middle" font-size="12" fill="${text}" font-family="Rubik">${Number.isInteger(v)?v:v.toFixed(1)}</text>`;
+    }
+    svg+=`<line x1="${hL}" y1="${T}" x2="${hL}" y2="${H-B}" stroke="${axis}" stroke-width="2"/><line x1="${hL}" y1="${H-B}" x2="${W-R}" y2="${H-B}" stroke="${axis}" stroke-width="2"/>`;
+    const bh=Math.min(34,step*.58);
+    items.forEach((it,i)=>{
+      const cy=T+step*(i+.5), bw=(it.value/xMax)*pw;
+      svg+=`<foreignObject x="8" y="${cy-16}" width="${Math.max(20,hL-28)}" height="32"><div xmlns="http://www.w3.org/1999/xhtml" dir="rtl" style="font-family:Rubik,Arial,sans-serif;font-size:13px;font-weight:700;color:${text};text-align:right;line-height:32px;white-space:nowrap;overflow:visible;">${escapeXml(it.label)}</div></foreignObject>`;
+      svg+=`<rect x="${hL}" y="${cy-bh/2}" width="${bw}" height="${bh}" rx="4" fill="${bar}"/>`;
+      svg+=`<text x="${Math.min(W-R-8,hL+bw+10)}" y="${cy+4}" text-anchor="start" font-size="13" font-weight="800" fill="${text}" font-family="Rubik">${escapeXml(it.value)}</text>`;
+    });
+    if(data.axisLabel)svg+=`<text x="${hL+pw/2}" y="${H-10}" text-anchor="middle" font-size="13" font-weight="700" fill="${axis}" font-family="Rubik" direction="rtl">${escapeXml(data.axisLabel)}</text>`;
+  }
+  return svg+'</svg>';
+}
+function polar(cx,cy,r,a){const rad=(a-90)*Math.PI/180;return [cx+r*Math.cos(rad),cy+r*Math.sin(rad)];}
+function piePath(cx,cy,r,a0,a1){const p0=polar(cx,cy,r,a1),p1=polar(cx,cy,r,a0),large=(a1-a0)>180?1:0;return `M ${cx} ${cy} L ${p0[0]} ${p0[1]} A ${r} ${r} 0 ${large} 0 ${p1[0]} ${p1[1]} Z`;}
+function pieLines(label){
+  const w=String(label).trim().split(/\s+/);if(w.length<=2)return [label];
+  const mid=Math.ceil(w.length/2);return [w.slice(0,mid).join(' '),w.slice(mid).join(' ')];
+}
+function svgPieChart(data){
+  const items=data.items||[], total=items.reduce((s,x)=>s+(Number(x.value)||0),0)||1;
+  const W=520,H=390,cx=260,cy=190,r=145; const palette=['#60a5fa','#facc15','#34d399','#f472b6','#a78bfa','#fb923c','#22d3ee'];
+  let start=0,svg=`<svg class="edu-chart pie-edu-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="דיאגרמת עיגול">`;
+  items.forEach((it,i)=>{
+    const ang=(Number(it.value)||0)/total*360,end=start+ang,mid=start+ang/2;
+    svg+=`<path d="${piePath(cx,cy,r,start,end)}" fill="${palette[i%palette.length]}" stroke="#1f2937" stroke-width="2"/>`;
+    const tr=ang<55?r*.72:r*.60, [tx,ty]=polar(cx,cy,tr,mid), lines=pieLines(it.label), valueText=`${it.value}${data.valueType==='percent'?'%':''}`;
+    let fs=ang<45?10:ang<70?11:12;
+    if(ang<24){
+      svg+=`<text x="${tx}" y="${ty}" text-anchor="middle" font-size="${fs}" font-weight="900" fill="#111827" font-family="Rubik">${escapeXml(valueText)}</text>`;
+    }else{
+      const y0=ty-(lines.length===2?12:7);
+      lines.forEach((ln,j)=>{svg+=`<text x="${tx}" y="${y0+j*14}" text-anchor="middle" font-size="${fs}" font-weight="800" fill="#111827" font-family="Rubik" direction="rtl">${escapeXml(ln)}</text>`;});
+      svg+=`<text x="${tx}" y="${y0+lines.length*14+2}" text-anchor="middle" font-size="${fs+1}" font-weight="900" fill="#111827" font-family="Rubik">${escapeXml(valueText)}</text>`;
+    }
+    start=end;
+  });
+  svg+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#1f2937" stroke-width="3"/>`;
+  return svg+'</svg>';
+}
+
 function renderVisual(q){
   const a=$('visualArea');
   if(q.visual==='spinner3'){
@@ -679,6 +887,10 @@ function renderVisual(q){
     a.innerHTML=`<div class="count-visual"><div class="font-extrabold">כרטיס גירוד</div><div class="ticket-grid">${Array.from({length:10},(_,i)=>`<div class="ticket"><span>חלון ${i+1}</span></div>`).join('')}</div><div class="text-xs text-slate-500 mt-2">בכל ניסיון מגרדים חלון אחד בלבד.</div></div>`;
   }else if(q.visual==='blankCubeNet'){
     a.innerHTML=`<div class="count-visual"><div class="font-extrabold">פריסת קובייה – 6 פאות</div><div style="display:grid;grid-template-columns:repeat(4,58px);grid-template-rows:repeat(3,58px);justify-content:center;gap:2px;margin:18px auto"><div style="grid-column:1;grid-row:2" class="die-face"></div><div style="grid-column:2;grid-row:1" class="die-face"></div><div style="grid-column:2;grid-row:2" class="die-face"></div><div style="grid-column:3;grid-row:2" class="die-face"></div><div style="grid-column:4;grid-row:2" class="die-face"></div><div style="grid-column:4;grid-row:3" class="die-face"></div></div><div class="text-xs text-slate-500">כתבו את המספרים בשדות התשובה.</div></div>`;
+  }else if(q.visual==='barChart'){
+    a.innerHTML=`<div class="count-visual chart-visual">${svgBarChart(q.visualData)}</div>`;
+  }else if(q.visual==='pieChart'){
+    a.innerHTML=`<div class="count-visual chart-visual">${svgPieChart(q.visualData)}</div>`;
   }
   $('sampleSpaceNote').innerHTML=`מרחב התוצאות האפשרי: <span class="math font-bold">${q.sampleSpace}</span>`;
 }
@@ -694,6 +906,7 @@ function inputFor(q,s,ans){const k=key(q,s),v=ans?.value;
     return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span></div>`;
   }
   if(s.type==='sample_space')return `<div class="mt-3"><label class="block text-xs font-semibold text-slate-500 mb-1">מרחב המדגם</label><input id="space-${k}" class="w-full border border-slate-300 rounded-xl px-3 py-2.5 font-bold" dir="ltr" placeholder="לדוגמה: 1,2,3" value="${v?.raw??''}"></div>`;
+  if(s.type==='text_set')return `<div class="mt-3"><label class="block text-xs font-semibold text-slate-500 mb-1">כתבו את כל האפשרויות, מופרדות בפסיקים</label><input id="textset-${k}" class="w-full border border-slate-300 rounded-xl px-3 py-2.5 font-bold" placeholder="לדוגמה: אפשרות א, אפשרות ב" value="${v?.raw??''}"></div>`;
   if(s.type==='number')return `<div class="answer-number-row"><input id="number-${k}" type="number" step="any" value="${v?.number??''}" aria-label="תשובה מספרית"><span class="unit">${s.unit||''}</span></div>`;
   if(s.type==='percent')return `<div class="answer-number-row"><input id="percent-${k}" type="number" step="any" value="${v?.percent??''}" aria-label="אחוז"><span class="math font-extrabold">%</span></div>`;
   if(s.type==='fraction_decimal')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="decimal-${k}" type="number" step="any" value="${v?.decimal??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="שבר עשרוני"></div>`;
@@ -714,6 +927,7 @@ function readAnswer(q,s){const k=key(q,s);
   if(s.type==='fraction_decimal'){const nr=$('num-'+k).value,dr=$('den-'+k).value,xr=$('decimal-'+k).value;if(nr===''||dr===''||xr==='')return {filled:false};const n=Number(nr),d=Number(dr),x=Number(xr),en=s.expectedFraction[0],ed=s.expectedFraction[1],tol=s.tolerance??0.001;const ok=d!==0&&n*ed===en*d&&Math.abs(x-s.expectedDecimal)<=tol;return {filled:true,value:{num:n,den:d,decimal:x},correct:ok,display:`${n}/${d} = ${x}`};}
   if(s.type==='fraction_percent'){const nr=$('num-'+k).value,dr=$('den-'+k).value,pr=$('percent-'+k).value;if(nr===''||dr===''||pr==='')return {filled:false};const n=Number(nr),d=Number(dr),pct=Number(pr),en=s.expectedFraction[0],ed=s.expectedFraction[1],tol=s.tolerance??0.01;const ok=d!==0&&n*ed===en*d&&Math.abs(pct-s.expectedPercent)<=tol;return {filled:true,value:{num:n,den:d,percent:pct},correct:ok,display:`${n}/${d} = ${pct}%`};}
   if(s.type==='sample_space'){const raw=$('space-'+k).value.trim();if(!raw)return {filled:false};const nums=(raw.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);const uniq=[...new Set(nums)].sort((a,b)=>a-b),exp=[...s.expected].sort((a,b)=>a-b);return {filled:true,value:{raw},correct:JSON.stringify(uniq)===JSON.stringify(exp),display:`{${nums.join(', ')}}`};}
+  if(s.type==='text_set'){const raw=$('textset-'+k).value.trim();if(!raw)return {filled:false};const norm=t=>String(t).toLowerCase().replace(/[.׳"'״]/g,'').replace(/\s+/g,' ').trim();const parts=raw.split(/[,;\n]+/).map(norm).filter(Boolean);const uniq=[...new Set(parts)].sort();const exp=[...new Set(s.expected.map(norm))].sort();const ok=exp.every(e=>uniq.some(u=>u===e||u.includes(e)||e.includes(u)))&&uniq.length>=exp.length;return {filled:true,value:{raw},correct:ok,display:raw};}
 
   if(s.type==='number_fraction'){const nr=$('nf-number-'+k).value,fr=$('nf-num-'+k).value,dr=$('nf-den-'+k).value;if(nr===''||fr===''||dr==='')return {filled:false};const number=Number(nr),n=Number(fr),d=Number(dr),en=s.expectedFraction[0],ed=s.expectedFraction[1];const okNum=Math.abs(number-s.expectedNumber)<=(s.numberTolerance??0);const okFrac=d!==0&&n*ed===en*d;return {filled:true,value:{number,num:n,den:d},correct:okNum&&okFrac,display:`${s.numberUnit||'כמות'}: ${number} | ${n}/${d}`};}
   if(s.type==='choice'){const sel=document.querySelector(`input[name="choice-${k}"]:checked`);if(!sel)return {filled:false};return {filled:true,value:{choice:sel.value},correct:sel.value===s.expected,display:sel.closest('label')?.innerText.trim()||sel.value};}
