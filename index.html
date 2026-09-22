@@ -499,6 +499,98 @@ const questions = [
     ]
   }
 
+,
+  {
+    id:'q24_balls16_plan',
+    title:'תכנון משחק מזל עם 16 כדורים',
+    category:'בניית מרחב הסתברות לפי הסתברות רצויה',
+    story:'נועה רוצה לתכנן משחק מזל עם כד ובו 16 כדורים בשלושה צבעים שונים.',
+    visual:'balls16plan',
+    sampleSpace:'16 כדורים בסך הכול',
+    subs:[
+      {id:'a',label:'א',prompt:'מי שמוציא כדור אדום זוכה בגלידה. נועה רוצה שההסתברות לזכות בגלידה תהיה 1/4. כמה כדורים אדומים היא צריכה להניח בכד?',type:'number',expected:4,unit:'כדורים',hint:'חשבו איזה חלק מתוך 16 צריך להיות אדום כדי לקבל הסתברות של 1/4.',explanation:'רבע מתוך 16 הוא 4, ולכן נועה צריכה להניח 4 כדורים אדומים.'},
+      {id:'b',label:'ב',prompt:'מי שמוציא כדור ירוק זוכה בבלון. נועה רוצה שהסיכוי לקבל בלון יהיה 50%. כמה כדורים ירוקים היא צריכה להניח בכד?',type:'number',expected:8,unit:'כדורים',hint:'תרגמו 50% לחלק מן הכד, ואז חשבו כמה כדורים הם אותו חלק מתוך 16.',explanation:'50% הם מחצית מן הכד, ומחצית מ־16 היא 8. לכן צריך 8 כדורים ירוקים.'},
+      {id:'c',label:'ג',prompt:'כל שאר הכדורים בכד צריכים להיות לבנים. כמה כדורים לבנים נועה צריכה להניח בכד, ומה ההסתברות להוציא כדור לבן?',type:'number_fraction',event:'כדור לבן',expectedNumber:4,numberUnit:'כדורים לבנים',expectedFraction:[4,16],hint:'מצאו כמה כדורים נשארו לאחר האדומים והירוקים. אחר כך כתבו את מספר הכדורים הלבנים במונה ואת מספר כל הכדורים במכנה.',explanation:'לאחר 4 אדומים ו־8 ירוקים נשארים 4 כדורים לבנים. לכן P(כדור לבן) = 4/16 = 1/4.'}
+    ]
+  },
+  {
+    id:'q25_candy_jar25',
+    title:'צנצנת עם 25 סוכריות בשלושה צבעים',
+    category:'בניית הרכב לפי אחוזים ושברים',
+    story:'נירה רוצה למלא צנצנת בסוכריות צהובות, אדומות וכחולות. היא רוצה שבצנצנת יהיו בסך הכול 25 סוכריות.',
+    visual:'candyJar25',
+    sampleSpace:'25 סוכריות בסך הכול',
+    subs:[
+      {id:'a',label:'א',prompt:'נירה רוצה שהסיכוי להוציא סוכרייה צהובה יהיה 40%. כמה סוכריות צהובות היא צריכה להניח בצנצנת?',type:'number',expected:10,unit:'סוכריות',hint:'חשבו כמה הם 40% מתוך 25.',explanation:'40% מתוך 25 הם 10, ולכן נירה צריכה להניח 10 סוכריות צהובות.'},
+      {id:'b',label:'ב',prompt:'נירה רוצה שהסיכוי להוציא סוכרייה אדומה יהיה 1/5. כמה סוכריות אדומות היא צריכה להניח בצנצנת?',type:'number',expected:5,unit:'סוכריות',hint:'חשבו מהו חמישית מתוך 25.',explanation:'1/5 מתוך 25 הוא 5, ולכן צריך 5 סוכריות אדומות.'},
+      {id:'c',label:'ג',prompt:'כל שאר הסוכריות צריכות להיות כחולות. כמה סוכריות כחולות נירה צריכה להניח בצנצנת, ומה הסיכוי להוציא סוכרייה כחולה?',type:'number_fraction',event:'סוכרייה כחולה',expectedNumber:10,numberUnit:'סוכריות כחולות',expectedFraction:[10,25],hint:'מצאו כמה סוכריות נשארו אחרי הצהובות והאדומות. אחר כך כתבו את היחס בין הכחולות לבין כלל הסוכריות.',explanation:'נשארות 25 − 10 − 5 = 10 סוכריות כחולות. לכן P(כחולה) = 10/25 = 2/5 = 40%.'}
+    ]
+  },
+  {
+    id:'q26_party_boxes20',
+    title:'משחק קופסאות במסיבה',
+    category:'בניית משחק לפי הסתברויות רצויות',
+    story:'נינה מארגנת משחק במסיבה. היא הביאה 20 קופסאות. כל משתתף בתורו יבחר קופסה אחת ויפתח אותה. בחלק מהקופסאות יהיה שוקולד, בחלק פתק עם שאלה ובחלק פתק עם משימה.',
+    visual:'partyBoxes20',
+    sampleSpace:'20 קופסאות',
+    subs:[
+      {id:'a',label:'א',prompt:'נינה רוצה שהסיכוי לקבל שוקולד יהיה 1/10. בכמה קופסאות נינה צריכה להניח שוקולד?',type:'number',expected:2,unit:'קופסאות',hint:'חשבו כמה קופסאות הן עשירית מתוך 20.',explanation:'1/10 מתוך 20 הוא 2, ולכן בשתי קופסאות יהיה שוקולד.'},
+      {id:'b',label:'ב',prompt:'נינה רוצה שהסיכוי לקבל פתק עם שאלה יהיה 60%. בכמה קופסאות נינה צריכה להניח פתקים עם שאלה?',type:'number',expected:12,unit:'קופסאות',hint:'חשבו כמה הם 60% מתוך 20.',explanation:'60% מתוך 20 הם 12, ולכן ב־12 קופסאות יהיו פתקים עם שאלה.'},
+      {id:'c',label:'ג',prompt:'בכל שאר הקופסאות נינה רוצה להניח פתקים עם משימה. בכמה קופסאות נינה צריכה להניח פתקים עם משימה, ומה ההסתברות של המשתתף הראשון לקבל פתק עם משימה?',type:'number_fraction',event:'פתק עם משימה',expectedNumber:6,numberUnit:'קופסאות',expectedFraction:[6,20],hint:'מצאו כמה קופסאות נשארו אחרי השוקולד והפתקים עם השאלה. אחר כך כתבו את היחס בין קופסאות המשימה לבין כל הקופסאות.',explanation:'נשארות 20 − 2 − 12 = 6 קופסאות עם משימה. לכן P(פתק עם משימה) = 6/20 = 3/10 = 30%.'}
+    ]
+  },
+  {
+    id:'q27_bottle_promo3800',
+    title:'מבצע קידום מכירות בבקבוקי משקה',
+    category:'חישוב כמות מתוך שבר ואחוז',
+    story:'מנהל השיווק של בקבוקי משקה קל החליט על מבצע קידום מכירות. על הפקקים של 1/5 מהבקבוקים יוטבע ציור של בקבוק, ומי שיביא פקק כזה לחנות יזכה בבקבוק שתייה נוסף. על הפקקים של 3% מהבקבוקים יוטבע ציור של כוכב, ומי שיביא פקק כזה יזכה בכרטיס להופעה. במהלך המבצע יוצרו בסך הכול 3,800 בקבוקי שתייה.',
+    visual:'bottlePromo3800',
+    sampleSpace:'3,800 בקבוקים',
+    subs:[
+      {id:'a',label:'א',prompt:'על כמה פקקים הוטבע ציור של בקבוק?',type:'number',expected:760,unit:'פקקים',hint:'חשבו 1/5 מתוך 3,800.',explanation:'1/5 מתוך 3,800 הוא 760, ולכן על 760 פקקים הוטבע ציור של בקבוק.'},
+      {id:'b',label:'ב',prompt:'כמה כרטיסים להופעה שריינו לזוכים?',type:'number',expected:114,unit:'כרטיסים',hint:'חשבו 3% מתוך 3,800.',explanation:'3% מתוך 3,800 הם 114, ולכן שריינו 114 כרטיסים להופעה.'}
+    ]
+  },
+  {
+    id:'q28_convention_gifts',
+    title:'מתנות בכנס – טבעות ושרשראות',
+    category:'בניית מדגם לפי הסתברות נתונה',
+    story:'חברה שמשווקת תכשיטים ארגנה כנס גדול. כל אורח שיגיע לכנס יקבל קופסה סגורה ובה טבעת זהב או שרשרת. לחברה יש תקציב רק ל־8 טבעות, ואין הגבלה למספר השרשראות. מנהלת השיווק רוצה שהסיכוי לזכות בטבעת יהיה 5%.',
+    visual:'conventionGifts',
+    sampleSpace:'כל קופסאות המתנה בכנס',
+    subs:[
+      {id:'a',label:'א',prompt:'כמה קופסאות מתנה צריכים להכין?',type:'number',expected:160,unit:'קופסאות',hint:'8 טבעות צריכות להוות 5% מכלל קופסאות המתנה. מצאו את הגודל הכולל.',explanation:'אם 8 טבעות הן 5% מן הקופסאות, מספר הקופסאות הכולל הוא 8 ÷ 0.05 = 160.'},
+      {id:'b',label:'ב',prompt:'כמה שרשראות יהיו בקופסאות המתנה?',type:'number',expected:152,unit:'שרשראות',hint:'הפחיתו את מספר הטבעות ממספר הקופסאות הכולל.',explanation:'מתוך 160 קופסאות, 8 מכילות טבעת. לכן 152 קופסאות מכילות שרשרת.'},
+      {id:'c',label:'ג',prompt:'תומר הוא האורח הראשון שהגיע וקיבל קופסת מתנה. מה הסיכוי שהוא יקבל שרשרת?',type:'fraction_percent',event:'תומר יקבל שרשרת',expectedFraction:[152,160],expectedPercent:95,tolerance:0.01,hint:'המונה הוא מספר קופסאות השרשרת והמכנה הוא מספר כל קופסאות המתנה. לאחר מכן המירו לאחוזים.',explanation:'יש 152 שרשראות מתוך 160 קופסאות. לכן P(שרשרת) = 152/160 = 19/20 = 95%.'}
+    ]
+  },
+  {
+    id:'q29_surprise_eggs',
+    title:'ביצי הפתעה עם טיסן זעיר',
+    category:'מציאת גודל מדגם וכמות לפי אחוז',
+    story:'חברת „ביצי” משווקת ביצי הפתעה לילדים. מנהלת השיווק החליטה שבחלק מן הביצים יימצא טיסן זעיר.',
+    visual:'surpriseEggs',
+    sampleSpace:'כל ביצי ההפתעה במחזור הייצור',
+    subs:[
+      {id:'a',label:'א',prompt:'מנהלת השיווק החליטה שהסיכוי לזכות בטיסן בביצת ההפתעה יהיה 2%, ולכן היא רכשה 50 טיסנים להפתעות. כמה ביצי הפתעה יוצרו במחזור הייצור?',type:'number',expected:2500,unit:'ביצים',hint:'50 הטיסנים מייצגים 2% מכלל ביצי ההפתעה. מצאו את הכמות הכוללת.',explanation:'אם 50 הם 2% מן הכמות הכוללת, מספר הביצים הוא 50 ÷ 0.02 = 2,500.'},
+      {id:'b',label:'ב',prompt:'במחזור ייצור מיוצרים 2,500 ביצי הפתעה. בכמה ביצי הפתעה צריכים להיות טיסנים כדי שההסתברות לזכות בטיסן תהיה לפחות 10%?',type:'number',expected:250,unit:'ביצים',hint:'חשבו 10% מתוך 2,500. מאחר שנדרש „לפחות”, זו הכמות המינימלית.',explanation:'10% מתוך 2,500 הם 250. לכן צריך טיסן בלפחות 250 ביצי הפתעה.'}
+    ]
+  },
+  {
+    id:'q30_scratch_card',
+    title:'כרטיס גירוד עם 10 חלונות',
+    category:'פחות או יותר בהסתברות',
+    story:'מועצת התלמידים החליטה לערוך במסיבת פורים הגרלה באמצעות כרטיס גירוד. בכל כרטיס יש 10 חלונות גירוד, שבחלקם מסתתרים ציורי פרסים. מותר לגרד רק חלון אחד בכרטיס.',
+    visual:'scratch10',
+    sampleSpace:'10 חלונות גירוד שווי־סיכוי',
+    subs:[
+      {id:'a',label:'א',prompt:'אם רוצים שהסיכוי לזכות בפרס יהיה 20%, בכמה חלונות יש לצייר את הפרס?',type:'number',expected:2,unit:'חלונות',hint:'חשבו כמה הם 20% מתוך 10 חלונות.',explanation:'20% מתוך 10 הם 2, ולכן צריך לצייר פרס בשני חלונות.'},
+      {id:'b',label:'ב',prompt:'אם רוצים שההסתברות לזכות בפרס תהיה גדולה מ־1/4, בכמה חלונות, לכל הפחות, יש לצייר את הפרס?',type:'number',expected:3,unit:'חלונות',hint:'בדקו כמה חלונות זוכים נדרשים כך שהיחס מתוך 10 יהיה גדול ממש מ־1/4.',explanation:'2/10 = 0.2 קטן מ־1/4, ואילו 3/10 = 0.3 גדול מ־1/4. לכן לכל הפחות צריך 3 חלונות זוכים.'},
+      {id:'c',label:'ג',prompt:'בכמה חלונות, לכל היותר, יש לצייר את הפרס כדי שההסתברות לזכות תהיה קטנה מ־0.6?',type:'number',expected:5,unit:'חלונות',hint:'בדקו את המספר הגדול ביותר של חלונות זוכים שעבורו היחס מתוך 10 עדיין קטן ממש מ־0.6.',explanation:'5/10 = 0.5 קטן מ־0.6, אך 6/10 = 0.6 אינו קטן ממנו. לכן לכל היותר 5 חלונות.'},
+      {id:'d',label:'ד',prompt:'מועצת התלמידים החליטה לשנות את מספר החלונות בכרטיס כך שההסתברות לזכות בפרס תהיה בדיוק 1/4. בכרטיס החדש מסתתרים 3 ציורי פרסים. כמה חלונות גירוד יופיעו בכרטיס לאחר השינוי?',type:'number',expected:12,unit:'חלונות',hint:'חפשו מספר כולל של חלונות שעבורו 3 חלקי המספר הכולל שווה ל־1/4.',explanation:'אם 3/N = 1/4, אז N = 12. לכן בכרטיס החדש יהיו 12 חלונות גירוד.'}
+    ]
+  }
+
 
 ];
 
@@ -571,6 +663,20 @@ function renderVisual(q){
     a.innerHTML=`<div class="count-visual"><div class="font-extrabold">חיסון בשכבת י׳</div><div class="stat-grid"><div class="stat-card"><strong>י׳1</strong><br><span class="text-xs">20 חוסנו · 5 סירבו</span></div><div class="stat-card"><strong>י׳2</strong><br><span class="text-xs">18 חוסנו · 18 סירבו</span></div><div class="stat-card"><strong>י׳3</strong><br><span class="text-xs">28 חוסנו · 12 סירבו</span></div></div></div>`;
   }else if(q.visual==='engineOilCars'){
     a.innerHTML=`<div class="count-visual"><div class="font-extrabold">מכוניות במרוץ</div><div class="stat-grid"><div class="stat-card"><strong>רנו</strong><br><span class="text-xs">8 השתמשו · 10 לא השתמשו</span></div><div class="stat-card"><strong>סוזוקי</strong><br><span class="text-xs">4 השתמשו · 16 לא השתמשו</span></div><div class="stat-card"><strong>לנדרובר</strong><br><span class="text-xs">12 השתמשו · 10 לא השתמשו</span></div></div></div>`;
+  }else if(q.visual==='balls16plan'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">כד עם 16 כדורים</div><div class="stat-grid"><div class="stat-card"><strong>1/4</strong>יעד לכדורים אדומים</div><div class="stat-card"><strong>50%</strong>יעד לכדורים ירוקים</div><div class="stat-card"><strong>16</strong>כדורים בסך הכול</div></div></div>`;
+  }else if(q.visual==='candyJar25'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">צנצנת עם 25 סוכריות</div><div class="stat-grid"><div class="stat-card"><strong>40%</strong>יעד לצהובות</div><div class="stat-card"><strong>1/5</strong>יעד לאדומות</div><div class="stat-card"><strong>השאר</strong>כחולות</div></div></div>`;
+  }else if(q.visual==='partyBoxes20'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">20 קופסאות במשחק</div><div class="stat-grid"><div class="stat-card"><strong>1/10</strong>שוקולד</div><div class="stat-card"><strong>60%</strong>פתק עם שאלה</div><div class="stat-card"><strong>השאר</strong>פתק עם משימה</div></div></div>`;
+  }else if(q.visual==='bottlePromo3800'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">3,800 בקבוקים במבצע</div><div class="stat-grid"><div class="stat-card"><strong>1/5</strong>פקק עם ציור בקבוק</div><div class="stat-card"><strong>3%</strong>פקק עם כוכב</div></div></div>`;
+  }else if(q.visual==='conventionGifts'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">מתנות בכנס</div><div class="stat-grid"><div class="stat-card"><strong>8</strong>טבעות זהב</div><div class="stat-card"><strong>5%</strong>הסתברות רצויה לטבעת</div><div class="stat-card"><strong>השאר</strong>שרשראות</div></div></div>`;
+  }else if(q.visual==='surpriseEggs'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">ביצי הפתעה עם טיסנים</div><div class="stat-grid"><div class="stat-card"><strong>50</strong>טיסנים במחזור הראשון</div><div class="stat-card"><strong>2%</strong>הסתברות לטיסן</div><div class="stat-card"><strong>2,500</strong>ביצים במחזור הבא</div></div></div>`;
+  }else if(q.visual==='scratch10'){
+    a.innerHTML=`<div class="count-visual"><div class="font-extrabold">כרטיס גירוד</div><div class="ticket-grid">${Array.from({length:10},(_,i)=>`<div class="ticket"><span>חלון ${i+1}</span></div>`).join('')}</div><div class="text-xs text-slate-500 mt-2">בכל ניסיון מגרדים חלון אחד בלבד.</div></div>`;
   }else if(q.visual==='blankCubeNet'){
     a.innerHTML=`<div class="count-visual"><div class="font-extrabold">פריסת קובייה – 6 פאות</div><div style="display:grid;grid-template-columns:repeat(4,58px);grid-template-rows:repeat(3,58px);justify-content:center;gap:2px;margin:18px auto"><div style="grid-column:1;grid-row:2" class="die-face"></div><div style="grid-column:2;grid-row:1" class="die-face"></div><div style="grid-column:2;grid-row:2" class="die-face"></div><div style="grid-column:3;grid-row:2" class="die-face"></div><div style="grid-column:4;grid-row:2" class="die-face"></div><div style="grid-column:4;grid-row:3" class="die-face"></div></div><div class="text-xs text-slate-500">כתבו את המספרים בשדות התשובה.</div></div>`;
   }
@@ -593,6 +699,7 @@ function inputFor(q,s,ans){const k=key(q,s),v=ans?.value;
   if(s.type==='fraction_decimal')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="decimal-${k}" type="number" step="any" value="${v?.decimal??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="שבר עשרוני"></div>`;
   if(s.type==='fraction_percent')return `<div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span><span class="math">=</span><input id="percent-${k}" type="number" step="any" value="${v?.percent??''}" class="w-24 h-10 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="אחוז"><span class="math">%</span></div>`;
 
+  if(s.type==='number_fraction'){const vnum=v?.number??'';return `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3 items-end"><div class="bg-slate-50 border border-slate-200 rounded-xl p-3"><label class="block text-xs font-semibold text-slate-600 mb-1">${s.numberUnit||'כמות'}</label><div class="answer-number-row"><input id="nf-number-${k}" type="number" step="any" value="${vnum}"></div></div><div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${s.event}</bdi>) =</span><span class="fraction"><input id="nf-num-${k}" type="number" step="1" value="${v?.num??''}" aria-label="מונה"><span class="frac-line"></span><input id="nf-den-${k}" type="number" step="1" value="${v?.den??''}" aria-label="מכנה"></span></div></div>`;}
   if(s.type==='choice')return `<div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-xl">${s.options.map(o=>`<label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="choice-${k}" value="${o.value}" ${v?.choice===o.value?'checked':''}> ${o.label}</label>`).join('')}</div>`;
   if(s.type==='cube_faces')return `<div class="mt-4"><div class="text-xs font-semibold text-slate-500 mb-2">שש פאות הקובייה</div><div class="grid grid-cols-3 sm:grid-cols-6 gap-2" dir="ltr">${Array.from({length:6},(_,i)=>`<input id="face-${k}-${i}" type="number" step="1" value="${v?.faces?.[i]??''}" class="h-12 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="פאה ${i+1}">`).join('')}</div></div>`;
   if(s.type==='two_numbers'){const vals=v?.values||{};return `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">${s.fields.map(f=>`<div class="bg-slate-50 border border-slate-200 rounded-xl p-3"><label class="block text-xs font-semibold text-slate-600 mb-1">${f.label}</label><div class="answer-number-row"><input id="pair-${k}-${f.key}" type="number" step="any" value="${vals[f.key]??''}"><span class="unit">${f.unit||''}</span></div></div>`).join('')}</div>`;}
@@ -608,6 +715,7 @@ function readAnswer(q,s){const k=key(q,s);
   if(s.type==='fraction_percent'){const nr=$('num-'+k).value,dr=$('den-'+k).value,pr=$('percent-'+k).value;if(nr===''||dr===''||pr==='')return {filled:false};const n=Number(nr),d=Number(dr),pct=Number(pr),en=s.expectedFraction[0],ed=s.expectedFraction[1],tol=s.tolerance??0.01;const ok=d!==0&&n*ed===en*d&&Math.abs(pct-s.expectedPercent)<=tol;return {filled:true,value:{num:n,den:d,percent:pct},correct:ok,display:`${n}/${d} = ${pct}%`};}
   if(s.type==='sample_space'){const raw=$('space-'+k).value.trim();if(!raw)return {filled:false};const nums=(raw.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);const uniq=[...new Set(nums)].sort((a,b)=>a-b),exp=[...s.expected].sort((a,b)=>a-b);return {filled:true,value:{raw},correct:JSON.stringify(uniq)===JSON.stringify(exp),display:`{${nums.join(', ')}}`};}
 
+  if(s.type==='number_fraction'){const nr=$('nf-number-'+k).value,fr=$('nf-num-'+k).value,dr=$('nf-den-'+k).value;if(nr===''||fr===''||dr==='')return {filled:false};const number=Number(nr),n=Number(fr),d=Number(dr),en=s.expectedFraction[0],ed=s.expectedFraction[1];const okNum=Math.abs(number-s.expectedNumber)<=(s.numberTolerance??0);const okFrac=d!==0&&n*ed===en*d;return {filled:true,value:{number,num:n,den:d},correct:okNum&&okFrac,display:`${s.numberUnit||'כמות'}: ${number} | ${n}/${d}`};}
   if(s.type==='choice'){const sel=document.querySelector(`input[name="choice-${k}"]:checked`);if(!sel)return {filled:false};return {filled:true,value:{choice:sel.value},correct:sel.value===s.expected,display:sel.closest('label')?.innerText.trim()||sel.value};}
   if(s.type==='cube_faces'){const faces=Array.from({length:6},(_,i)=>$('face-'+k+'-'+i).value);if(faces.some(x=>x===''))return {filled:false};const nums=faces.map(Number);const count=nums.filter(x=>x===s.expectedValue).length;return {filled:true,value:{faces:nums},correct:count===s.expectedCount,display:nums.join(', ')};}
   if(s.type==='two_numbers'){const values={};let filled=true,correct=true;for(const f of s.fields){const el=$('pair-'+k+'-'+f.key);const raw=el?.value??'';if(raw===''){filled=false;continue;}const n=Number(raw);values[f.key]=n;if(Math.abs(n-f.expected)>(f.tolerance??0))correct=false;}if(!filled)return {filled:false};return {filled:true,value:{values},correct,display:s.fields.map(f=>`${f.label}: ${values[f.key]}${f.unit?' '+f.unit:''}`).join(' | ')};}
