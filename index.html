@@ -847,6 +847,82 @@ const questions = [
     ]
   }
 
+  ,{
+    id:'q47_two_dice_difference_table',
+    title:'שתי קוביות – הפרש המספרים',
+    category:'טבלה דו־ממדית – מילוי עצמי',
+    story:'זורקים שתי קוביות משחק רגילות בעת ובעונה אחת. בכל הטלה בודקים את ההפרש בין המספרים המופיעים על הקוביות: המספר הגדול פחות המספר הקטן או שווה. את טבלת ההפרשים ממלאים בעצמכם – היא אינה מתמלאת אוטומטית.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'קובייה א׳',colLabel:'קובייה ב׳',rows:[1,2,3,4,5,6],cols:[1,2,3,4,5,6],placeholder:'הפרש'},
+    sampleSpace:'36 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מלאו את הטבלה וכתבו מהו ההפרש בכל אחת מן האפשרויות.',type:'helper_complete',rule:'absdiff',hint:'בכל תא חשבו את המספר הגדול פחות המספר הקטן. לדוגמה, עבור 2 ו־5 ההפרש הוא 3.',explanation:'הטבלה צריכה להכיל בכל תא את ההפרש המוחלט בין שני המספרים.'},
+      {id:'b',label:'ב',prompt:'אילו מספרים יכולים להתקבל כהפרש?',type:'sample_space',expected:[0,1,2,3,4,5],hint:'בדקו בטבלה אילו ערכים שונים מופיעים לפחות פעם אחת.',explanation:'ההפרשים האפשריים הם 0, 1, 2, 3, 4, 5.'},
+      {id:'c',label:'ג',prompt:'כתבו את כל האפשרויות לקבלת ההפרש 3.',type:'ordered_pairs',expected:[[1,4],[2,5],[3,6],[4,1],[5,2],[6,3]],hint:'חפשו בטבלה את כל התאים שבהם מופיע 3 ורשמו את הזוגות המסודרים המתאימים.',explanation:'האפשרויות הן (1,4), (2,5), (3,6), (4,1), (5,2), (6,3).'},
+      {id:'d',label:'ד',prompt:'מה הסיכוי לקבל את ההפרש 5? פרטו את האפשרויות.',type:'fraction',event:'הפרש 5',expected:[2,36],hint:'חפשו בטבלה את כל התאים שבהם ההפרש הוא 5.',explanation:'האפשרויות הן (1,6) ו-(6,1). לכן P = 2/36 = 1/18.'},
+      {id:'e',label:'ה',prompt:'מהו הפרש המספרים שהסיכוי לקבלתו הוא הגבוה ביותר?',type:'number',unit:'',expected:1,tolerance:0,hint:'ספרו כמה פעמים מופיע כל הפרש בטבלה.',explanation:'ההפרש 1 מופיע ב-10 תוצאות, יותר מכל הפרש אחר.'},
+      {id:'f',label:'ו',prompt:'מהו הסיכוי לקבל את ההפרש בעל ההסתברות הגבוהה ביותר?',type:'fraction',event:'הפרש 1',expected:[10,36],hint:'לאחר שמצאתם את ההפרש השכיח ביותר, ספרו כמה תאים מייצגים אותו.',explanation:'ההפרש 1 מתקבל ב-10 מתוך 36 תוצאות, לכן P = 10/36 = 5/18.'}
+    ]
+  },
+  {
+    id:'q48_two_dice_difference_probabilities',
+    title:'שתי קוביות – הסתברויות של הפרשים',
+    category:'הפרש בין שתי קוביות',
+    story:'זורקים שתי קוביות משחק רגילות. בכל הטלה בודקים את ההפרש בין המספרים המופיעים על הקוביות. טבלת העזר נשארת למילוי עצמי ואינה מתמלאת אוטומטית.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'קובייה א׳',colLabel:'קובייה ב׳',rows:[1,2,3,4,5,6],cols:[1,2,3,4,5,6],placeholder:'הפרש'},
+    sampleSpace:'36 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות לקבל את ההפרש 3?',type:'fraction',event:'הפרש 3',expected:[6,36],hint:'היעזרו בטבלה ומנו את כל הזוגות שההפרש ביניהם הוא 3.',explanation:'יש 6 תוצאות מתאימות, לכן P = 6/36 = 1/6.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות לקבל את ההפרש 4?',type:'fraction',event:'הפרש 4',expected:[4,36],hint:'מנו את כל התוצאות שבהן המספר הגדול גדול ב-4 מן המספר הקטן.',explanation:'יש 4 תוצאות מתאימות, לכן P = 4/36 = 1/9.'},
+      {id:'c',label:'ג',prompt:'מהו ההפרש שהסיכוי לקבלתו הוא הקטן ביותר, ומהו הסיכוי לקבל אותו?',type:'number_fraction',numberUnit:'הפרש',expectedNumber:5,numberTolerance:0,event:'לקבל את ההפרש הנדיר ביותר',expectedFraction:[2,36],hint:'ספרו כמה פעמים מתקבל כל הפרש ובחרו את זה שמופיע הכי מעט פעמים.',explanation:'ההפרש 5 מתקבל רק בשתי תוצאות: (1,6) ו-(6,1). לכן ההסתברות היא 2/36 = 1/18.'}
+    ]
+  },
+  {
+    id:'q49_two_dice_product',
+    title:'שתי קוביות – מכפלת המספרים',
+    category:'טבלה דו־ממדית אוטומטית – מכפלה',
+    story:'מטילים שתי קוביות משחק ומחשבים את מכפלת המספרים. בטבלת העזר ניתן לבחור זוג סדור או מכפלה; אין צורך למלא כל תא ידנית.',
+    visual:'diceHelper',
+    visualData:{modes:['pair','product'],defaultMode:'product'},
+    sampleSpace:'36 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'מה ההסתברות שמכפלת זוג המספרים שהתקבלה תהיה 20?',type:'fraction',event:'מכפלה 20',expected:[2,36],hint:'בתצוגת „מכפלה” סמנו את כל התאים שבהם מופיע 20.',explanation:'המכפלה 20 מתקבלת ב-(4,5) וב-(5,4). לכן P = 2/36 = 1/18.'},
+      {id:'b',label:'ב',prompt:'מה ההסתברות שמכפלת המספרים שהתקבלה תהיה גדולה מ־10?',type:'fraction',event:'מכפלה גדולה מ־10',expected:[17,36],hint:'בתצוגת „מכפלה” סמנו את כל התאים שערכם גדול מ-10 ומנו אותם.',explanation:'יש 17 תוצאות שבהן המכפלה גדולה מ-10. לכן P = 17/36.'},
+      {id:'c',label:'ג',prompt:'מה ההסתברות שמכפלת המספרים שהתקבלה תהיה קטנה מ־36?',type:'fraction',event:'מכפלה קטנה מ־36',expected:[35,36],hint:'חשבו איזו תוצאה יחידה נותנת את המכפלה המקסימלית 36.',explanation:'רק (6,6) נותנת 36, ולכן 35 מתוך 36 התוצאות קטנות מ-36. P = 35/36.'}
+    ]
+  },
+  {
+    id:'q50_multiplication_game',
+    title:'משחק מכפלות – רחלי ונועה',
+    category:'משחק הוגן והסתברויות',
+    story:'רחלי ונועה משחקות בהטלת קובייה. הן בודקות את מכפלת המספרים שמתקבלים. היעזרו בטבלת המכפלות האוטומטית כדי להשוות בין סיכויי הזכייה.',
+    visual:'diceHelper',
+    visualData:{modes:['pair','product'],defaultMode:'product'},
+    sampleSpace:'36 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'אם המכפלה זוגית – רחלי זוכה בנקודה, ואם המכפלה אי־זוגית – נועה זוכה בנקודה. האם המשחק הוגן? נמקו.',type:'fairness',expected:'no',hint:'השוו בין מספר התוצאות שבהן המכפלה זוגית לבין מספר התוצאות שבהן היא אי־זוגית.',explanation:'המשחק אינו הוגן: לרחלי 27 תוצאות זוגיות מתוך 36, ולנועה 9 תוצאות אי־זוגיות מתוך 36.'},
+      {id:'b',label:'ב',prompt:'אם המכפלה מתחלקת ב־4 רחלי זוכה בנקודה, ואם המכפלה אינה מתחלקת ב־4 נועה זוכה בנקודה. מה הסיכוי של כל אחת מהן לזכות?',type:'two_fractions',fields:[{key:'r',label:'רחלי',event:'המכפלה מתחלקת ב־4',expected:[15,36]},{key:'n',label:'נועה',event:'המכפלה אינה מתחלקת ב־4',expected:[21,36]}],hint:'ספרו בנפרד את התוצאות שבהן המכפלה מתחלקת ב-4 ואת שאר התוצאות.',explanation:'לרחלי 15 מתוך 36 תוצאות, ולנועה 21 מתוך 36 תוצאות.'},
+      {id:'c',label:'ג',prompt:'אם המכפלה מתחלקת ב־3 רחלי זוכה בנקודה, ואם המכפלה זוגית נועה זוכה בנקודה. מה הסיכוי של כל אחת מהן לזכות בנקודה? האם המשחק הוגן?',type:'two_fractions_fairness',fields:[{key:'r',label:'רחלי',event:'המכפלה מתחלקת ב־3',expected:[20,36]},{key:'n',label:'נועה',event:'המכפלה זוגית',expected:[27,36]}],expectedFair:'no',hint:'שני האירועים יכולים להתרחש באותה הטלה. חשבו כל הסתברות בנפרד ואז השוו ביניהן.',explanation:'לרחלי P = 20/36 ולנועה P = 27/36. הסיכויים אינם שווים, ולכן המשחק אינו הוגן.'}
+    ]
+  },
+  {
+    id:'q51_odd_even_fingers',
+    title:'זוג או פרט – מתן ויאיר',
+    category:'מרחב מדגם דו־שלבי ומשחק הוגן',
+    story:'מתן ויאיר משחקים ב„זוג או פרט”. כל אחד מראה באקראי 1, 2, 3, 4 או 5 אצבעות. אם סכום המספרים אי־זוגי מתן מנצח; אם הסכום זוגי יאיר מנצח.',
+    visual:'manualGrid',
+    visualData:{rowLabel:'מתן',colLabel:'יאיר',rows:[1,2,3,4,5],cols:[1,2,3,4,5],placeholder:'למשל 1,2'},
+    sampleSpace:'25 תוצאות מסודרות',
+    subs:[
+      {id:'a',label:'א',prompt:'ערכו טבלה של התוצאות האפשריות.',type:'helper_complete',rule:'ordered_pair',hint:'בכל תא רשמו את המספר שמתן מראה ואת המספר שיאיר מראה, לפי כותרות השורה והעמודה.',explanation:'בטבלה יש 25 זוגות סדורים אפשריים, אחד לכל בחירה של מתן ולכל בחירה של יאיר.'},
+      {id:'b',label:'ב',prompt:'נניח שמתן ויאיר בוחרים באקראי את מספר האצבעות שהם יראו. מה ההסתברות שמתן ינצח?',type:'fraction',event:'מתן מנצח',expected:[12,25],hint:'מתן מנצח כאשר אחד המספרים זוגי והאחר אי־זוגי.',explanation:'יש 12 תוצאות שבהן הסכום אי־זוגי, לכן P = 12/25.'},
+      {id:'c',label:'ג',prompt:'האם המשחק הוגן? הסבירו.',type:'fairness',expected:'no',hint:'השוו בין מספר התוצאות שבהן הסכום אי־זוגי לבין מספר התוצאות שבהן הסכום זוגי.',explanation:'לא. למתן 12 תוצאות זוכות וליאיר 13, לכן ליאיר סיכוי מעט גבוה יותר.'},
+      {id:'d',label:'ד',prompt:'מתן ויאיר מוסיפים את האגרוף, המייצג את המספר 0. האם כעת המשחק הוגן? הסבירו.',type:'fairness',expected:'yes',hint:'כעת לכל שחקן יש 6 אפשרויות: 0 עד 5. ספרו כמה מהן זוגיות וכמה אי־זוגיות.',explanation:'כן. יש 3 מספרים זוגיים ו-3 אי־זוגיים, ולכן ההסתברות לסכום זוגי ולהסתברות לסכום אי־זוגי היא 1/2 לכל אחד.'},
+      {id:'e',label:'ה',prompt:'דינה ובינה משחקות זוג או פרט בלי אגרוף, אך במקום לחשב את סכום מספר האצבעות הן מחשבות את מכפלתם. האם המשחק הוגן? הסבירו.',type:'fairness',expected:'no',hint:'מכפלה אי־זוגית מתקבלת רק כאשר שני המספרים אי־זוגיים. השוו את מספר התוצאות האי־זוגיות לכל השאר.',explanation:'לא. מכפלה אי־זוגית מתקבלת ב-9 מתוך 25 תוצאות, ומכפלה זוגית ב-16 מתוך 25, ולכן הסיכויים אינם שווים.'}
+    ]
+  }
+
 
 ];
 
@@ -1078,6 +1154,8 @@ function inputFor(q,s,ans){const k=key(q,s),v=ans?.value;
   if(s.type==='choice')return `<div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-xl">${s.options.map(o=>`<label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="choice-${k}" value="${o.value}" ${v?.choice===o.value?'checked':''}> ${o.label}</label>`).join('')}</div>`;
   if(s.type==='cube_faces')return `<div class="mt-4"><div class="text-xs font-semibold text-slate-500 mb-2">שש פאות הקובייה</div><div class="grid grid-cols-3 sm:grid-cols-6 gap-2" dir="ltr">${Array.from({length:6},(_,i)=>`<input id="face-${k}-${i}" type="number" step="1" value="${v?.faces?.[i]??''}" class="h-12 text-center border border-slate-300 rounded-xl font-extrabold" aria-label="פאה ${i+1}">`).join('')}</div></div>`;
   if(s.type==='two_numbers'){const vals=v?.values||{};return `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">${s.fields.map(f=>`<div class="bg-slate-50 border border-slate-200 rounded-xl p-3"><label class="block text-xs font-semibold text-slate-600 mb-1">${f.label}</label><div class="answer-number-row"><input id="pair-${k}-${f.key}" type="number" step="any" value="${vals[f.key]??''}"><span class="unit">${f.unit||''}</span></div></div>`).join('')}</div>`;}
+  if(s.type==='helper_complete')return `<label class="mt-3 inline-flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2.5 cursor-pointer bg-white"><input id="helperdone-${k}" type="checkbox" ${v?.done?'checked':''}> <span class="font-semibold text-sm">סיימתי למלא את טבלת העזר</span></label>`;
+  if(s.type==='two_fractions'||s.type==='two_fractions_fairness'){const vals=v?.fields||{};return `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">${s.fields.map(f=>`<div class="bg-slate-50 border border-slate-200 rounded-xl p-3"><div class="font-extrabold text-sm mb-2">${f.label}</div><div class="prob-row"><span class="math-prob">P(<bdi class="prob-event" dir="rtl">${f.event}</bdi>) =</span><span class="fraction"><input id="tf-num-${k}-${f.key}" type="number" step="1" value="${vals[f.key]?.num??''}"><span class="frac-line"></span><input id="tf-den-${k}-${f.key}" type="number" step="1" value="${vals[f.key]?.den??''}"></span></div></div>`).join('')}</div>${s.type==='two_fractions_fairness'?`<div class="mt-3 grid grid-cols-2 gap-2 max-w-sm"><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="tffair-${k}" value="yes" ${v?.fair==='yes'?'checked':''}> כן</label><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="tffair-${k}" value="no" ${v?.fair==='no'?'checked':''}> לא</label></div>`:''}`;}
   if(s.type==='fairness')return `<div class="mt-3 grid grid-cols-2 gap-2 max-w-sm"><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="yes" ${v?.choice==='yes'?'checked':''}> כן</label><label class="border border-slate-200 rounded-xl p-3 flex items-center gap-2 cursor-pointer"><input type="radio" name="fair-${k}" value="no" ${v?.choice==='no'?'checked':''}> לא</label></div><textarea id="explain-${k}" class="mt-3 w-full min-h-24 border border-slate-300 rounded-xl p-3" placeholder="הסבירו בקצרה">${v?.explain??''}</textarea>`;
   return '';
 }
@@ -1096,6 +1174,23 @@ function readAnswer(q,s){const k=key(q,s);
   if(s.type==='choice'){const sel=document.querySelector(`input[name="choice-${k}"]:checked`);if(!sel)return {filled:false};return {filled:true,value:{choice:sel.value},correct:sel.value===s.expected,display:sel.closest('label')?.innerText.trim()||sel.value};}
   if(s.type==='cube_faces'){const faces=Array.from({length:6},(_,i)=>$('face-'+k+'-'+i).value);if(faces.some(x=>x===''))return {filled:false};const nums=faces.map(Number);const count=nums.filter(x=>x===s.expectedValue).length;return {filled:true,value:{faces:nums},correct:count===s.expectedCount,display:nums.join(', ')};}
   if(s.type==='two_numbers'){const values={};let filled=true,correct=true;for(const f of s.fields){const el=$('pair-'+k+'-'+f.key);const raw=el?.value??'';if(raw===''){filled=false;continue;}const n=Number(raw);values[f.key]=n;if(Math.abs(n-f.expected)>(f.tolerance??0))correct=false;}if(!filled)return {filled:false};return {filled:true,value:{values},correct,display:s.fields.map(f=>`${f.label}: ${values[f.key]}${f.unit?' '+f.unit:''}`).join(' | ')};}
+  if(s.type==='helper_complete'){
+    const checked=$('helperdone-'+k)?.checked;if(!checked)return {filled:false};
+    const d=q.visualData||{},rows=d.rows||[],cols=d.cols||[],saved=state.helperTables[q.id]||{};let complete=true,correct=true;
+    for(let ri=0;ri<rows.length;ri++)for(let ci=0;ci<cols.length;ci++){
+      const raw=String(saved[`${ri}_${ci}`]??'').trim();if(!raw){complete=false;correct=false;continue;}
+      if(s.rule==='absdiff'){if(Number(raw)!==Math.abs(Number(rows[ri])-Number(cols[ci])))correct=false;}
+      if(s.rule==='ordered_pair'){
+        const nums=(raw.match(/-?\d+/g)||[]).map(Number);if(nums.length<2||nums[0]!==Number(rows[ri])||nums[1]!==Number(cols[ci]))correct=false;
+      }
+    }
+    return {filled:true,value:{done:true},correct:complete&&correct,display:complete&&correct?'טבלת העזר מולאה':'טבלת העזר מולאה אך יש בה טעויות'};
+  }
+  if(s.type==='two_fractions'||s.type==='two_fractions_fairness'){
+    const fields={};let filled=true,correct=true;for(const f of s.fields){const nr=$(`tf-num-${k}-${f.key}`)?.value,dr=$(`tf-den-${k}-${f.key}`)?.value;if(nr===''||dr===''){filled=false;continue;}const n=Number(nr),d=Number(dr),en=f.expected[0],ed=f.expected[1];fields[f.key]={num:n,den:d};if(d===0||n*ed!==en*d)correct=false;}
+    let fair=null;if(s.type==='two_fractions_fairness'){const sel=document.querySelector(`input[name="tffair-${k}"]:checked`);if(!sel)filled=false;else{fair=sel.value;if(fair!==s.expectedFair)correct=false;}}
+    if(!filled)return {filled:false};return {filled:true,value:{fields,fair},correct,display:s.fields.map(f=>`${f.label}: ${fields[f.key].num}/${fields[f.key].den}`).join(' | ')+(s.type==='two_fractions_fairness'?` | הוגן: ${fair==='yes'?'כן':'לא'}`:'')};
+  }
   if(s.type==='fairness'){const sel=document.querySelector(`input[name="fair-${k}"]:checked`),exp=$('explain-'+k).value.trim();if(!sel||!exp)return {filled:false};return {filled:true,value:{choice:sel.value,explain:exp},correct:sel.value===s.expected,display:`${sel.value==='yes'?'כן':'לא'} — ${exp}`};}
 }
 function checkQuestion(){const q=questions[state.index];if(state.locked[q.id])return;let all=true,correct=0;const answers={};for(const s of q.subs){const r=readAnswer(q,s);if(!r.filled){all=false;continue;}answers[key(q,s)]={...r};if(r.correct)correct++;}
